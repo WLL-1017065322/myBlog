@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>AJAX | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="什么是 AJAX ？AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。 AJAX = 异步 JavaScript 和 XML。Asynchronous Javascript And XML AJAX 是一种用于创建快速动态网页的技术。 通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。 传统">
+<meta name="keywords" content="First,Second">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/ajax简介/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="什么是 AJAX ？AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。 AJAX = 异步 JavaScript 和 XML。Asynchronous Javascript And XML AJAX 是一种用于创建快速动态网页的技术。 通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。 传统">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-26T00:23:03.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX">
+<meta name="twitter:description" content="什么是 AJAX ？AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。 AJAX = 异步 JavaScript 和 XML。Asynchronous Javascript And XML AJAX 是一种用于创建快速动态网页的技术。 通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。 传统">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along" target="_blank" href="//baidu.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//baidu.com">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-ajax简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      AJAX
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/First/">First</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-04-26
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="什么是-AJAX-？"><a href="#什么是-AJAX-？" class="headerlink" title="什么是 AJAX ？"></a>什么是 AJAX ？</h2><p>AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</p>
+<p>AJAX = 异步 JavaScript 和 XML。<strong>Asynchronous Javascript And XML</strong></p>
+<p>AJAX 是一种用于创建快速动态网页的技术。</p>
+<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。</p>
+<p>有很多使用 AJAX 的应用程序案例：新浪微博、Google 地图、开心网等等。</p>
+<h1 id="AJAX-创建-XMLHttpRequest-对象"><a href="#AJAX-创建-XMLHttpRequest-对象" class="headerlink" title="AJAX - 创建 XMLHttpRequest 对象"></a>AJAX - 创建 XMLHttpRequest 对象</h1><hr>
+<p>XMLHttpRequest 是 AJAX 的基础。</p>
+<hr>
+<h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><p>所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。</p>
+<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。</p>
+<p>创建 XMLHttpRequest 对象的语法：</p>
+<p> <em>variable</em>=new XMLHttpRequest();</p>
+<p>老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
+<p> <em>variable</em>=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
+<p>为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject ：</p>
+<p>兼容语法：</p>
+<p>var xmlhttp;<br>if (window.XMLHttpRequest)<br>{<br>//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码<br>xmlhttp=new XMLHttpRequest();<br>}<br>else<br>{<br>// IE6, IE5 浏览器执行代码<br>xmlhttp=new ActiveXObject(“Microsoft.XMLHTTP”);<br>}</p>
+<h1 id="AJAX-向服务器发送请求请求"><a href="#AJAX-向服务器发送请求请求" class="headerlink" title="AJAX - 向服务器发送请求请求"></a>AJAX - 向服务器发送请求请求</h1><hr>
+<p>XMLHttpRequest 对象用于和服务器交换数据。</p>
+<hr>
+<h2 id="向服务器发送请求"><a href="#向服务器发送请求" class="headerlink" title="向服务器发送请求"></a>向服务器发送请求</h2><p>如需将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：</p>
+<p> xmlhttp.open(“GET”,”ajax_info.txt”,true);<br> xmlhttp.send();</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">open(<em>method</em>,<em>url</em>,<em>async</em>)</td>
+<td style="text-align:left">规定请求的类型、URL 以及是否异步处理请求。          <em>method</em>：请求的类型；GET 或 POST     <em>url</em>：文件在服务器上的位置     <em>async</em>：true（异步）或 false（同步）</td>
+</tr>
+<tr>
+<td style="text-align:left">send(<em>string</em>)</td>
+<td style="text-align:left">将请求发送到服务器。          <em>string</em>：仅用于 POST 请求</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="GET-还是-POST？"><a href="#GET-还是-POST？" class="headerlink" title="GET 还是 POST？"></a>GET 还是 POST？</h2><p>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</p>
+<p>然而，在以下情况中，请使用 POST 请求：</p>
+<ul>
+<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+<li>向服务器发送大量数据（POST 没有数据量限制）</li>
+<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</li>
+</ul>
+<h2 id="GET-请求"><a href="#GET-请求" class="headerlink" title="GET 请求"></a>GET 请求</h2><p>一个简单的 GET 请求：</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>xmlhttp.open(“GET”,”/try/ajax/demo_get.php”,true); xmlhttp.send();</p>
+<hr>
+<h2 id="POST-请求"><a href="#POST-请求" class="headerlink" title="POST 请求"></a>POST 请求</h2><p>一个简单 POST 请求：</p>
+<p>实例</p>
+<p>xmlhttp.open(“POST”,”/try/ajax/demo_post.php”,true); xmlhttp.send();</p>
+<p>如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据：</p>
+<p>实例</p>
+<p>xmlhttp.open(“POST”,”/try/ajax/demo_post2.php”,true); xmlhttp.setRequestHeader(“Content-type”,”application/x-www-form-urlencoded”);</p>
+<p>xmlhttp.send(“fname=Henry&amp;lname=Ford”);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">setRequestHeader(<em>header,value</em>)</td>
+<td style="text-align:left">向请求添加 HTTP 头。          <em>header</em>: 规定头的名称     <em>value</em>: 规定头的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="url-服务器上的文件"><a href="#url-服务器上的文件" class="headerlink" title="url - 服务器上的文件"></a>url - 服务器上的文件</h2><p>open() 方法的 <em>url</em> 参数是服务器上文件的地址：</p>
+<p> xmlhttp.open(“GET”,”ajax_test.html”,true);</p>
+<p>该文件可以是任何类型的文件，比如 .txt 和 .xml，或者服务器脚本文件，比如 .asp 和 .php （在传回响应之前，能够在服务器上执行任务）。</p>
+<h2 id="异步-True-或-False？"><a href="#异步-True-或-False？" class="headerlink" title="异步 - True 或 False？"></a>异步 - True 或 False？</h2><p>AJAX 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。</p>
+<p>XMLHttpRequest 对象如果要用于 AJAX 的话，其 open() 方法的 async 参数必须设置为 true：</p>
+<p> xmlhttp.open(“GET”,”ajax_test.html”,true);</p>
+<p>对于 web 开发人员来说，发送异步请求是一个巨大的进步。很多在服务器执行的任务都相当费时。AJAX 出现之前，这可能会引起应用程序挂起或停止。</p>
+<p>通过 AJAX，JavaScript 无需等待服务器的响应，而是：</p>
+<ul>
+<li>在等待服务器响应时执行其他脚本</li>
+<li>当响应就绪后对响应进行处理</li>
+</ul>
+<hr>
+<h2 id="Async-true"><a href="#Async-true" class="headerlink" title="Async=true"></a>Async=true</h2><p>当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数：</p>
+<h2 id="sync-false"><a href="#sync-false" class="headerlink" title="sync = false"></a>sync = false</h2><p>如需使用 async=false，请将 open() 方法中的第三个参数改为 false：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(&quot;GET&quot;,&quot;test1.txt&quot;,false);</span><br></pre></td></tr></table></figure>
+<p>我们不推荐使用 async=false，但是对于一些小型的请求，也是可以的。</p>
+<p>请记住，JavaScript 会等到服务器响应就绪才继续执行。如果服务器繁忙或缓慢，应用程序会挂起或停止。</p>
+<p><strong>注意：当您使用 async=false 时，请不要编写 onreadystatechange 函数 - 把代码放到 send() 语句后面即可：</strong></p>
+<h1 id="AJAX-服务器-响应"><a href="#AJAX-服务器-响应" class="headerlink" title="AJAX - 服务器 响应"></a>AJAX - 服务器 响应</h1><hr>
+<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><p>如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">responseText</td>
+<td style="text-align:left">获得字符串形式的响应数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">responseXML</td>
+<td style="text-align:left">获得 XML 形式的响应数据。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="responseText-属性"><a href="#responseText-属性" class="headerlink" title="responseText 属性"></a>responseText 属性</h2><p>如果来自服务器的响应并非 XML，请使用 responseText 属性。</p>
+<p>responseText 属性返回字符串形式的响应，因此您可以这样使用：</p>
+<p><strong>document.getElementById(“myDiv”).innerHTML=xmlhttp.responseText;</strong></p>
+<h2 id="responseXML-属性"><a href="#responseXML-属性" class="headerlink" title="responseXML 属性"></a>responseXML 属性</h2><p>如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析，请使用 responseXML 属性：</p>
+<p>​    </p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>请求 <a href="http://www.runoob.com/try/demo_source/cd_catalog.xml" target="_blank" rel="noopener">cd_catalog.xml</a> 文件，并解析响应：</p>
+<p>xmlDoc=xmlhttp.responseXML; txt=””; x=xmlDoc.getElementsByTagName(“ARTIST”); for (i=0;i&lt;x.length;i++) {     txt=txt + x[i].childNodes[0].nodeValue + “<br>“; } document.getElementById(“myDiv”).innerHTML=txt;</p>
+<p>获取元素内容</p>
+<p><strong>/txt=txt + x[i].childNodes[0].nodeValue + “<br>   “;</strong></p>
+<h1 id="AJAX-onreadystatechange-事件"><a href="#AJAX-onreadystatechange-事件" class="headerlink" title="AJAX - onreadystatechange 事件"></a>AJAX - onreadystatechange 事件</h1><hr>
+<h2 id="onreadystatechange-事件"><a href="#onreadystatechange-事件" class="headerlink" title="onreadystatechange 事件"></a>onreadystatechange 事件</h2><p>当请求被发送到服务器时，我们需要执行一些基于响应的任务。</p>
+<p>每当 readyState 改变时，就会触发 onreadystatechange 事件。</p>
+<p>readyState 属性存有 XMLHttpRequest 的状态信息。</p>
+<p>下面是 XMLHttpRequest 对象的三个重要的属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onreadystatechange</td>
+<td style="text-align:left">存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。</td>
+</tr>
+<tr>
+<td style="text-align:left">readyState</td>
+<td style="text-align:left">存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。          0: 请求未初始化     1: 服务器连接已建立     2: 请求已接收     3: 请求处理中     4: 请求已完成，且响应已就绪</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">200: “OK”      404: 未找到页面</td>
+</tr>
+</tbody>
+</table>
+<p>在 onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。</p>
+<p>当 readyState 等于 4 且状态为 200 时，表示响应已就绪：</p>
+<p>实例</p>
+<p>xmlhttp.onreadystatechange=function() {     if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)     {         document.getElementById(“myDiv”).innerHTML=xmlhttp.responseText;     } }</p>
+<p><strong>注意：</strong> onreadystatechange 事件被触发 4 次（0 - 4）, 分别是： 0-1、1-2、2-3、3-4，对应着 readyState 的每个变化。</p>
+<p>ps：</p>
+<p><strong>xmlhttp.readyState的值及解释：</strong></p>
+<p>0：请求未初始化（还没有调用 open()）。</p>
+<p> 1：请求已经建立，但是还没有发送（还没有调用 send()）。</p>
+<p> 2：请求已发送，正在处理中（通常现在可以从响应中获取内容头）。</p>
+<p> 3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。</p>
+<p> 4：响应已完成；您可以获取并使用服务器的响应了。</p>
+<p> <strong>xmlhttp.status的值及解释：</strong></p>
+<p> 100——客户必须继续发出请求 </p>
+<p> 101——客户要求服务器根据请求转换HTTP协议版本 </p>
+<p> 200——交易成功 </p>
+<p> 201——提示知道新文件的URL </p>
+<p> 202——接受和处理、但处理未完成</p>
+<p>  203——返回信息不确定或不完整</p>
+<p>  204——请求收到，但返回信息为空</p>
+<p>  205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件</p>
+<p>  206——服务器已经完成了部分用户的GET请求</p>
+<p>  300——请求的资源可在多处得到</p>
+<p>  301——删除请求数据</p>
+<p>  302——在其他地址发现了请求数据</p>
+<p>  303——建议客户访问其他URL或访问方式 </p>
+<p> 304——客户端已经执行了GET，但文件未变化</p>
+<p>  305——请求的资源必须从服务器指定的地址得到 </p>
+<p> 306——前一版本HTTP中使用的代码，现行版本中不再使用 </p>
+<p> 307——申明请求的资源临时性删除 </p>
+<p> 400——错误请求，如语法错误 </p>
+<p> 401——请求授权失败</p>
+<p>  402——保留有效ChargeTo头响应</p>
+<p>  403——请求不允许</p>
+<p>  404——没有发现文件、查询或URl</p>
+<p>  405——用户在Request-Line字段定义的方法不允许</p>
+<p>  406——根据用户发送的Accept拖，请求资源不可访问</p>
+<p>  407——类似401，用户必须首先在代理服务器上得到授权</p>
+<p>  408——客户端没有在用户指定的饿时间内完成请求</p>
+<p>  409——对当前资源状态，请求不能完成</p>
+<p>  410——服务器上不再有此资源且无进一步的参考地址</p>
+<p>  411——服务器拒绝用户定义的Content-Length属性请求</p>
+<p>  412——一个或多个请求头字段在当前请求中错误 </p>
+<p> 413——请求的资源大于服务器允许的大小</p>
+<p>  414——请求的资源URL长于服务器允许的长度 </p>
+<p> 415——请求资源不支持请求项目格式 </p>
+<p> 416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段 </p>
+<p> 417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求</p>
+<p>  <strong>合起来</strong></p>
+<p> 500——服务器产生内部错误 </p>
+<p> 501——服务器不支持请求的函数 </p>
+<p> 502——服务器暂时不可用，有时是为了防止发生系统过载 </p>
+<p> 503——服务器过载或暂停维修 </p>
+<p> 504——关口过载，服务器使用另一个关口或服务来响应用户，等待时间设定值较长 </p>
+<p> 505——服务器不支持或拒绝支请求头中指定的HTTP版本 </p>
+<p> 1xx:信息响应类，表示接收到请求并且继续处理 </p>
+<p> 2xx:处理成功响应类，表示动作被成功接收、理解和接受 </p>
+<p> 3xx:重定向响应类，为了完成指定的动作，必须接受进一步处理 </p>
+<p> 4xx:客户端错误，客户请求包含语法错误或者是不能正确执行 </p>
+<p> 5xx:服务端错误，服务器不能正确执行一个正确的请求</p>
+<p> <strong>xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200</strong>的解释：请求完成并且成功返回</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月26日 08:23</p>
+        <p>原始链接： <a class="post-url" href="/2019/04/26/ajax简介/" title="AJAX">http://yoursite.com/2019/04/26/ajax简介/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/26/ajax简介/&title=《AJAX》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/26/ajax简介/&title=《AJAX》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/26/ajax简介/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AJAX》 — 阿龙的小型博客&url=http://yoursite.com/2019/04/26/ajax简介/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/26/ajax简介/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/26/ajax简介/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/First/" class="color1">First</a>
+      
+    <a href="/tags/Second/" class="color2">Second</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是-AJAX-？"><span class="post-toc-text">什么是 AJAX ？</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AJAX-创建-XMLHttpRequest-对象"><span class="post-toc-text">AJAX - 创建 XMLHttpRequest 对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XMLHttpRequest-对象"><span class="post-toc-text">XMLHttpRequest 对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建-XMLHttpRequest-对象"><span class="post-toc-text">创建 XMLHttpRequest 对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AJAX-向服务器发送请求请求"><span class="post-toc-text">AJAX - 向服务器发送请求请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#向服务器发送请求"><span class="post-toc-text">向服务器发送请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GET-还是-POST？"><span class="post-toc-text">GET 还是 POST？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GET-请求"><span class="post-toc-text">GET 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实例"><span class="post-toc-text">实例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#POST-请求"><span class="post-toc-text">POST 请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url-服务器上的文件"><span class="post-toc-text">url - 服务器上的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异步-True-或-False？"><span class="post-toc-text">异步 - True 或 False？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Async-true"><span class="post-toc-text">Async=true</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sync-false"><span class="post-toc-text">sync = false</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AJAX-服务器-响应"><span class="post-toc-text">AJAX - 服务器 响应</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器响应"><span class="post-toc-text">服务器响应</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#responseText-属性"><span class="post-toc-text">responseText 属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#responseXML-属性"><span class="post-toc-text">responseXML 属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实例-1"><span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#AJAX-onreadystatechange-事件"><span class="post-toc-text">AJAX - onreadystatechange 事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#onreadystatechange-事件"><span class="post-toc-text">onreadystatechange 事件</span></a></li></ol>
+        </li></nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Hello World</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
