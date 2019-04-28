@@ -3,22 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Hello World | 阿龙的小型博客</title>
+  <title>阿龙的小型博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="MinHow,MinHow's Blog">
+    <meta name="keywords" content="along,along's Blog">
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="前言 JS引擎在运行同步代码的时候按照顺序运行的方式，而如果遇见异步代码将会短暂挂起，放入事件循环队列(Event Loop)末端，一次执行。  12345678//you may have seen the following codefor (var i = 0; i &amp;lt; 3; i++) &amp;#123;        setTimeout(function timeoutHandle()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/03/27/hello-world/index.html">
+<meta property="og:title" content="阿龙的小型博客">
+<meta property="og:url" content="https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/index.html">
 <meta property="og:site_name" content="阿龙的小型博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="前言 JS引擎在运行同步代码的时候按照顺序运行的方式，而如果遇见异步代码将会短暂挂起，放入事件循环队列(Event Loop)末端，一次执行。  12345678//you may have seen the following codefor (var i = 0; i &amp;lt; 3; i++) &amp;#123;        setTimeout(function timeoutHandle()">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-27T05:39:08.215Z">
+<meta property="og:updated_time" content="2019-04-28T10:26:28.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="阿龙的小型博客">
+<meta name="twitter:description" content="前言 JS引擎在运行同步代码的时候按照顺序运行的方式，而如果遇见异步代码将会短暂挂起，放入事件循环队列(Event Loop)末端，一次执行。  12345678//you may have seen the following codefor (var i = 0; i &amp;lt; 3; i++) &amp;#123;        setTimeout(function timeoutHandle()">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -41,7 +41,7 @@
         <div id="header-menu" class="header-menu-pos animated">
             <div class="header-menu-container">
                 <a href="/" class="left">
-                    <span class="site-title">MinHow&#39;s Blog</span>
+                    <span class="site-title">along&#39;s Blog</span>
                 </a>
                 <nav id="header-menu-nav" class="right">
                     
@@ -76,7 +76,7 @@
                 <div id="header-title">
                     
                     <h2>
-                        MinHow&#39;s Blog
+                        along&#39;s Blog
                     </h2>
                     
                 </div>
@@ -91,17 +91,17 @@
             <nav class="header-nav">
                 <div class="social">
                     
-                        <a title="MinHow" target="_blank" href="//minhow.com">
+                        <a title="along" target="_blank" href="//baidu.com">
                             <i class="fa fa-home fa-2x"></i></a>
                     
-                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
                             <i class="fa fa-github fa-2x"></i></a>
                     
-                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
-                            <i class="fa fa-weibo fa-2x"></i></a>
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
                     
-                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
-                            <i class="fa fa-twitter fa-2x"></i></a>
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
                     
                 </div>
             </nav>
@@ -109,51 +109,37 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-探究同步异步工作原理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="post-title" itemprop="name">
-      Hello World
-    </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2019-03-27
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
-  
-
-          
-      </header>
     
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>JS引擎在运行同步代码的时候按照顺序运行的方式，而如果遇见异步代码将会短暂挂起，放入事件循环队列(Event Loop)末端，一次执行。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//you may have seen the following code</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    </span><br><span class="line">    setTimeout(function timeoutHandle() &#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">    &#125;,1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但是如果如上述代码所示，加上一个定时器又如何理解呢？在同步代码循环结束完毕之后，三个异步事件挂起，等到1秒时间到了之后，三个异步事件依次放入事件循环队列中执行，而同步代码中<code>循环中的每一次迭代都会给自己捕获一个i的副本，但是根据作用域的工作原理，实际情况是尽管循环中的三个函数是在各个迭代中分别定义的，但是他们都被封闭在一个共享的全局作用域中，因此实际只有一个i</code>。</p>
+</blockquote>
+<h2 id="探析"><a href="#探析" class="headerlink" title="探析"></a>探析</h2><blockquote>
+<p>对于<code>var</code>关键字声明变量有着诸多诟病，那就是会造成污染全局变量的风险，比如上述的for循环中，假如在for循环体之外再次打印，引擎依旧会给出泄露出去的全局变量i，当然这是很危险的。我们不妨用一下<code>let</code>关键字。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; 3; i++ )&#123;</span><br><span class="line">   setTimeout(function timeoutHandle() &#123;</span><br><span class="line">     console.log(i);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>你会惊喜的发现打印结果是预期顺序。</p>
+</blockquote>
+<blockquote>
+<p>那是因为<code>for</code>循环的头部的let声明还会有一个特殊的行为。这个行为指出变量在循环过程中不止被声明一次。<code>每次迭代</code>都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
+</blockquote>
+<p>原始链接： <a href="https://ivu1314.club/76f810b0/" target="_blank" rel="noopener">https://bigbigdreamer.github.io/76f810b0/</a></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年03月27日 13:39</p>
-        <p>原始链接： <a class="post-url" href="/2019/03/27/hello-world/" title="Hello World">http://yoursite.com/2019/03/27/hello-world/</a></p>
+        <p>最后更新： 2019年04月28日 18:26</p>
+        <p>原始链接： <a class="post-url" href="/2019/04/28/探究同步异步工作原理/" title>https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/</a></p>
         <footer>
-            <a href="http://yoursite.com">
+            <a href="https://wll-1017065322.github.io">
                 <img src="/images/logo.png" alt="wang lv long">
                 wang lv long
             </a>
@@ -208,7 +194,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/27/hello-world/&title=《Hello World》 — 阿龙的小型博客&pic=http://yoursite.comimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/&title=阿龙的小型博客&pic=https://wll-1017065322.github.ioimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -218,22 +204,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/27/hello-world/&title=《Hello World》 — 阿龙的小型博客&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/&title=阿龙的小型博客&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/27/hello-world/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hello World》 — 阿龙的小型博客&url=http://yoursite.com/2019/03/27/hello-world/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=阿龙的小型博客&url=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/&via=https://wll-1017065322.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/27/hello-world/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -243,7 +229,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/03/27/hello-world/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wll-1017065322.github.io/2019/04/28/探究同步异步工作原理/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -261,26 +247,26 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探析"><span class="post-toc-text">探析</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2019/03/27/test-my-site/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/28/执行上下文栈/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          test_my_site
+          (no title)
         
       </span>
     </a>
   
   
-    <a href="/2017/06/18/Hello World/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Hello World</span>
+    <a href="/2019/04/28/前端演变的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title"></span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -318,7 +304,7 @@
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
   var mihoConfig = {
-      root: "http://yoursite.com",
+      root: "https://wll-1017065322.github.io",
       animate: true,
       isHome: false,
       share: true,
@@ -345,7 +331,7 @@
             <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -378,7 +364,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
         </div>
     </div>
 </div>
