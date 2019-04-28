@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>12种不宜使用的Javascript语法 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="​    该书的作者是Douglas Crockford，他是目前世界上最精通Javascript的人之一，也是Json格式的创造者。 ​    他认为Javascript有很多糟粕。因为1995年Brendan Eich设计这种语言的时候，只用了三个月，很多语言特性没有经过深思熟虑，就推向了市场。结果等到人们意识到这些问题的时候，已经有100万程序员在使用它了，不可能再大幅修改语言本身了。所以，">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12种不宜使用的Javascript语法">
+<meta property="og:url" content="https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="​    该书的作者是Douglas Crockford，他是目前世界上最精通Javascript的人之一，也是Json格式的创造者。 ​    他认为Javascript有很多糟粕。因为1995年Brendan Eich设计这种语言的时候，只用了三个月，很多语言特性没有经过深思熟虑，就推向了市场。结果等到人们意识到这些问题的时候，已经有100万程序员在使用它了，不可能再大幅修改语言本身了。所以，">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-28T16:01:15.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12种不宜使用的Javascript语法">
+<meta name="twitter:description" content="​    该书的作者是Douglas Crockford，他是目前世界上最精通Javascript的人之一，也是Json格式的创造者。 ​    他认为Javascript有很多糟粕。因为1995年Brendan Eich设计这种语言的时候，只用了三个月，很多语言特性没有经过深思熟虑，就推向了市场。结果等到人们意识到这些问题的时候，已经有100万程序员在使用它了，不可能再大幅修改语言本身了。所以，">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along" target="_blank" href="//baidu.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-12种不宜使用的Javascript语法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      12种不宜使用的Javascript语法
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-04-26
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>​    该书的作者是Douglas Crockford，他是目前世界上最精通Javascript的人之一，也是Json格式的创造者。</p>
+<p>​    他认为Javascript有很多糟粕。因为1995年Brendan Eich设计这种语言的时候，只用了三个月，很多语言特性没有经过深思熟虑，就推向了市场。结果等到人们意识到这些问题的时候，已经有100万程序员在使用它了，不可能再大幅修改语言本身了。所以，Douglas Crockford决定，他要告诉大家，Javascript中哪些部分是精粹，哪些部分是糟粕和鸡肋。</p>
+<p>​    这个想法非常好，但是我不得不说，这本书写得不够好，不适合新手阅读。原因如下：1）Douglas Crockford叙述得不清晰，更像与同行讨论问题，而不是由浅入深地讲解问题。这本书的重点不是解释，所以读完后，我觉得Javascript好像变得更复杂了。2）他固执地使用铁路图（railroad diagram）解释每一条语句。全世界似乎只有他一个人使用这种比Javascript更难看懂的图。3）该书基本上是一本简化的Javascript语法手册，缺乏足够的新内容。4）该书举例过少，而且在最难的函数和对象部分，使用的例子都是环环相套、层层递进的例子，导致阅读起来很吃力。</p>
+<p>​    该书最有价值的内容不是正文，反而是附录。在附录B中，Douglas Crockford列出了12种应该避免使用的Javascript语法，我觉得非常值得推广。</p>
+<p>==============================  </p>
+<h3 id="1"><a href="#1" class="headerlink" title="1. =="></a><strong>1. ==</strong></h3><p>​    Javascript有两组相等运算符，一组是==和!=，另一组是===和!==。前者只比较值的相等，后者除了值以外，还比较类型是否相同。</p>
+<p>​    请尽量不要使用前一组，永远只使用===和!==。因为==默认会进行类型转换，规则十分难记。如果你不相信的话，请回答下面五个判断式的值是true还是false：</p>
+<p>　　false == ‘false’</p>
+<p>　　false == undefined</p>
+<p>　　false == null</p>
+<p>　　null == undefined</p>
+<p>　　0 == ‘’</p>
+<p>前三个是false，后两个是true。</p>
+<h3 id="2-with"><a href="#2-with" class="headerlink" title="2. with"></a><strong>2. with</strong></h3><p>with的本意是减少键盘输入。比如</p>
+<p>　　obj.a = obj.b;</p>
+<p>　　obj.c = obj.d;</p>
+<p>可以简写成</p>
+<p>　　with(obj) {<br> 　　　　a = b;<br> 　　　　c = d;<br> 　　} </p>
+<p>但是，在实际运行时，解释器会首先判断obj.b和obj.d是否存在，如果不存在的话，再判断全局变量b和d是否存在。这样就导致了低效率，而且可能会导致意外，因此最好不要使用with语句。</p>
+<h3 id="3-eval"><a href="#3-eval" class="headerlink" title="3. eval"></a><strong>3. eval</strong></h3><p>### </p>
+<p>eval用来直接执行一个字符串。这条语句也是不应该使用的，因为它有性能和安全性的问题，并且使得代码更难阅读。</p>
+<p>eval能够做到的事情，不用它也能做到。比如</p>
+<p>　　eval(“myValue = myObject.” + myKey + “;”);</p>
+<p>可以直接写成</p>
+<p>　　myValue = myObject[myKey];</p>
+<p>至于ajax操作返回的json字符串，可以使用官方网站提供的解析器<a href="http://www.json.org/json_parse.js" target="_blank" rel="noopener">json_parse.js</a>运行。</p>
+<h3 id="4-continue"><a href="#4-continue" class="headerlink" title="4. continue"></a><strong>4. continue</strong></h3><p>这条命令的作用是返回到循环的头部，但是循环本来就会返回到头部。所以通过适当的构造，完全可以避免使用这条命令，使得效率得到改善。</p>
+<h3 id="5-switch-贯穿"><a href="#5-switch-贯穿" class="headerlink" title="5. switch 贯穿"></a><strong>5. switch 贯穿</strong></h3><p>switch结构中的case语句，默认是顺序执行，除非遇到break，return和throw。有的程序员喜欢利用这个特点，比如</p>
+<p>　　switch(n) {<br> 　　　　case 1:<br> 　　　　case 2:<br> 　　　　　　break;<br> 　　}</p>
+<p>这样写容易出错，而且难以发现。因此建议避免switch贯穿，凡是有case的地方，一律加上break。</p>
+<p>　　switch(n) {<br> 　　　　case 1:<br> 　　　　　　break;<br> 　　　　case 2:<br> 　　　　　　break;<br> 　　}</p>
+<h3 id="6-单行的块结构"><a href="#6-单行的块结构" class="headerlink" title="6. 单行的块结构"></a><strong>6. 单行的块结构</strong></h3><p>if、while、do和for，都是块结构语句，但是也可以接受单行命令。比如</p>
+<p>　　if (ok) t = true;</p>
+<p>甚至写成</p>
+<p>　　if (ok)<br> 　　　　t = true;</p>
+<p>这样不利于阅读代码，而且将来添加语句时非常容易出错。建议不管是否只有一行命令，都一律加上大括号。</p>
+<p>　　if (ok){<br> 　　　　t = true;<br> 　　}</p>
+<h3 id="7-和–"><a href="#7-和–" class="headerlink" title="7. ++和–"></a><strong>7. ++和–</strong></h3><p>递增运算符++和递减运算符–，直接来自C语言，表面上可以让代码变得很紧凑，但是实际上会让代码看上去更复杂和更晦涩。因此为了代码的整洁性和易读性，不用为好。</p>
+<h3 id="8-位运算符"><a href="#8-位运算符" class="headerlink" title="8. 位运算符"></a><strong>8. 位运算符</strong></h3><p>Javascript完全套用了Java的位运算符，包括按位与&amp;、按位或|、按位异或^、按位非~、左移&lt;&lt;、带符号的右移&gt;&gt;和用0补足的右移&gt;&gt;&gt;。</p>
+<p>这套运算符针对的是整数，所以对Javascript完全无用，因为Javascript内部，所有数字都保存为双精度浮点数。如果使用它们的话，Javascript不得不将运算数先转为整数，然后再进行运算，这样就降低了速度。而且”按位与运算符”&amp;同”逻辑与运算符”&amp;&amp;，很容易混淆。</p>
+<h3 id="9-function语句"><a href="#9-function语句" class="headerlink" title="9. function语句"></a><strong>9. function语句</strong></h3><p>在Javascript中定义一个函数，有两种写法：</p>
+<p>　　function foo() { }</p>
+<p>和</p>
+<p>　　var foo = function () { }</p>
+<p>两种写法完全等价。但是在解析的时候，前一种写法会被解析器自动提升到代码的头部，因此违背了函数应该先定义后使用的要求，所以建议定义函数时，全部采用后一种写法。</p>
+<h3 id="10-基本数据类型的包装对象"><a href="#10-基本数据类型的包装对象" class="headerlink" title="10. 基本数据类型的包装对象"></a><strong>10. 基本数据类型的包装对象</strong></h3><p>Javascript的基本数据类型包括字符串、数字、布尔值，它们都有对应的包装对象String、Number和Boolean。所以，有人会这样定义相关值：</p>
+<p>　　new String(“Hello World”);</p>
+<p>　　new Number(2000);</p>
+<p>　　new Boolean(false);</p>
+<p>这样写完全没有必要，而且非常费解，因此建议不要使用。</p>
+<p>另外，new Object和new Array也不建议使用，可以用{}和[]代替。</p>
+<h3 id="11-new语句"><a href="#11-new语句" class="headerlink" title="11. new语句"></a><strong>11. new语句</strong></h3><p>Javascript是世界上第一个被大量使用的支持Lambda函数的语言，本质上属于与Lisp同类的函数式编程语言。但是当前世界，90%以上的程序员都是使用面向对象编程。为了靠近主流，Javascript做出了妥协，采纳了类的概念，允许根据类生成对象。</p>
+<p>类是这样定义的：</p>
+<p>　　var Cat = function (name) {<br> 　　　　this.name = name;<br> 　　　　this.saying = ‘meow’ ;<br> 　　}</p>
+<p>然后，再生成一个对象</p>
+<p>　　var myCat = new Cat(‘mimi’);</p>
+<p>这种利用函数生成类、利用new生成对象的语法，其实非常奇怪，一点都不符合直觉。而且，使用的时候，很容易忘记加上new，就会变成执行函数，然后莫名其妙多出几个全局变量。所以，建议不要这样创建对象，而采用一种变通方法。</p>
+<p>Douglas Crockford给出了一个函数：</p>
+<p>　　Object.beget = function (o) {<br> 　　　　var F = function (o) {};<br> 　　　　F.prototype = o ;<br> 　　　　return new F;<br> 　　};</p>
+<p>创建对象时就利用这个函数，对原型对象进行操作：</p>
+<p>　　var Cat = {<br> 　　　　name:’’,<br> 　　　　saying:’meow’<br> 　　};</p>
+<p>　　var myCat = Object.beget(Cat);</p>
+<p>对象生成后，可以自行对相关属性进行赋值：</p>
+<p>　　myCat.name = ‘mimi’;</p>
+<h3 id="12-void"><a href="#12-void" class="headerlink" title="12. void"></a><strong>12. void</strong></h3><p>在大多数语言中，void都是一种类型，表示没有值。但是在Javascript中，void是一个运算符，接受一个运算数，并返回undefined。</p>
+<p>　　void 0; // undefined</p>
+<p>这个命令没什么用，而且很令人困惑，建议避免使用。</p>
+<p>​    引用自阮一峰博客：<a href="http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月29日 00:01</p>
+        <p>原始链接： <a class="post-url" href="/2019/04/26/12种不宜使用的Javascript语法/" title="12种不宜使用的Javascript语法">https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/</a></p>
+        <footer>
+            <a href="https://wll-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/&title=《12种不宜使用的Javascript语法》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/&title=《12种不宜使用的Javascript语法》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《12种不宜使用的Javascript语法》 — 阿龙的小型博客&url=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/&via=https://wll-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wll-1017065322.github.io/2019/04/26/12种不宜使用的Javascript语法/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1"><span class="post-toc-text">1. ==</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-with"><span class="post-toc-text">2. with</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-eval"><span class="post-toc-text">3. eval</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-continue"><span class="post-toc-text">4. continue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-switch-贯穿"><span class="post-toc-text">5. switch 贯穿</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-单行的块结构"><span class="post-toc-text">6. 单行的块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-和–"><span class="post-toc-text">7. ++和–</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-位运算符"><span class="post-toc-text">8. 位运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-function语句"><span class="post-toc-text">9. function语句</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-基本数据类型的包装对象"><span class="post-toc-text">10. 基本数据类型的包装对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-new语句"><span class="post-toc-text">11. new语句</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-void"><span class="post-toc-text">12. void</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/04/26/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Promise探析
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/04/26/ajax简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">AJAX</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wll-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>js--进阶 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="js–进阶1.原型链许多OO语言支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。实现继承主要依赖原型链。基本思想：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。所有函数的默认原型都是Objec">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js--进阶">
+<meta property="og:url" content="https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="js–进阶1.原型链许多OO语言支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。实现继承主要依赖原型链。基本思想：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。所有函数的默认原型都是Objec">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/assets/1143257584-5aebf3018c091_articlex.png">
+<meta property="og:updated_time" content="2019-04-28T16:03:37.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js--进阶">
+<meta name="twitter:description" content="js–进阶1.原型链许多OO语言支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。实现继承主要依赖原型链。基本思想：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。所有函数的默认原型都是Objec">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/assets/1143257584-5aebf3018c091_articlex.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along" target="_blank" href="//baidu.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-JS核心知识归纳(进阶)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      js--进阶
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-02-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="js–进阶"><a href="#js–进阶" class="headerlink" title="js–进阶"></a>js–进阶</h1><h2 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1.原型链"></a>1.原型链</h2><p>许多OO语言支持两种继承方式：接口继承和实现继承。<br>接口继承只继承方法签名，实现继承则继承实际的方法。<br>由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。<br>实现继承主要依赖原型链。<br><strong>基本思想</strong>：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。<br>所有函数的默认原型都是Object的实例<br>即A继承了B ；B 继承了Object;</p>
+<p><strong>什么是原型对象</strong>。我们知道每个构造函数一旦创建都有prototype指针指向它的原型对象（构造函数.prototype）。而原型对象（构造函数.prototype）会默认生成一个constructor指针又指向构造函数。在创建实例时，每个实例有一个<strong>proto</strong>指向该原型对象。原型对象内创建的所有方法会被所有实例共享。<br>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype = &#123;    </span><br><span class="line">       constructor : Function,</span><br><span class="line">       __proto__ : parent prototype,</span><br><span class="line">       some prototype properties: ...</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p>原型对象中的方法属性是被所有实例共享的。如果含有引用类型的属性，如数组，修改person1中的数组属性，也会导致person2中的该属性发生变化。</p>
+<p><strong>什么是原型链？</strong><br>函数的原型对象constructor默认指向函数本身，原型对象除了有原型属性外，为了实现继承，还有一个原型链指针proto，该指针指向上一层的原型对象，而上一层的原型对象的结构依然类似，这样利用proto一直指向Object的原型对象上，而Object的原型对象用Object.prototype.proto = null表示原型链的最顶端，如此变形成了javascript的原型链继承，同时也解释了为什么所有的javascript对象都具有Object的基本方法。</p>
+<p>原型链就是创建一个构造函数，它会默认生成一个prototype属性并指向原型对象。使用下一个构造函数的原型对象作为这个构造函数的实例。即 A.prototype = new B(); 在下下一个构造函数的原型对象 = new nextFuction。这样下去就会构成一条实例与原型之间的链条，这就是原型链。</p>
+<p><img src="/assets/1143257584-5aebf3018c091_articlex.png" alt="clipboard.png"></p>
+<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h2><p>构造函数A()和实例a1 a2之间的关系；var a1 = new A(); var a2 = new A();<br>实例a1与实例a2是独立的<br>实例和原型的关系 a1.<strong>proto</strong> = A.prototype<br>构造函数A()和其原型的关系 A.prototype.constructor=A</p>
+<p><strong>6种继承方式</strong><br><strong>原型链继承本质:</strong><br>是子用类型B的原型等于超类型的实例,<br>B.prototype= new A()</p>
+<p><strong>构造函数继承本质:</strong><br>是子用类型的构造函数内部调用A(),<br>B(){A.call(this,**);}</p>
+<p><strong>组合继承本质</strong><br>原型链和构造函数的组合，原型继承方法，构造函数继承属性</p>
+<p><strong>原型式继承本质</strong>:基于已有对象创建一个对象,<br>即对象A的浅拷贝,<br>var b= Object.create(A)</p>
+<p><strong>寄生式继承本质:</strong><br>创建一个用于封装继承过程的函数,<br>function b(A){var clone = Object.create(A) ;clone.<strong>=</strong>;return clone;}</p>
+<p><strong>寄生组合继承本质:</strong><br>寄生式继承超类型A的原型,并将结果赋值给子类型的原型;<br>或对对象A的原型浅拷贝，<br>function B(**){</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.call(this,**)</span><br></pre></td></tr></table></figure>
+<p>}<br>function c(A,B){var clone = Object.create(A.prototype); clone.constructor = B;B.prototype=clone;) ;}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"> function Person(name) &#123;</span><br><span class="line">            this.name = [&apos;123&apos;,&apos;456&apos;,&apos;789&apos;,name];</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.go = function()&#123;</span><br><span class="line">            return console.log(this.name)</span><br><span class="line">        &#125;</span><br><span class="line">        Person.prototype.sex = [&apos;男&apos;,&apos;女&apos;];</span><br><span class="line">        var ren = new Person();</span><br><span class="line">        console.log(&apos;构造函数和原型的关系:&apos;,Person.prototype.constructor ===Person)</span><br><span class="line">        console.log(&apos;实例和原型的关系&apos;,ren.__proto__ ===Person.prototype)</span><br><span class="line">        </span><br><span class="line">        // 原型链继承 </span><br><span class="line">        // 缺点1.不能向person中传递参数；</span><br><span class="line">        // 缺点2.超类型的原型属性会被其他实例共享，一个实例改变，则其他实例也改变。</span><br><span class="line">        // 下面2个原型的顺序不能换  </span><br><span class="line">        function Shuagnfeng(love) &#123;</span><br><span class="line">            this.love = [&apos;fd&apos;,&apos;fddfdf&apos;]; </span><br><span class="line">        &#125;</span><br><span class="line">        Shuagnfeng.prototype = new Person();</span><br><span class="line">        console.log(&apos;会误会超类型Person:&apos;,Shuagnfeng.prototype.constructor ===Person) //true</span><br><span class="line">        console.log(&apos;构成原型链,&apos;,Shuagnfeng.prototype.__proto__ ===Person.prototype) //true</span><br><span class="line">        Shuagnfeng.prototype.constructor ===Shuagnfeng;</span><br><span class="line">        Shuagnfeng.prototype.goWork = function()&#123;</span><br><span class="line">           return  console.log(&apos;原型链继承的方法&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        var child = new Person();</span><br><span class="line">Shuagnfeng.prototype.name.push(121);</span><br><span class="line">console.log(&apos;超类型实例2 child&apos;,child.name);</span><br><span class="line"></span><br><span class="line">        var xiaozhang = new Shuagnfeng(&apos;dff&apos;);</span><br><span class="line">        var xiaozhang1 = new Shuagnfeng(&apos;zzz&apos;);</span><br><span class="line">        xiaozhang.go();</span><br><span class="line">        xiaozhang.goWork();   </span><br><span class="line">        xiaozhang.name.push(&apos;只对xiaozhang增加属于超类型Person中array值&apos;,22);</span><br><span class="line">        xiaozhang.love.push(&apos;只对xiaozhang增加属于构造函数中array值&apos;,22);</span><br><span class="line">        xiaozhang.sex.push(&apos;只对xiaozhang增加属于超类型的原型中array值&apos;);</span><br><span class="line"></span><br><span class="line">        console.log(&apos;xiaozhang.超类型Person中name&apos;,xiaozhang.name);</span><br><span class="line">        console.log(&apos;xiaozhang1.超类型Person中name&apos;,xiaozhang1.name);</span><br><span class="line">        console.log(&apos;xiaozhang.构造函数中中love&apos;,xiaozhang.love);</span><br><span class="line">        console.log(&apos;xiaozhang1.构造函数中love&apos;,xiaozhang1.love);</span><br><span class="line">        console.log(&apos;xiaozhang.超类型的原型中sex&apos;,xiaozhang.sex);</span><br><span class="line">        console.log(&apos;xiaozhang1.超类型的原型中sex&apos;,xiaozhang1.sex);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 构造函数的继承</span><br><span class="line">// 优点，不会改变引用类型的属性，能传递参数</span><br><span class="line">// 缺点无法复用方法；</span><br><span class="line">        function Jianbo() &#123;</span><br><span class="line">            Person.call(this,&apos;构造函数的继承&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        var xiaonie = new Jianbo();</span><br><span class="line">        console.log(&apos;构造函数的继承xiaonie.name可传参数&apos;,xiaonie.name);</span><br><span class="line">       // xiaonie.go(); // 不存在</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 组合继承</span><br><span class="line">// 原型链继承方法、构造函数继承属性</span><br><span class="line">        function Nb(love) &#123;</span><br><span class="line">            Person.call(this,&apos;nb&apos;)</span><br><span class="line">            this.love = love</span><br><span class="line">        &#125;</span><br><span class="line">        Nb.prototype = new Person(&apos;12&apos;);</span><br><span class="line">        console.log(&apos;12&apos;,Nb.prototype.constructor ===Person) // true </span><br><span class="line">        console.log(&apos;13&apos;,Nb.prototype.constructor ===Nb)// false 因为重写原型，会使原型失去了constructor属性</span><br><span class="line">        Nb.prototype.constructor =Nb</span><br><span class="line">         console.log(&apos;14&apos;,Nb.prototype.constructor ===Person) // false</span><br><span class="line">        Nb.prototype.say = function()&#123;</span><br><span class="line">            console.log(&apos;say&apos;,&apos;say&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        var nb= new Nb();</span><br><span class="line">        var nb1= new Nb(&apos;组合继承&apos;);</span><br><span class="line">        nb.name.push(&apos;xiaoniubi&apos;);</span><br><span class="line">        console.log(&apos;nb.name&apos;,nb.name);</span><br><span class="line">        console.log(&apos;nb1.name&apos;,nb1.name);</span><br><span class="line">        console.log(&apos;nb1.love&apos;,nb1.love);</span><br><span class="line">        nb.go();</span><br><span class="line">        nb.say();</span><br><span class="line"></span><br><span class="line">// 原型式继承Object.create()  将基础对象传给object()函数 </span><br><span class="line">// 本质是浅复制  副本的引用类型会被改变</span><br><span class="line">// 缺点：引用类型的属性会被共享  和原型链继承差不多</span><br><span class="line">// 使用场景： 让一个对象与另一个对象的保持类似</span><br><span class="line">function object(o)&#123;</span><br><span class="line">    function F()&#123;&#125;</span><br><span class="line">    F.prototype= o;</span><br><span class="line">    return new F();</span><br><span class="line">&#125;</span><br><span class="line">var animal = &#123;</span><br><span class="line">    name:&apos;原型式继承默认值&apos;,</span><br><span class="line">    friends:[1,2,3,4]</span><br><span class="line">&#125;</span><br><span class="line">var haha= object(animal);</span><br><span class="line">var gaga = Object.create(animal);</span><br><span class="line">var haha1= object(animal);</span><br><span class="line">console.log(&apos;haha&apos;,haha.name);</span><br><span class="line">console.log(&apos;gaga&apos;,gaga.name);</span><br><span class="line">haha.name=&apos;原型式继承name值变了&apos;;</span><br><span class="line">haha.friends.push(&apos;原型式继承array值变了&apos;);</span><br><span class="line">console.log(&apos;haha&apos;,haha.name);</span><br><span class="line">console.log(&apos;haha1&apos;,haha1.name);</span><br><span class="line">console.log(&apos;haha&apos;,haha.friends);</span><br><span class="line">console.log(&apos;haha1&apos;,haha1.friends);</span><br><span class="line"></span><br><span class="line">// 寄生式继承</span><br><span class="line">// 能继承方法，但方法不能复用</span><br><span class="line">function createAnother(original)&#123;</span><br><span class="line"> var clone =  object(original);</span><br><span class="line"> clone.say = function()&#123;</span><br><span class="line">    console.log(&apos;寄生式继承方法&apos;)</span><br><span class="line"> &#125;</span><br><span class="line">  return clone;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var hh = createAnother(animal);</span><br><span class="line">hh.name=&apos;寄生式继承&apos;</span><br><span class="line">console.log(&apos;hh&apos;,hh.name);</span><br><span class="line">hh.say()       </span><br><span class="line"></span><br><span class="line">// 寄生组合式</span><br><span class="line">// 所有方式中最有效的方式 只调用继承的构造函数一次</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 判断实例和原型的关系  使用instanceof 和 isPrototypeOf()</span><br><span class="line">        console.log(&apos;实例和原型的关系&apos;,xiaozhang instanceof Shuagnfeng);</span><br><span class="line">        console.log(&apos;实例和原型的关系&apos;,xiaozhang instanceof Person);</span><br><span class="line">        console.log(&apos;实例和原型的关系&apos;,xiaozhang instanceof Object);</span><br><span class="line">        console.log(&apos;实例和原型的关系&apos;,Object.prototype.isPrototypeOf(xiaozhang));</span><br><span class="line">        console.log(xiaozhang.__proto__);</span><br></pre></td></tr></table></figure>
+<h2 id="3-事件委托"><a href="#3-事件委托" class="headerlink" title="3.事件委托"></a>3.事件委托</h2><p>事件处理程序 获取事件对象 事件目标<br>好处 减少DOM 操作 ，减少性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;list&quot;&gt;</span><br><span class="line">    &lt;img id=&quot;1&quot; src=&quot;1.png&quot;&gt;</span><br><span class="line">    &lt;img id=&quot;3.2.2&quot; src=&quot;3.2.2.png&quot;&gt;</span><br><span class="line">    &lt;img id=&quot;3.2&quot; src=&quot;3.2.png&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var EventUtil = &#123;</span><br><span class="line">        addHandler: function(element,type,handler) &#123;</span><br><span class="line">            if(element.addEventListener) &#123;</span><br><span class="line">                element.addEventListener(type,handler,false)</span><br><span class="line">            &#125; else if(element.attachEvent)&#123;</span><br><span class="line">                element.attachEvent(&quot;on&quot; + type, handler);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                element[&quot;on&quot; + type] = handler;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        removeHandler:function(element,type,handler) &#123;</span><br><span class="line">            if(element.removeEventListener) &#123;</span><br><span class="line">                element.removeEventListener(type,handler,false)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        getEvent:function(event)&#123;</span><br><span class="line">            return event ? event : window.event;</span><br><span class="line">        &#125;,</span><br><span class="line">        getTarget:function(event)&#123;</span><br><span class="line">            return event.target || event.srcElement;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    var list = document.getElementById(&apos;list&apos;)</span><br><span class="line">    EventUtil.addHandler(list,&apos;click&apos;,function(ev)&#123;</span><br><span class="line">        event= EventUtil.getEvent(ev);</span><br><span class="line">        var target = EventUtil.getTarget(event);</span><br><span class="line">        alert(target.id);</span><br><span class="line">    &#125;)</span><br><span class="line">    //    list.onclick = function(ev)&#123;</span><br><span class="line">//         　var ev = ev || window.event;</span><br><span class="line">// 　　　　var target = ev.target || ev.srcElement;</span><br><span class="line">//         console.log(target.id);</span><br><span class="line">//     &#125;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-跨域"><a href="#4-跨域" class="headerlink" title="4.跨域"></a>4.跨域</h2><p><strong>造成跨域的原因</strong>：<br>浏览器的同源策略，即XMLHttpRequest(XHR)对象只能访问同一域中的资源<br>这是种防止恶意行为的安全策略。<br>第二个：浏览器中不同域的框架之间是不能进行js的交互操作的。</p>
+<p><strong>何谓同源</strong>:URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示它们同源。</p>
+<p>在浏览器中，<script>、<img>、<iframe>、<link>等标签属于DOM， 非XHR对象，是可以加载跨域资源</p>
+<p><strong>跨域方法</strong>(实践中后两种最常用，所以重点介绍):<br>(1) 通过jsonp跨域<br>ajax请求受同源策略影响，不允许进行跨域请求，而script标签src属性中的链接却可以访问跨域的js脚本，利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。<br>(2) 通过修改document.domain来跨子域<br>(3) 使用window.name来进行跨域<br>(4) 使用HTML5中新引进的window.postMessage方法来跨域传送数据<br>(5) 使用<strong>代理服务器</strong>,使用代理方式跨域更加直接，因为同源限制是浏览器实现的。如果请求不是从浏览器发起的，就不存在跨域问题了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用本方法跨域步骤如下：</span><br><span class="line">1. 把访问其它域的请求替换为本域的请求</span><br><span class="line">2. 服务器端的动态脚本负责将本域的请求转发成实际的请求</span><br><span class="line"></span><br><span class="line">为了通过Ajax从http://localhost:8080访问http://localhost:8081/api，可以将请求发往http://localhost:8080/api。</span><br><span class="line">然后利用Apache Web服务器的Reverse Proxy功能做如下配置：ProxyPass /api http://localhost:8081/api</span><br></pre></td></tr></table></figure>
+<p>(6) <strong>CORS全称是”跨域资源共享</strong>“（Cross-origin resource sharing),CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能 发送请求时，附加一个额外的Origin头部<br>IE：XDR(XDomainRequest) 创建一个xdr实例，调用open() ,再send()方法；<br>其他的，原生的支持，使用绝对的URL即可。</p>
+<p>附：ajax的扩展，comment/Web Sockets<br>(7) fetch api</p>
+<h2 id="5-输入url之后，到底发生了什么？"><a href="#5-输入url之后，到底发生了什么？" class="headerlink" title="5.输入url之后，到底发生了什么？"></a>5.输入url之后，到底发生了什么？</h2><p><img src="/assets/1456268250-5b0bf93d73475_articlex.png" alt="clipboard.png"></p>
+<h2 id="6-JS引擎"><a href="#6-JS引擎" class="headerlink" title="6 JS引擎"></a>6 JS引擎</h2><p>浏览器内核又可以分成两部分：<br><strong>渲染引擎(layout engineer或者RenderingEngine)和JS引擎。</strong><br>JS的引擎深入分析<a href="https://blog.csdn.net/xygg0801/article/details/51925149">链接描述</a><br><a href="https://segmentfault.com/a/1190000012806637">10分钟理解JS引擎的执行机制</a><br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">http://www.ruanyifeng.com/blo…</a><br><strong>JS引擎负责对JavaScript进行解释、编译和执行，以使网页达到一些动态的效果。</strong></p>
+<p>js的<strong>几种引入方式</strong>；<br><strong>js引擎是单线程 异步的</strong><br>— 任务队列 事件 和回调函数 Event Loop<br>是通过的事件循环(event loop),实现单线程和异步的。<br><strong>单线程</strong>：同一时刻只能执行一个代码块<br>将要执行的代码放在任务队列中，但js引擎执行代码块结束，事件循环会执行任务队列中的下一个任务。<br>Event Loop 负责监控代码执行和管理任务队列。<br>异步的，即可通过事件 回调等方式，向任务队列中添加新任务。</p>
+<p><strong>JS的执行机制是</strong></p>
+<p>首先判断JS是同步还是异步,同步就进入主进程,异步就进入event table<br>异步任务在event table中注册函数,当满足触发条件后,被推入event queue<br>同步任务进入主线程后一直执行,直到主线程空闲时,才会去event queue中查看是否有可执行的异步任务,如果有就推入主进程中<br>以上三步循环执行,这就是event loop</p>
+<p>准确的划分方式是:<br>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval<br>micro-task(微任务)：Promise，process.nextTick<br>按照这种分类方式:JS的执行机制是</p>
+<p>执行一个宏任务,过程中如果遇到微任务,就将其放到微任务的【事件队列】里<br>当前宏任务执行完成后,会查看微任务的【事件队列】,并将里面全部的微任务依次执行完<br>重复以上2步骤,结合event loop(1) event loop(2) ,就是更为准确的JS执行机制了。</p>
+<p>7 错误监控<br><strong>前端错误的分类</strong></p>
+<ol>
+<li>运行时错误（代码错误）</li>
+<li>资源加载错误</li>
+<li>接口错误</li>
+</ol>
+<p><strong>错误的捕获方式</strong></p>
+<p><strong>运行时错误的捕获方式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try...catch</span><br><span class="line">window.onerror 含有详细的error信息  </span><br><span class="line">    window.onerror = function(msg, url, lineNo, columnNo, error)&#123;&#125;</span><br><span class="line">window.addEventListener(&apos;error&apos;)</span><br><span class="line">     window.addEventListener(&apos;error&apos;, event =&gt;  </span><br><span class="line">        &#123; console.log(&apos;addEventListener error:&apos; + event.target); </span><br><span class="line">        &#125;, true);</span><br></pre></td></tr></table></figure>
+<p><strong>资源加载错误：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">object.onerror（如img,script）</span><br><span class="line">performance.getEntries()</span><br><span class="line">Error事件捕获</span><br></pre></td></tr></table></figure>
+<p><strong>接口错误：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">所有http请求都是基于xmlHttpRequest或者fetch封装的。</span><br><span class="line">所以要捕获全局的接口错误，方法就是封装xmlHttpRequest或者fetch</span><br></pre></td></tr></table></figure>
+<p><strong>结论</strong><br>1.使用window.onerror捕获JS运行时错误<br>2.使用window.addEventListener(‘unhandledrejection’)捕获未处理的promise reject错误<br>3.重写console.error捕获console.error错误<br>4.在跨域脚本上配置crossorigin=”anonymous”捕获跨域脚本错误<br>window.addEventListener(‘error’)捕获资源加载错误。因为它也能捕获js运行时错误，为避免重复上报js运行时错误，此时只有event.srcElement inatanceof HTMLScriptElement或HTMLLinkElement或HTMLImageElement时才上报<br>5.重写window.XMLHttpRequest和window.fetch捕获请求错误</p>
+<p><strong>延伸</strong>：跨域的js运行错误可以捕获吗，错误提示什么，应该怎么处理？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以。</span><br><span class="line">Script error</span><br><span class="line">1.在script标签增加crossorigin属性</span><br><span class="line">2.设置js资源响应头Access-Control-Allow-Orgin:*</span><br></pre></td></tr></table></figure>
+<p><strong>上报错误的基本原理</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 采用Ajax通信方式上报</span><br><span class="line">2. 利用Image对象上报</span><br></pre></td></tr></table></figure>
+<p><a href="https://segmentfault.com/a/1190000014728771#articleHeader19">https://segmentfault.com/a/1190000014728771#articleHeader19</a></p>
+</script></p>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月29日 00:03</p>
+        <p>原始链接： <a class="post-url" href="/2019/02/04/JS核心知识归纳(进阶)/" title="js--进阶">https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/</a></p>
+        <footer>
+            <a href="https://wll-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/&title=《js--进阶》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/&title=《js--进阶》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js--进阶》 — 阿龙的小型博客&url=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/&via=https://wll-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wll-1017065322.github.io/2019/02/04/JS核心知识归纳(进阶)/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js–进阶"><span class="post-toc-text">js–进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-原型链"><span class="post-toc-text">1.原型链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-继承"><span class="post-toc-text">2.继承</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-事件委托"><span class="post-toc-text">3.事件委托</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-跨域"><span class="post-toc-text">4.跨域</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/02/07/canvas/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          canvas
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/02/02/变量、作用域与内存问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">基本类型和引用类型的值</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wll-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

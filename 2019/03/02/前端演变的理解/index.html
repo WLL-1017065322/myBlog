@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>前端演变的理解 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="什么是前端web应用是一种运行在浏览器中的软件，这些软件的图形用户界面（Graphical User Interface, 即GUI）称为前端。（前端是一种GUI应用） 前后端不分离时代 web1.0早期，前后端开发是一体的，网站开发采用后端为主的mvc模式，前端相当于后端的view层。前端的主要工作是编写页面模板，后端代码根据浏览器请求，读取模板，替换变量，生成静态页面，发送给浏览器。 Ajax">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端演变的理解">
+<meta property="og:url" content="https://wll-1017065322.github.io/2019/03/02/前端演变的理解/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="什么是前端web应用是一种运行在浏览器中的软件，这些软件的图形用户界面（Graphical User Interface, 即GUI）称为前端。（前端是一种GUI应用） 前后端不分离时代 web1.0早期，前后端开发是一体的，网站开发采用后端为主的mvc模式，前端相当于后端的view层。前端的主要工作是编写页面模板，后端代码根据浏览器请求，读取模板，替换变量，生成静态页面，发送给浏览器。 Ajax">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-28T16:04:37.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端演变的理解">
+<meta name="twitter:description" content="什么是前端web应用是一种运行在浏览器中的软件，这些软件的图形用户界面（Graphical User Interface, 即GUI）称为前端。（前端是一种GUI应用） 前后端不分离时代 web1.0早期，前后端开发是一体的，网站开发采用后端为主的mvc模式，前端相当于后端的view层。前端的主要工作是编写页面模板，后端代码根据浏览器请求，读取模板，替换变量，生成静态页面，发送给浏览器。 Ajax">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along" target="_blank" href="//baidu.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-前端演变的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      前端演变的理解
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><p>web应用是一种运行在浏览器中的软件，这些软件的图形用户界面（Graphical User Interface, 即GUI）称为前端。（前端是一种GUI应用）</p>
+<h2 id="前后端不分离时代-web1-0"><a href="#前后端不分离时代-web1-0" class="headerlink" title="前后端不分离时代 web1.0"></a>前后端不分离时代 web1.0</h2><p>早期，前后端开发是一体的，网站开发采用后端为主的mvc模式，前端相当于后端的view层。前端的主要工作是编写页面模板，后端代码根据浏览器请求，读取模板，替换变量，生成静态页面，发送给浏览器。</p>
+<h2 id="Ajax技术诞生-web2-0"><a href="#Ajax技术诞生-web2-0" class="headerlink" title="Ajax技术诞生 web2.0"></a>Ajax技术诞生 web2.0</h2><blockquote>
+<p>AJAX不是JavaScript的规范，Asynchronous JavaScript and XML，意思就是用JavaScript执行异步网络请求。</p>
+</blockquote>
+<p>2005年 Ajax 正式提出，前后端分工逐渐清晰，前后端协作的关键是Ajax接口。前端不再是后端的模板，前后端分离，网页也从静态网页转为动态网页。前端开始逐渐复杂。</p>
+<h2 id="前端mv"><a href="#前端mv" class="headerlink" title="前端mv*"></a>前端mv*</h2><p>为了降低前端开发的复杂度，出现了大量前端MV*框架比如Backbone，KnockoutJS、AngularJS 等等，对代码进行合理的分层，如models，controllers，view，viewmodel等，让代码各施其职。</p>
+<h2 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h2><p>随着前后端分工的清晰，前端工作的复杂度的增高，开始出现了前端工程化的概念，前端工程化分为几个阶段</p>
+<ol>
+<li>技术选型</li>
+<li>构建优化</li>
+<li>js/css模块化</li>
+<li>组件化开发与资源管理</li>
+</ol>
+<h4 id="构建优化"><a href="#构建优化" class="headerlink" title="构建优化"></a>构建优化</h4><p>比如grunt，gulp，对网站资源进行优化如代码压缩，校验，资源合并，对简化前端开发中很多复杂重复的工作，提高开发效率，和执行运行性能。</p>
+<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>js的模块化方案很多，如AMD/CommonJS/ES6 Module等<br>css的模块化主要是靠less，sass，stylus等预处理器的import/mixin来支持实现<br>模块化打包工具webpack，parcel，browserify等等</p>
+<blockquote>
+<p>模块化的主要思想在于分而治之，是复杂系统开发和维护的基石。将一个复杂的应用，分成多个更小的部分进行开发与维护，最后再由每一个模块相互作用构成我们的整个应用。</p>
+</blockquote>
+<h4 id="组件化和资源管理"><a href="#组件化和资源管理" class="headerlink" title="组件化和资源管理"></a>组件化和资源管理</h4><p>组件化也是对分治思想的一种实践，前端作为一种GUI软件，在大型应用中还需要对ui进行组件化开发</p>
+<ol>
+<li>页面上每个<strong>独立的</strong>可视/可交互区域为一个组件</li>
+<li>组件间可以自由组合，替换</li>
+<li>页面为组件的容器</li>
+</ol>
+<h4 id="静态资源管理"><a href="#静态资源管理" class="headerlink" title="静态资源管理"></a>静态资源管理</h4><p>目前大多数的前端应用都是远程部署，运行时增量下载的GUI软件<br>由“增量”原则引申出的前端优化技巧几乎成为了性能优化的核心，有加载相关的按需加载、延迟加载、预加载、请求合并等策略；有缓存相关的浏览器缓存利用，缓存更新、缓存共享、非覆盖式发布等方案等等<br>有关前端工程化更详细的了解可到 <a href="https://github.com/fouber/blog/issues/10" target="_blank" rel="noopener">前端工程</a> 了解</p>
+<h2 id="大前端"><a href="#大前端" class="headerlink" title="大前端"></a>大前端</h2><p>随着nodejs的出现，JavaScript的覆盖范围扩大，大前端的概念也开始出现。大前端的原始定义可以定义为前端技术的扩大化。再后来react native的出现，JavaScript的覆盖范围再一次扩大，拥有了开发跨平台app的能力，大前端的概念进一步加深。<br>前端的工作不再局限于“前端”，必要时时兼顾后端和移动端开发。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以我认为现在的前端应该具备的技术有：</p>
+<ul>
+<li><p>html，css，JavaScript过硬的基础。</p>
+</li>
+<li><p>了解模块化，工程化</p>
+</li>
+<li><p>深入学习一门JavaScript框架</p>
+</li>
+<li><p>gulp等自动化构建工具</p>
+</li>
+<li><p>webpack等模块化资源打包工具</p>
+</li>
+<li><p>scss，es6等提高生成效率的工具</p>
+</li>
+<li><p>一门后端语言</p>
+</li>
+<li><p>有能力的话学习如react native等跨平台技术</p>
+</li>
+</ul>
+<p>  作者：holyZheng  <a href="https://github.com/HolyZheng/holyZheng-blog/issues/1" target="_blank" rel="noopener">https://github.com/HolyZheng/holyZheng-blog/issues/1</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月29日 00:04</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/02/前端演变的理解/" title="前端演变的理解">https://wll-1017065322.github.io/2019/03/02/前端演变的理解/</a></p>
+        <footer>
+            <a href="https://wll-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/&title=《前端演变的理解》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/&title=《前端演变的理解》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端演变的理解》 — 阿龙的小型博客&url=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/&via=https://wll-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wll-1017065322.github.io/2019/03/02/前端演变的理解/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是前端"><span class="post-toc-text">什么是前端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前后端不分离时代-web1-0"><span class="post-toc-text">前后端不分离时代 web1.0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ajax技术诞生-web2-0"><span class="post-toc-text">Ajax技术诞生 web2.0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前端mv"><span class="post-toc-text">前端mv*</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前端工程化"><span class="post-toc-text">前端工程化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#构建优化"><span class="post-toc-text">构建优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模块化"><span class="post-toc-text">模块化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#组件化和资源管理"><span class="post-toc-text">组件化和资源管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#静态资源管理"><span class="post-toc-text">静态资源管理</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大前端"><span class="post-toc-text">大前端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a></li>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/03/05/前端工程与性能优化/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          前端工程与性能优化
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/02/26/错误处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">错误处理</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wll-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

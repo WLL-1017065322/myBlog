@@ -107,21 +107,44 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-Untitled" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-箭头函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/23/箭头函数/">箭头函数</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/04/28/Untitled/">
+            <a href="/2019/02/23/箭头函数/">
                 
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="箭头函数" title="箭头函数">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                
+                ES6标准新增了一种新的函数：Arrow Function（箭头函数）。
+为什么叫Arrow Function？因为它的定义用的就是一个箭头：
+1x =&gt; x * x
+上面的箭头函数相当于：
+123function (x) &#123;    return x * x;&#125;
+在继续学习箭头函数之前，请测试你的浏览器是否支持ES6的Arrow Function...
             </p>
         </div>
       
@@ -131,12 +154,276 @@
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
+                <li><i class="fa fa-calendar"></i>2019-02-23</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2019/04/28/Untitled/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/23/箭头函数/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-执行上下文栈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/21/执行上下文栈/">执行上下文栈</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/02/21/执行上下文栈/">
+                
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="执行上下文栈" title="执行上下文栈">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                在ECMASscript中的代码有三种类型：global, function和eval。
+每一种代码的执行都需要依赖自身的上下文。当然global的上下文可能涵盖了很多的function和eval的实例。函数的每一次调用，都会进入函数执行中的上下文,并且来计算函数中变量等的值。eval函数的每一次执行，也会进入eval执行中的上下文，判断应该从何处获取变量的值。
+注意，一...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-21</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/02/21/执行上下文栈/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-探究同步异步工作原理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/19/探究同步异步工作原理/">探究同步异步工作原理</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/02/19/探究同步异步工作原理/">
+                
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="探究同步异步工作原理" title="探究同步异步工作原理">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                前言
+JS引擎在运行同步代码的时候按照顺序运行的方式，而如果遇见异步代码将会短暂挂起，放入事件循环队列(Event Loop)末端，一次执行。
+
+12345678//you may have seen the following codefor (var i = 0; i &lt; 3; i++) &#123;        setTimeout(function tim...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/02/19/探究同步异步工作原理/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-原型链继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/18/原型链继承/">原型链-继承</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/02/18/原型链继承/">
+                
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="原型链-继承" title="原型链-继承">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                前言：​    对于有基于类的语言经验 (如 Java 或 C++) 的开发人员来说，JavaScript 有点令人困惑，因为它是动态的，并且本身不提供一个 class 实现。（在 ES2015/ES6 中引入了 class 关键字，但只是语法糖，JavaScript 仍然是基于原型的）。
+​    当谈到继承时，JavaScript 只有一种结构：对象。每个实例对象（ ...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-18</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/原型链/" class="color4">原型链</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/02/18/原型链继承/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/15/闭包/">闭包</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/02/15/闭包/">
+                
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="闭包" title="闭包">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                ​    闭包是指有权访问另一个函数作用域中的变量的函数；常见方式就是在一个函数内部创建另一个函数。
+​    JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递。 词法作用域，就是，按照代码书写时的样子，内部函数可以访问函数外面的变量。 引擎通过数据结构和算法表示一个函数，使得在代码解释执行时按照词法作用域的规则，可以访问外围的变量，这些变量就登记在相...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-15</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/02/15/闭包/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -147,12 +434,30 @@
     <article id="post-this指针" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/10/this指针/">this指针</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
+    
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/04/28/this指针/">
+            <a href="/2019/02/10/this指针/">
                 
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="this指针" title="this指针">
                 
             </a>
         </div>
@@ -168,12 +473,19 @@
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
+                <li><i class="fa fa-calendar"></i>2019-02-10</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2019/04/28/this指针/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/10/this指针/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -181,32 +493,40 @@
 
 
   
-    <article id="post-promise" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-作用域链" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/10/作用域链/">作用域链</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/javascript/">javascript</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/04/28/promise/">
+            <a href="/2019/02/10/作用域链/">
                 
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="作用域链" title="作用域链">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                -–
-title: Promise探析
-date: 2019-04-26
-categories: First #分类
-author: along
-tags:  #标签
-​    - Promise
-thumbnail: https://xxxxxxxxxx.png # 略缩图
-cover_picture: /images/banner.jpg
--–
-前言
-  上一篇，关于...
+                12A scope chain is a list of objects that are searched for identifiers appear in the code of the context.作用域链是一个 对象列表(list of objects) ，用以检索上下文代码中出现的 标识符(identifiers) 。
+作用域链的原理和原型链很类似，如果这...
             </p>
         </div>
       
@@ -216,88 +536,19 @@ cover_picture: /images/banner.jpg
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
+                <li><i class="fa fa-calendar"></i>2019-02-10</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2019/04/28/promise/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-JS核心知识归纳(进阶)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/04/28/JS核心知识归纳(进阶)/">
-                
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                js–进阶1.原型链许多OO语言支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。实现继承主要依赖原型链。基本思想：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。所有函...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/04/28/JS核心知识归纳(进阶)/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-generator" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/04/28/generator/">
-                
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                generator（生成器）是ES6标准引入的新的数据类型。一个generator看上去像一个函数，但可以返回多次。
-ES6定义generator标准的哥们借鉴了Python的generator的概念和语法，如果你对Python的generator很熟悉，那么ES6的generator就是小菜一碟了。如果你对Python还不熟，赶快恶补Python教程！。
-我们先复习函数...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/04/28/generator/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/10/作用域链/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -308,12 +559,30 @@ ES6定义generator标准的哥们借鉴了Python的generator的概念和语法�
     <article id="post-canvas" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/07/canvas/">canvas</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/canvas/">canvas</a>
+                  
+              </span>
+          
+      </header>
+    
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/04/28/canvas/">
+            <a href="/2019/02/07/canvas/">
                 
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt title>
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="canvas" title="canvas">
                 
             </a>
         </div>
@@ -331,12 +600,19 @@ ES6定义generator标准的哥们借鉴了Python的generator的概念和语法�
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-04-28</li>
+                <li><i class="fa fa-calendar"></i>2019-02-07</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/canvas/" class="color2">canvas</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2019/04/28/canvas/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/07/canvas/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -344,14 +620,14 @@ ES6定义generator标准的哥们借鉴了Python的generator的概念和语法�
 
 
   
-    <article id="post-ajax简介" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JS核心知识归纳(进阶)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/26/ajax简介/">AJAX</a>
+      <a class="article-title" href="/2019/02/04/JS核心知识归纳(进阶)/">js--进阶</a>
     </h1>
   
 
@@ -359,7 +635,7 @@ ES6定义generator标准的哥们借鉴了Python的generator的概念和语法�
               <span class="header-cate">
                 <i class="fa fa-map-marker"></i>
                   
-                  <a href="/categories/First/">First</a>
+                  <a href="/categories/javascript/">javascript</a>
                   
               </span>
           
@@ -368,18 +644,15 @@ ES6定义generator标准的哥们借鉴了Python的generator的概念和语法�
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/04/26/ajax简介/">
+            <a href="/2019/02/04/JS核心知识归纳(进阶)/">
                 
-                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="AJAX" title="AJAX">
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="js--进阶" title="js--进阶">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                什么是 AJAX ？AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
-AJAX = 异步 JavaScript 和 XML。Asynchronous Javascript And XML
-AJAX 是一种用于创建快速动态网页的技术。
-通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网...
+                js–进阶1.原型链许多OO语言支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，实现继承则继承实际的方法。由于函数无签名，在JavaScript中无法实现接口继承。所以只能实现方法继承。实现继承主要依赖原型链。基本思想：利用原型，让那个一个引用类型继承另一个引用类型的属性和方法。A.prototype= new B();让原型对象等于另一个类型的实例。所有函...
             </p>
         </div>
       
@@ -389,21 +662,19 @@ AJAX 是一种用于创建快速动态网页的技术。
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-04-26</li>
+                <li><i class="fa fa-calendar"></i>2019-02-04</li>
             
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/First/" class="color1">First</a>
-      
-    <a href="/tags/Second/" class="color2">Second</a>
+    <a href="/tags/javascript/" class="color1">javascript</a>
       
   </li>
 
         </ul>
         
-            <a href="/2019/04/26/ajax简介/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/04/JS核心知识归纳(进阶)/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -411,110 +682,14 @@ AJAX 是一种用于创建快速动态网页的技术。
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-变量、作用域与内存问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/04/25/hello-world/">
-                
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt="Hello World" title="Hello World">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on ...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-04-25</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/04/25/hello-world/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-test-my-site" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/27/test-my-site/">test_my_site</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/03/27/test-my-site/">
-                
-                <img src="https://wll-1017065322.github.io/images/banner.jpg" alt="test_my_site" title="test_my_site">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-03-27</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/03/27/test-my-site/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Hello World" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/Hello World/">Hello World</a>
+      <a class="article-title" href="/2019/02/02/变量、作用域与内存问题/">基本类型和引用类型的值</a>
     </h1>
   
 
@@ -522,7 +697,7 @@ AJAX 是一种用于创建快速动态网页的技术。
               <span class="header-cate">
                 <i class="fa fa-map-marker"></i>
                   
-                  <a href="/categories/First/">First</a>
+                  <a href="/categories/javascript/">javascript</a>
                   
               </span>
           
@@ -531,15 +706,20 @@ AJAX 是一种用于创建快速动态网页的技术。
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/06/18/Hello World/">
+            <a href="/2019/02/02/变量、作用域与内存问题/">
                 
-                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="Hello World" title="Hello World">
+                <img src="https://wll-1017065322.github.io//images/banner.jpg" alt="基本类型和引用类型的值" title="基本类型和引用类型的值">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                </p><p> MinHow-This is a summary<br>
+                4.1基本类型和引用类型的值ECMAScript变量可能包含两种不同数据类型的值：基本类型值和引用类型值。基本类型指的是简单的数据段，而引用类型值指那些可能由多个值构成的对象。
+数据类型:
+基本类型值：Undefined、Null、Boolean、Number、String；
+引用类型值，也就是对象类型：Object、Array、Function、Date等；
+
+声明变量...
             </p>
         </div>
       
@@ -549,21 +729,19 @@ AJAX 是一种用于创建快速动态网页的技术。
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-06-18</li>
+                <li><i class="fa fa-calendar"></i>2019-02-02</li>
             
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/First/" class="color1">First</a>
-      
-    <a href="/tags/Second/" class="color2">Second</a>
+    <a href="/tags/javascript/" class="color1">javascript</a>
       
   </li>
 
         </ul>
         
-            <a href="/2017/06/18/Hello World/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2019/02/02/变量、作用域与内存问题/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -629,10 +807,10 @@ AJAX 是一种用于创建快速动态网页的技术。
 <div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
         <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a>
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -665,7 +843,7 @@ AJAX 是一种用于创建快速动态网页的技术。
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/First/" style="font-size: 20px;">First</a> <a href="/tags/Second/" style="font-size: 20px;">Second</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
         </div>
     </div>
 </div>

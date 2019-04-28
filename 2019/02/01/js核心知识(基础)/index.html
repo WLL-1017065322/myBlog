@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>JS基础 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="JS基础1.数据类型？6基本数据类型： Undefined, Null, Boolean, Number, String ,Symbol引用类型： Array Object Date Function 区别：基本类型值保存在栈空间，我们通过按值来访问的。引用类型，的值是对象，栈内存中存放地址指向堆内存中的对象。是按引用访问的。栈内存中存放的只是该对象的访问地址，在堆内存中为这个值分配空间。1.基本">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS基础">
+<meta property="og:url" content="https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="JS基础1.数据类型？6基本数据类型： Undefined, Null, Boolean, Number, String ,Symbol引用类型： Array Object Date Function 区别：基本类型值保存在栈空间，我们通过按值来访问的。引用类型，的值是对象，栈内存中存放地址指向堆内存中的对象。是按引用访问的。栈内存中存放的只是该对象的访问地址，在堆内存中为这个值分配空间。1.基本">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/assets/2255863279-5b0f992a1a9a4_articlex.png">
+<meta property="og:updated_time" content="2019-04-28T16:03:11.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS基础">
+<meta name="twitter:description" content="JS基础1.数据类型？6基本数据类型： Undefined, Null, Boolean, Number, String ,Symbol引用类型： Array Object Date Function 区别：基本类型值保存在栈空间，我们通过按值来访问的。引用类型，的值是对象，栈内存中存放地址指向堆内存中的对象。是按引用访问的。栈内存中存放的只是该对象的访问地址，在堆内存中为这个值分配空间。1.基本">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/assets/2255863279-5b0f992a1a9a4_articlex.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along" target="_blank" href="//baidu.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-js核心知识(基础)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      JS基础
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-02-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h1><h2 id="1-数据类型？"><a href="#1-数据类型？" class="headerlink" title="1.数据类型？"></a>1.数据类型？</h2><p><strong>6基本数据类型</strong>： Undefined, Null, Boolean, Number, String ,Symbol<br><strong>引用类型：</strong> Array Object Date Function</p>
+<p><strong>区别：</strong><br>基本类型值保存在栈空间，我们通过按值来访问的。<br>引用类型，的值是对象，栈内存中存放地址指向堆内存中的对象。是按引用访问的。栈内存中存放的只是该对象的访问地址，在堆内存中为这个值分配空间。<br>1.基本数据类型不可以添加/删除属性和方法；<br>2.复制的方式不同；引用类型复制的时候，复制的是指针，2个变量实际指的是同一个对象。<br>3.函数的参数是按值传递的<br><strong>检测数据类型</strong> typeof instanceof<br><strong>转型数据类型</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显式：Boolean()/Number()/pareseInt()/pareseFloat()/toString()/String()</span><br><span class="line">隐私： +、 赋值</span><br></pre></td></tr></table></figure>
+<p><strong>区别</strong>： undefined与null 的区别</p>
+<p><strong>null：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是Null类型的值.</span><br><span class="line">是个空值，空对象指针.</span><br><span class="line">typeof null，结果为Object;</span><br><span class="line">null用来表示尚未存在的对象.</span><br></pre></td></tr></table></figure>
+<p><strong>undefined :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">是Undefined类型的值。</span><br><span class="line">typeof undefined，结果为undefined;</span><br><span class="line">一个声明了变量，但未初始化值，结果就是undefined</span><br><span class="line">没有返回值的函数，返回的也是undefined,</span><br><span class="line">没有实参的形参也是undefined;</span><br></pre></td></tr></table></figure>
+<p><strong>symbol</strong><br>表示独一无二的值<br>Symbol 值通过Symbol函数生成<br>对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的 Symbol 类型<br>Symbol函数前不能使用new命令，否则会报错。这是因为生成的 Symbol 是一个原始类型的值，不是对象<br>由于 Symbol 值不是对象，所以不能添加属性。<strong>基本上，它是一种类似于字符串的数据类型</strong><br>Symbol函数的参数只是表示对当前 Symbol 值的描述，因此相同参数的Symbol函数的返回值是不相等的。因为symbol的每个值不相等。<br>Symbol 值不能与其他类型的值进行运算，会报错<br>Symbol 值可以显式转为字符串。<br>Symbol 值也可以转为布尔值，但是不能转为数值<br>Symbol 值作为对象属性名时，不能用点运算符。</p>
+<h2 id="2-面向对象？"><a href="#2-面向对象？" class="headerlink" title="2.面向对象？"></a>2.面向对象？</h2><p><strong>何为面向对象</strong><br> 万物皆对象，<br> 对象又有如下特点：　<br> 抽象：抓住核心问题<br> 封装：只能通过对象来访问方法<br> 继承：从已有的对象下继承出新的对象<br> 多态：多对象的不同形态<br><strong>创建对象的5种方式</strong><br> 1.工厂方式创建对象：面向对象中的封装函数(内置对象)<br> 2.构造函数创建对象<br> 优点：创建自定义函数意味着将来可以将它的实例标识为一种特定的类型，这是构造函数胜过工厂模式的地方<br> 缺点：每个方法都要在每个实例上重新创建一遍<br> 3、对象字面量方式创建对象<br> 4、用原型方式　<br> 1、优点：可以让所有的对象实例共享它所包含的属性和方法<br> 2、缺点：原型中是所有属性都是共享的，但是实例一般都是要有自己的单独属性的。所以一般很少单独使用原型模式。<br> 5.混合模型：构造函数模式定义实例属性，而原型模式用于定义方法和共享的属性<br>总结：使用上述的混合法</p>
+<h2 id="3-Array"><a href="#3-Array" class="headerlink" title="3.Array"></a>3.Array</h2><p><strong>数组的增加</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array.push()   向数组末尾添加元素，返回的是添加后新数组的长度，原有数组改变</span><br><span class="line">array.unshift()  向数组开头添加元素，返回的是添加后新数组的长度，原有数组改变</span><br><span class="line">array.splice(n,m)   从索引n开始删除m个元素，把删除的内容当做新数组返回，原有数组</span><br><span class="line">array.concat()</span><br><span class="line">// ES6的合并数组</span><br><span class="line">[...arr1, ...arr2, ...arr3]</span><br><span class="line">Array.prototype.push.apply(arr1,arr2);)----将arr2追加到arr1中，返回数组的长度</span><br></pre></td></tr></table></figure>
+<p><strong>数组的删除</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array.pop() 删除数组的最后一项，返回的是删除的那一项，原有数组改变</span><br><span class="line">array.shift() 删除数组的的第一项，返回的是删除的那一项，原有数组改变</span><br><span class="line">splice(n,m,x) 从索引n开始删除m个元素，然后插入元素x，把删除的内容当做新数组返回，原有数组改变。作删除使用，x不传入数据既可。</span><br><span class="line">slice(n,m) 从索引n开始删除m个元素,返回删除项，原数组不变</span><br><span class="line">length   减小数组的长度，实际是从数组尾部删除元素，改变原数组。</span><br></pre></td></tr></table></figure>
+<p><strong>改</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">其实只有一种 splice(),但delete方法，我个人感觉算修改不属于删除，详情请见实例</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/2255863279-5b0f992a1a9a4_articlex.png" alt="clipboard.png"></p>
+<p><strong>查</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">indeOf() </span><br><span class="line">lastIndexOf()</span><br><span class="line">find()</span><br><span class="line">findIndex()</span><br><span class="line">includes()</span><br><span class="line">[1, 4, -5, 10].find((n) =&gt; n &lt; 0)    // -5</span><br><span class="line">[1, 4, -5, 10].findIndex((n) =&gt; n &lt; 0)    // 2</span><br><span class="line">[1, 2, 3].includes(2)     // true</span><br></pre></td></tr></table></figure>
+<p><strong>排序</strong><br>array.reverse() 把数组倒过来排序，原有数组改变<br>array.sort() 可以实现由大到小或者由小到大的排序 但是直接写sort只能排序十以内的数字</p>
+<h2 id="3-1类型转换"><a href="#3-1类型转换" class="headerlink" title="3.1类型转换"></a>3.1类型转换</h2><p><strong>数组 对象 字符串 的转换；</strong></p>
+<p><strong>array –&gt;string：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">join(&quot;+&quot;) 把数组的每一项拿出来用指定分隔符隔开 ；</span><br><span class="line">tostring 把数组的每一项拿出来用逗号隔开，原有数组不变</span><br></pre></td></tr></table></figure>
+<p><strong>obj –&gt; string</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSON.parse(); //可以将json字符串转换成json对象</span><br><span class="line">JSON.stringify(); //可以将json对象转换成json对符串</span><br></pre></td></tr></table></figure>
+<p><strong>string–&gt;array:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split(“,”)</span><br></pre></td></tr></table></figure>
+<p><strong>obj –&gt; array：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For… in循环赋值法</span><br><span class="line">Array.from()</span><br></pre></td></tr></table></figure>
+<p><strong>number –&gt; array</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.of()</span><br></pre></td></tr></table></figure>
+<p><strong>string –&gt; number</strong> (4种)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number() </span><br><span class="line">parseFloat()  //  如果parseInt()和parseFloat()不能够把指定的字符串转换为数字，它们就会返回NaN  parseInt(&apos;&apos;eleven&quot;); // Returns Nan </span><br><span class="line">parseInt()  // parseInt()是取整，即丢弃小数部分,保留整数部分 parseInt(2.7) ==&gt;3 </span><br><span class="line">+number // var c = +&apos;2&apos;  typeof c ---number</span><br></pre></td></tr></table></figure>
+<p><strong>string &lt;– number</strong> (4种)<br>var c = String(number)<br>var c = number + ‘’<br>var c = number.toString(8) // 将number 转换成8进制的数字 且c的类型是string<br>var c = number.toFixed(1); //数字转换为字符串，并且显示小数点后的指定的位数 例 number = 123.476,则c= 123.5”</p>
+<p><strong>深浅拷贝</strong><br>对象和数组的拷贝有两种<br>浅拷贝即 拷贝了指针指向，当一个对象的值改变会影响另一个对象的值。<br>深拷贝， 拷贝的是真正的值。2者相互独立，互不干扰。<br>浅拷贝的方法4种方法<br>slice() concat() 赋值法 遍历<br>注：concat 和 slice 对一维数组 能算是深拷贝;2维的 是浅拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var  a= [1,2,3,4]</span><br><span class="line">b= a.concat();</span><br><span class="line">c=a.concat();</span><br><span class="line">b[0] = 5;</span><br><span class="line">c[0] = 6;</span><br><span class="line">a // [1,2,3,4]</span><br><span class="line">b // [5,2,3,4]</span><br><span class="line">c // [6,2,3,4]</span><br><span class="line">var  aa= [[1,1],[2,2],3,4]</span><br><span class="line">bb= aa.concat();</span><br><span class="line">cc=aa.concat();</span><br><span class="line">bb[1][0] = 5;</span><br><span class="line">cc[0] = 6;</span><br><span class="line">aa // [[1,1],[5,2],3,4]</span><br><span class="line">b // [[1,1],[5,2],3,4]</span><br><span class="line">c // [6,[5,2],3,4]</span><br><span class="line">var shallowCopy = function(obj) &#123;</span><br><span class="line"></span><br><span class="line">// 只拷贝对象</span><br><span class="line">if (typeof obj !== &apos;object&apos;) return;</span><br><span class="line">// 根据obj的类型判断是新建一个数组还是对象</span><br><span class="line">var newObj = obj instanceof Array ? [] : &#123;&#125;;</span><br><span class="line">// 遍历obj，并且判断是obj的属性才拷贝</span><br><span class="line">for (var key in obj) &#123;</span><br><span class="line">    if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        newObj[key] = obj[key];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>深拷贝的方法5种方法：<br>一维数组和对象的concat slice法 JSON.parse(JSON.stringify(arr)) 和遍历法 解构赋值法<br>示例：（前3种毕竟简单，这里也不表述）<br>解构赋值法：const a1 = [1, 2]; const a2 = […a1];或者const […a2] = a1;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var deepCopy = function(obj) &#123;</span><br><span class="line"></span><br><span class="line">if (typeof obj !== &apos;object&apos;) return;</span><br><span class="line">var newObj = obj instanceof Array ? [] : &#123;&#125;;</span><br><span class="line">for (var key in obj) &#123;</span><br><span class="line">    if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        newObj[key] = typeof obj[key] === &apos;object&apos; ? deepCopy(obj[key]) : obj[key];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有一些常用方法如filter() forEach() map() every() some()</p>
+<p>详情请见：<a href="https://segmentfault.com/a/1190000014408723" target="_blank" rel="noopener">最全最细致的数组的方法整理 es5+es6</a></p>
+<h2 id="5-对象的属性"><a href="#5-对象的属性" class="headerlink" title="5.对象的属性"></a>5.对象的属性</h2><p>ES5的属性特性包括下面六个：<br> configurable: 表示能否通过delete来删除属性从而重新定义属性，能够修改属性的特性,默认为true<br> enumberable: 表示是否能通过for-in循环返回属性。默认为true<br> writable: 是否可以修改属性, 默认为true<br> value: 包含这个属性的数据值。读取属性值时3,从这个属性读，写入属性时，把新值保存到这个位置。默认值为undefine.<br> getter: 在读取属性时，调用的函数<br> setter: 在写入属性时调用的函数<br> 特别注意：一旦调用了Object.defineProperty方法之后，那些未定义的特性值除了configurable为false之外，其他都为undefined;</p>
+<h2 id="6-DOM"><a href="#6-DOM" class="headerlink" title="6.DOM"></a>6.DOM</h2><p> DOM是针对HTML和XML文档的一个API(应用程序编程接口). DOM描绘了一个层次化的节点树, 允许开发人员添加, 移除和修改页面的某一部分.<br> 常用的DOM方法:<br><strong>1)查找</strong><br>a) getElementById(id) //通过元素Id，唯一性<br>b) getElementsByTagName() //通过标签名称<br>c) getElementsByName() //通过元素的Name属性的值(IE容错能力较强，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">会得到一个数组，其中包括id等于name值的)</span><br></pre></td></tr></table></figure>
+<p><strong>2）添加、移除、替换、插入 复制</strong><br>c) appendChild(node) // 可添加 可移动位置;可添加元素 可添加文本<br>d) removeChild(node)<br>e) replaceChild(取代别人的mode,已有节点) // 替换已有节点<br>f) insertBefore(插入节点,已有节点) //在已有的子节点前插入一个新的子节点<br>g) cloneNode(true/false) //深浅复制</p>
+<p><strong>3)创建</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">createDocumentFragment()    //创建一个DOM片段</span><br><span class="line"> createElement()  //创建一个具体的元素 div  p  span</span><br><span class="line"> createTextNode()   //创建一个文本节点</span><br></pre></td></tr></table></figure>
+<p>4)<br>i) getAttribute()<br>j) setAttribute()</p>
+<p><strong>5 常用的DOM属性</strong><br>a) innerHTML 节点(元素)的文本值<br>b) parentNode 节点(元素)的父节点<br>c) childNodes<br>d) attributes 节点(元素)的属性节点</p>
+<p><strong>6.两个节点的关系</strong></p>
+<h2 id="7-JS获取盒模型宽高"><a href="#7-JS获取盒模型宽高" class="headerlink" title="7.JS获取盒模型宽高"></a>7.JS获取盒模型宽高</h2><p>为了方便书写，以下用dom来表示获取的HTML的节点。</p>
+<ol>
+<li>dom.style.width/height</li>
+</ol>
+<p>　　这种方式只能取到dom元素内联样式所设置的宽高，也就是说如果该节点的样式是在style标签中或外联的CSS文件中设置的话，通过这种方法是获取不到dom的宽高的。</p>
+<ol>
+<li>dom.currentStyle.width/height</li>
+</ol>
+<p>　 这种方式获取的是在页面渲染完成后的结果，就是说不管是哪种方式设置的样式，都能获取到。<br>　 但这种方式只有IE浏览器支持。</p>
+<ol>
+<li>window.getComputedStyle(dom).width/height</li>
+</ol>
+<p>　　这种方式的原理和2是一样的，这个可以兼容更多的浏览器，通用性好一些。</p>
+<ol>
+<li>dom.getBoundingClientRect().width/height</li>
+</ol>
+<p>　　这种方式是根据元素在视窗中的绝对位置来获取宽高的</p>
+<ol>
+<li>dom.offsetWidth/offsetHeight<br>这个就没什么好说的了，最常用的，也是兼容最好的。</li>
+</ol>
+<h2 id="8-通用的事件侦听器"><a href="#8-通用的事件侦听器" class="headerlink" title="8.通用的事件侦听器"></a>8.通用的事件侦听器</h2><p>主要考核 事件处理程序 和event对象及其属性和方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var EventUtil = &#123;</span><br><span class="line">        addHandler: function(element,type,handler) &#123;//添加事件处理程序</span><br><span class="line">            if(element.addEventListener) &#123;</span><br><span class="line">                element.addEventListener(type,handler,false)</span><br><span class="line">            &#125; else if(element.attachEvent)&#123;</span><br><span class="line">                element.attachEvent(&quot;on&quot; + type, handler);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                element[&quot;on&quot; + type] = handler;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        removeHandler:function(element,type,handler) &#123;//移除事件处理程序</span><br><span class="line">            if(element.removeEventListener) &#123;</span><br><span class="line">                element.removeEventListener(type,handler,false)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        getEvent:function(event)&#123;// 获取事件对象</span><br><span class="line">            return event ? event : window.event;</span><br><span class="line">        &#125;,</span><br><span class="line">        getTarget:function(event)&#123;// 获取事件的目标</span><br><span class="line">            return event.target || event.srcElement;</span><br><span class="line">        &#125;,</span><br><span class="line">        preventDefault()&#123;</span><br><span class="line">            (event) =&gt;&#123;</span><br><span class="line">                if(event.preventDefault)&#123;event.preventDefault()&#125;</span><br><span class="line">                else &#123;event.returnValue= false&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        stopPropagation()&#123;</span><br><span class="line">             (event) =&gt;&#123;</span><br><span class="line">                if(event.stopPropagation)&#123;event.stopPropagation()&#125;</span><br><span class="line">                else &#123;event.cancelBubble= true;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var list = document.getElementById(&apos;list&apos;)</span><br><span class="line">    EventUtil.addHandler(list,&apos;click&apos;,function(ev)&#123;</span><br><span class="line">        event= EventUtil.getEvent(ev);</span><br><span class="line">        var target = EventUtil.getTarget(event);</span><br><span class="line">        alert(target.id);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="9-实现点击ul中li元素"><a href="#9-实现点击ul中li元素" class="headerlink" title="9.实现点击ul中li元素"></a>9.实现点击ul中li元素</h2><p>方法有很多，闭包法、立即执行函数法、、事件委托法；<br>但本题主要考核 DOM事件流 利用事件委托，减少dom操作，提高性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var list = document.getElementById(&apos;list&apos;)</span><br><span class="line"> list.onclick = function(ev)&#123;</span><br><span class="line">       var ev = ev || window.event; 　　　　</span><br><span class="line">       var target = ev.target || ev.srcElement;</span><br><span class="line">       console.log(target.id);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10-Ajax"><a href="#10-Ajax" class="headerlink" title="10.Ajax"></a>10.Ajax</h2><p><strong>原生的写法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">  xhr.onreadystatechange = function()&#123;</span><br><span class="line">      if(xhr.readyState == 4)&#123;</span><br><span class="line">          console.log(xhr.status)</span><br><span class="line">           if((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status ==304)&#123;</span><br><span class="line">              var hh = xhr.responseText;</span><br><span class="line">              var haha1 = document.getElementById(&apos;wokao&apos;);</span><br><span class="line">              haha1.innerHTML = hh;</span><br><span class="line">           &#125;else&#123;</span><br><span class="line">               alert(&apos;failed11&apos;,xhr.status);</span><br><span class="line">           &#125; </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  xhr.open(&quot;get&quot;,&quot;http://10.10.65.109:8888/text.json&quot;,true);</span><br><span class="line">  xhr.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); </span><br><span class="line">//  xhr.responseType = &quot;json&quot;;</span><br><span class="line">  xhr.send(null);</span><br></pre></td></tr></table></figure>
+<p><strong>何为异步？</strong> 异步与同步的概念<br><strong>实现异步的方法</strong>：回调 事件 promise<br><strong>Ajax最大特性</strong>：可以实现动态不刷新（局部刷新）.<br><strong>优点：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过异步模式，提升了用户体验</span><br><span class="line">优化了浏览器和服务器之间的传输，减少不必要的数据往返，减少了带宽占用</span><br><span class="line">Ajax在客户端运行，承担了一部分本来由服务器承担的工作，减少了大用户量下的服务器负载。</span><br></pre></td></tr></table></figure>
+<p><strong>缺点</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、ajax不支持浏览器back按钮。</span><br><span class="line">2、安全问题 AJAX暴露了与服务器交互的细节。</span><br><span class="line">3、对搜索引擎的支持比较弱。</span><br><span class="line">4、破坏了程序的异常机制。</span><br><span class="line">5、不容易调试。</span><br><span class="line"></span><br><span class="line">**post 和get的区别：**</span><br></pre></td></tr></table></figure>
+<p> GET请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给WEB服务器。当然在Ajax请求中，这种区别对用户是不可见的。<br> GET方式请求的数据会被浏览器缓存起来，因此其他人就可以从浏览器的历史记录中读取到这些数据，例如账号和密码等。在某种情况下，GET方式会带来严重的安全问题。而POST方式相对来说就可以避免这些问题。<br> “GET方式提交的数据最多只能是1024字节”，post无<br> get请求和post请求在服务器端的区别:在客户端使用get请求时,服务器端使用Request.QueryString来获取参数,而客户端使用post请求时,服务器端使用Request.Form来获取参数.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**适用场景：**</span><br><span class="line">POST用于创建资源，资源的内容会被编入HTTP请示的内容中。例如，处理订货表单、在数据库中加入新数据行等。</span><br></pre></td></tr></table></figure>
+<p>当请求无副作用时（如进行搜索），便可使用GET方法；当请求有副作用时（如添加数据行），则用POST方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若符合下列任一情况，则用POST方法：</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求的结果有持续性的副作用，例如，数据库内添加新的数据行。</li>
+<li>若使用GET方法，则表单上收集的数据可能让URL过长。</li>
+<li>要传送的数据不是采用7位的ASCII编码。<br>若符合下列任一情况，则用GET方法：</li>
+<li>请求是为了查找资源，HTML表单数据仅用来帮助搜索。</li>
+<li>请求结果无持续性的副作用。</li>
+<li>收集的数据及HTML表单内的输入字段名称的总长不超过1024个字符。</li>
+</ul>
+<ol>
+<li>对cookie localStorage sessionStorage的理解</li>
+</ol>
+<hr>
+<p>localStorage和sessionStorage都具有相同的操作方法，例如setItem、getItem和removeItem等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**cookie:**</span><br></pre></td></tr></table></figure>
+<p> cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。<br> cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。<br> sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。<br> 存储大小：<br> cookie数据大小不能超过4k。<br> sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。<br> 有期时间：<br> localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；<br> sessionStorage 数据在当前浏览器窗口关闭后自动删除。<br> cookie 设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭<br> 作用域不同:<br> sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；<br> localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。<br> Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者。<br> Web Storage 的 api 接口使用更方便。<br>sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。</p>
+<p>而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。<br>Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的。Cookie的大小是受限的，并且每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可以跨域调用。</p>
+<p>除此之外，Web Storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。<br><strong>总之：cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生</strong><br>cookie优点：极高的扩展性和可用性 缺点： 数量和长度受限、安全问题<br>cookie 和session 的区别：<br>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">考虑到安全应当使用session。</span><br></pre></td></tr></table></figure>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">考虑到减轻服务器性能方面，应当使用COOKIE。</span><br></pre></td></tr></table></figure>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。<br>5、所以个人建议：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将登陆信息等重要信息存放为SESSION</span><br><span class="line">其他信息如果需要保留，可以放在COOKIE中</span><br></pre></td></tr></table></figure>
+<h2 id="12-IE的不同之处"><a href="#12-IE的不同之处" class="headerlink" title="12.IE的不同之处"></a>12.IE的不同之处</h2><p>IE支持currentStyle，FIrefox使用getComputStyle</p>
+<p>IE 使用innerText，Firefox使用textContent</p>
+<p>滤镜方面：IE:filter:alpha(opacity= num)；Firefox：-moz-opacity:num</p>
+<p>事件方面：IE：attachEvent：火狐是addEventListener</p>
+<p>鼠标位置：IE是event.clientX；火狐是event.pageX</p>
+<p>IE使用event.srcElement；Firefox使用event.target</p>
+<p>IE中消除list的原点仅需margin:0即可达到最终效果；FIrefox需要设置margin:0;padding:0以及list-style:none</p>
+<p>CSS圆角：ie7以下不支持圆角</p>
+<h2 id="13-this工作原理"><a href="#13-this工作原理" class="headerlink" title="13.this工作原理"></a>13.this工作原理</h2><p><strong>原则，那就是this指的是调用函数的那个对象。</strong></p>
+<p>javascript 的this主要是看如何调用这个函数，而不是这个函数所在的作用域。obj.fn() fn中的 this 就是 obj。 fn() this是undifine, 而在js进入函数之前，会有 if(!this) { this = window} 这样的操作。</p>
+<p><strong>this 一共有六种不同的值：</strong></p>
+<p>普通函数调用，this为全局对象或是undefined</p>
+<p>作为对象的方法，this为那个对象</p>
+<p>new 表达式，this为以该函数为原型的新创建的对象</p>
+<p>使用 apply/call指定 this</p>
+<p>用bind绑定固定的this</p>
+<p>事件处理函数中的this是当前的触发事件的DOM元素(event.currentTarget)<br>IE attachEvent添加的事件处理函数中this为window</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;this&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">在严格模式下，一般的函数调用中 this 的值是 undefined。</span><br><span class="line">&lt;button onclick=&quot;console.log(this)&quot; &gt;</span><br><span class="line">    show this</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">&lt;p id=&quot;hahah&quot;&gt;测试DOM元素(event.currentTarget)&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;ha&quot;&gt;测试DOM元素IE&lt;/p&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">var obj=&#123;a:1&#125;;</span><br><span class="line">var aa = function func(a,b)&#123; </span><br><span class="line">    console.log(&apos;this&apos;,this); </span><br><span class="line">    console.log(&apos;this&apos;,a);</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">var bb = function funb()&#123; console.log(&apos;this&apos;,this); &#125;</span><br><span class="line">bb.prototype= new aa();//</span><br><span class="line"></span><br><span class="line">obj.f = aa;</span><br><span class="line">/*</span><br><span class="line">作为对象的方法 </span><br><span class="line">**</span><br><span class="line">*/</span><br><span class="line">obj.f(123);//输出 obj 123</span><br><span class="line">aa(123); //输出 window  123</span><br><span class="line"></span><br><span class="line">(obj.f)();// obj 没懂</span><br><span class="line">(a=obj.f)(); // window</span><br><span class="line">(0,obj.f)(); //  window</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">call spply bind中this</span><br><span class="line">*</span><br><span class="line">*</span><br><span class="line">*/</span><br><span class="line">aa.call(&apos;call&apos;,1);// call 1</span><br><span class="line">aa.apply(&apos;apply&apos;,[1]); // apply 1</span><br><span class="line">var cc = aa.bind(&apos;bind&apos;,1); </span><br><span class="line">cc(22); //bind 1</span><br><span class="line">var cc1 = new cc(33)// func 1</span><br><span class="line">/*</span><br><span class="line">*</span><br><span class="line">*new 表达式，this为以 该函数为原型 的新创建的对象</span><br><span class="line">*/</span><br><span class="line">var dd = new aa(11,22); // func &#123;&#125;</span><br><span class="line">var bb1 = new bb();</span><br><span class="line">/*</span><br><span class="line">*</span><br><span class="line">**事件处理函数中的this</span><br><span class="line">**当前的触发事件的DOM元素(event.currentTarget)</span><br><span class="line">**IE attachEvent添加的事件处理函数中this为window</span><br><span class="line">*/</span><br><span class="line">function evtHandle(e)</span><br><span class="line">&#123;</span><br><span class="line">    console.log(&apos;e.currentTarget.id&apos;,this.id); // </span><br><span class="line">    console.log(&apos;e.target.id&apos;,this.id);        // </span><br><span class="line">&#125;</span><br><span class="line">var elements = document.getElementById(&apos;hahah&apos;);</span><br><span class="line">var elements1 = document.getElementById(&apos;ha&apos;);</span><br><span class="line">elements.addEventListener(&apos;click&apos;,evtHandle,false);</span><br><span class="line">// ie专属  chrome下报错</span><br><span class="line"> // elements1.attachEvent(&apos;onclick&apos;,evtHandle);</span><br><span class="line"></span><br><span class="line">obj = &#123; go: function() &#123; console.info(&apos;oo&apos;,this) &#125; &#125;;</span><br><span class="line">(0 || obj.go)() // window</span><br><span class="line">&lt;/script&gt;    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="14-函数"><a href="#14-函数" class="headerlink" title="14.函数"></a>14.函数</h2><p>1.<strong>函数的调用方式</strong></p>
+<ol>
+<li>方法调用模型 var obj = { func : function(){};} obj.func()</li>
+<li>函数调用模式　　var aa = function(){} aa();</li>
+<li>构造器调用模式</li>
+<li>apply/ call调用模式</li>
+<li>立即执行函数(function(){}())</li>
+</ol>
+<p>区别：函数调用模式，有函数提升的；即aa() 无需必须在var aa = function(){} 后面</p>
+<p>2.<strong>return的含义</strong></p>
+<p>注：return不一定非得用在function 中，也可以直接放在html中，如:onsubmit=”return false”;</p>
+<p>语法：return 表达式;<br>含义：语句结束函数执行，返回调用函数，而且把表达式的值作为函数的结果<br>通常函数经过一系列的处理后需要给外部返回一个值,这个值一般用return返回出去,也可以是说return是向函数返回返回值,并终止函数的运行.</p>
+<p><strong>return;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">含义：即 return null 无函数返回值；</span><br><span class="line">能中断方法的执行，但无法阻止事件的默认行为。</span><br><span class="line">把控制权返回给页面。</span><br></pre></td></tr></table></figure>
+<p><strong>return false</strong>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">含义：相当于终止符；</span><br><span class="line">1. 一般是用来取消默认动作的。比如，终止表单提交。比如你单击一个链接除了触发你的onclick事件外</span><br><span class="line">还会触发一个默认事件就是执行页面的跳转。</span><br><span class="line">所以如果你想取消对象的默认动作（event.preventDefault();）就可以return false。</span><br><span class="line">2. return false 只在当前函数有效，不会影响其他外部函数的执行</span><br></pre></td></tr></table></figure>
+<p><strong>retrun true；</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">含义：相当于执行符。执行终止默认的事件行为</span><br><span class="line"> 返回正确的处理结果。</span><br></pre></td></tr></table></figure>
+<h2 id="15-闭包"><a href="#15-闭包" class="headerlink" title="15.闭包"></a>15.闭包</h2><p> <strong>闭包</strong>是指有权访问另一个函数作用域中的变量的函数. 创建闭包常见方式,就是在一个函数内部创建另一个函数.<br><strong>作用:</strong><br>1.匿名自执行函数 (function (){ … })(); 创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。<br>2.缓存, 可保留函数内部的值<br>3.实现封装<br>4.实现模板<br>5.给了js函数生成函数的能力，增加了js代码的抽象能力<br><strong>缺点</strong><br>1.造成内存泄露；变量内存无法被标记，导致内存不会被垃圾回收机制回收。<br><strong>为什么要用</strong><br>局部变量无法共享和长久的保存，而全局变量可能造成变量污染，所以我们希望有一种机制既可以长久的保存变量又不会造成全局污染。<br><strong>如何使用</strong><br>1.定义外层函数，封装被保护的局部变量。<br>2.定义内层函数，执行对外部函数变量的操作。<br>3.外层函数返回内层函数的对象，并且外层函数被调用，结果保存在一个全局的变量中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var getNum;</span><br><span class="line">function getCounter() &#123; </span><br><span class="line">    var n = 1; </span><br><span class="line">    var inner = function () &#123; return n++; &#125;</span><br><span class="line">    return inner;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getNum = getCounter();</span><br><span class="line">console.log(getNum()); //1   2 3 4</span><br></pre></td></tr></table></figure>
+<h2 id="16-call-aplly-bind"><a href="#16-call-aplly-bind" class="headerlink" title="16.call aplly bind"></a>16.call aplly bind</h2><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；<br>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；<br>apply 、 call 、bind 三者都可以利用后续参数传参；<br>bind是返回对应函数，便于稍后调用；<br>apply 、call 则是立即调用 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function fn(a,b)&#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">&#125;</span><br><span class="line">// bind(this,args...)</span><br><span class="line">bf = fn.bind(&quot;Bind this&quot;,10); // 没有任何输出，也就是说没有执行这个函数</span><br><span class="line">bf(); // &quot;Bind this&quot;,10,undefined</span><br><span class="line">bf(20);// “Bind this”,10,20</span><br><span class="line">// 原函数不受影响</span><br><span class="line">fn(1,2); //window， 1，2</span><br><span class="line">bf2 = fn.bind(&quot;Bind this&quot;,1,2);</span><br><span class="line">bf2(); // &quot;Bind this&quot;,1,2</span><br><span class="line"></span><br><span class="line">// call(this,args...)</span><br><span class="line">fn.call(&quot;Call this&quot;,1) // &quot;Call this&quot;,1,undefined</span><br><span class="line">fn.call(&quot;Call this&quot;,1,2) // &quot;Call this&quot;,1,2</span><br><span class="line"></span><br><span class="line">// apply(this,[args])</span><br><span class="line">fn.apply(&quot;Apply this&quot;,[1]) // &quot;Apply this&quot;,1,undefined</span><br><span class="line">fn.apply(&quot;Apply this&quot;,[1,2]) // &quot;Apply this&quot;,1,2</span><br></pre></td></tr></table></figure>
+<h2 id="17-js语言特性"><a href="#17-js语言特性" class="headerlink" title="17.js语言特性"></a>17.js语言特性</h2><p><strong>特性，即封装、继承、多态</strong><br>此处内容较多，便不详细叙述。注意一下继承的方式<br>继承6方式：<br>　　1、拷贝继承：通用型 有new无new都可以用<br>　　2、类式继承：new构造函数—利用构造函数（类）继承的方式<br>　　3、原型继承：无new的对象—借助原型来实现对象继承对象<br>　　4. 属性继承：调用父类的构造函数call<br>　　5. 方法继承：用for in的形式 拷贝继承（jq也用拷贝继承）</p>
+<h2 id="18-”use-strict”"><a href="#18-”use-strict”" class="headerlink" title="18.”use strict”"></a>18.”use strict”</h2><p>严格模式”的目的，主要有以下几个：</p>
+<ul>
+<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;</li>
+</ul>
+<p>　　- 消除代码运行的一些不安全之处，保证代码运行的安全；<br>　　- 提高编译器效率，增加运行速度；<br>　　- 为未来新版本的Javascript做好铺垫。<br>“严格模式”体现了Javascript更合理、更安全、更严谨的发展方向</p>
+<h2 id="19-加载方式"><a href="#19-加载方式" class="headerlink" title="19.加载方式"></a>19.加载方式</h2><p><strong>1.延迟加载</strong>有些 js 代码并不是页面初始化的时候就立刻需要的，而稍后的某些情况才需要的。延迟加载就是一开始并不加载这些暂时不用的js，而是在需要的时候或稍后再通过js 的控制来异步加载。<br>JS延迟加载有助于提高页面加载速度。</p>
+<p>js的进程由解析和执行构成。所有的延迟加载方式都只是延迟了执行过程。解析从未停止<br>js的执行顺序是自上而下。<br>延迟加载几种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defer 属性 defer的作用是，告诉浏览器，等到DOM加载完成后，再执行指定脚本。</span><br><span class="line">async 属性 async的作用是，使用另一个进程下载脚本，下载时不会阻塞渲染，下载好了 就执行。</span><br><span class="line">动态创建DOM方式  document.createElement </span><br><span class="line">使用jQuery的getScript方法</span><br><span class="line">使用setTimeout延迟方法</span><br><span class="line">让JS最后加载（放在文档尾部）</span><br></pre></td></tr></table></figure>
+<p><strong>2.同步加载</strong>，又称阻塞模式，会阻止浏览器的后续处理，停止了后续的解析，因此停止了后续的文件加载（如图像）、渲染、代码执行。</p>
+<p><strong>3.异步加载</strong>：也就是说第一个fun请求数据时，数据还未返回时便开始执行第二个fun了<br>代表：ajax 回调 事件 promise</p>
+<p><strong>4.预加载</strong><br>一种浏览器机制，使用浏览器空闲时间来预先下载/加载用户接下来很可能会浏览的页面/资源，当用户访问某个预加载的链接时，如果从缓存命中,页面就得以快速呈现<br><strong>5.图片延迟加载的方式</strong></p>
+<p><a href="https://segmentfault.com/a/1190000014728771#articleHeader19" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014728771#articleHeader19</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月29日 00:03</p>
+        <p>原始链接： <a class="post-url" href="/2019/02/01/js核心知识(基础)/" title="JS基础">https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/</a></p>
+        <footer>
+            <a href="https://wll-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/&title=《JS基础》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/&title=《JS基础》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS基础》 — 阿龙的小型博客&url=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/&via=https://wll-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wll-1017065322.github.io/2019/02/01/js核心知识(基础)/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JS基础"><span class="post-toc-text">JS基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-数据类型？"><span class="post-toc-text">1.数据类型？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-面向对象？"><span class="post-toc-text">2.面向对象？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Array"><span class="post-toc-text">3.Array</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1类型转换"><span class="post-toc-text">3.1类型转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-对象的属性"><span class="post-toc-text">5.对象的属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-DOM"><span class="post-toc-text">6.DOM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-JS获取盒模型宽高"><span class="post-toc-text">7.JS获取盒模型宽高</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-通用的事件侦听器"><span class="post-toc-text">8.通用的事件侦听器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-实现点击ul中li元素"><span class="post-toc-text">9.实现点击ul中li元素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-Ajax"><span class="post-toc-text">10.Ajax</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-IE的不同之处"><span class="post-toc-text">12.IE的不同之处</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-this工作原理"><span class="post-toc-text">13.this工作原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-函数"><span class="post-toc-text">14.函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-闭包"><span class="post-toc-text">15.闭包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-call-aplly-bind"><span class="post-toc-text">16.call aplly bind</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#17-js语言特性"><span class="post-toc-text">17.js语言特性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#18-”use-strict”"><span class="post-toc-text">18.”use strict”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#19-加载方式"><span class="post-toc-text">19.加载方式</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/02/02/变量、作用域与内存问题/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          基本类型和引用类型的值
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/18/Hello World/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Hello World</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wll-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
