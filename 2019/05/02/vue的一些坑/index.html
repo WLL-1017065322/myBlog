@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>vue的一些坑 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="记录vue 的一些坑1.给link添加事件、给组件绑定原生事件在vue-router1中使用v-link写入路由，但是在vue-router2中要使用router-link写入路由，在浏览器渲染的时候会把router-link渲染成a。 有时候需要为router-link注册事件，对于一般的html元素，直接使用@click=”eventFun”即可，但是对于router-link，像普通html">
+<meta name="keywords" content="javascript,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue的一些坑">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="记录vue 的一些坑1.给link添加事件、给组件绑定原生事件在vue-router1中使用v-link写入路由，但是在vue-router2中要使用router-link写入路由，在浏览器渲染的时候会把router-link渲染成a。 有时候需要为router-link注册事件，对于一般的html元素，直接使用@click=”eventFun”即可，但是对于router-link，像普通html">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-17T15:36:46.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue的一些坑">
+<meta name="twitter:description" content="记录vue 的一些坑1.给link添加事件、给组件绑定原生事件在vue-router1中使用v-link写入路由，但是在vue-router2中要使用router-link写入路由，在浏览器渲染的时候会把router-link渲染成a。 有时候需要为router-link注册事件，对于一般的html元素，直接使用@click=”eventFun”即可，但是对于router-link，像普通html">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue的一些坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      vue的一些坑
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-05-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="记录vue-的一些坑"><a href="#记录vue-的一些坑" class="headerlink" title="记录vue 的一些坑"></a>记录vue 的一些坑</h1><h3 id="1-给link添加事件、给组件绑定原生事件"><a href="#1-给link添加事件、给组件绑定原生事件" class="headerlink" title="1.给link添加事件、给组件绑定原生事件"></a>1.给link添加事件、给组件绑定原生事件</h3><p>在vue-router1中使用v-link写入路由，但是在vue-router2中要使用router-link写入路由，在浏览器渲染的时候会把router-link渲染成a。</p>
+<p>有时候需要为router-link注册事件，对于一般的html元素，直接使用@click=”eventFun”即可，但是对于router-link，像普通html元素那样注册事件后并不管用，需要添加.native才会成功注册。</p>
+<p>事实上给组件绑定原生事件就需要.native修饰v-on，否则无法注册成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component v-on:click.native=&quot;doTheThing&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+<p>错误事例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-inputplaceholder=&quot;请输入特定消费金额 &quot; @mouseover=&quot;test()&quot;&gt;&lt;/el-input&gt;</span><br><span class="line"></span><br><span class="line">&lt;router-link:to=&quot;item.menuUrl&quot; @click=&quot;toggleName=&apos;&apos;&quot;&gt;&lt;/router-link&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--官方文档有-&gt;&lt;!--https://cn.vuejs.org/v2/guide/components.html#给组件绑定原生事件--&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-修改prop中的数据"><a href="#2-修改prop中的数据" class="headerlink" title="2.修改prop中的数据"></a>2.修改prop中的数据</h3><p>每次父组件更新时，子组件的所有 prop 都会更新为最新值。这意味着你不应该在子组件内部改变 prop。如果你这么做了，Vue 会在控制台给出警告。</p>
+<p>在两种情况下，我们很容易忍不住想去修改 prop 中数据：<br>Prop 作为初始值传入后，子组件想把它当作局部数据来用；<br>Prop 作为原始数据传入，由子组件处理成其它数据输出。</p>
+<p>对这两种情况，正确的应对方式是：</p>
+<p>定义一个局部变量，并用 prop 的值初始化它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">props: [&apos;initialCounter&apos;],</span><br><span class="line">data: function () &#123;</span><br><span class="line">return &#123; counter: this.initialCounter &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义一个计算属性，处理 prop 的值并返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">props: [&apos;size&apos;],</span><br><span class="line">computed: &#123;</span><br><span class="line">normalizedSize: function () &#123;</span><br><span class="line">return this.size.trim().toLowerCase()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-我需要遍历的数组值更新了-值也赋值了-为什么视图不更新？"><a href="#3-我需要遍历的数组值更新了-值也赋值了-为什么视图不更新？" class="headerlink" title="3.我需要遍历的数组值更新了,值也赋值了,为什么视图不更新？"></a>3.我需要遍历的数组值更新了,值也赋值了,为什么视图不更新？</h3><p>因为有局限性啊,官方文档也说的很清楚，一般我们常用的手段是使用:this.$set(obj,item,value)</p>
+<p>官方文档如下：</p>
+<p>由于 JavaScript 的限制，Vue 不能检测以下变动的数组：</p>
+<p>当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue<br>当你修改数组的长度时，例如：vm.items.length = newLength<br>为了解决第一类问题，以下两种方式都可以实现和 vm.items[indexOfItem] = newValue 相同的效果，同时也将触发状态更新：</p>
+<p>// Vue.set<br>Vue.set(example1.items, indexOfItem, newValue)<br>// Array.prototype.splice<br>example1.items.splice(indexOfItem, 1, newValue)<br>为了解决第二类问题，你可以使用 splice：<br>example1.items.splice(newLength)</p>
+<p>还是由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除，对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。</p>
+<p>但是，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。例如，对于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">data: &#123;</span><br><span class="line">userProfile: &#123;</span><br><span class="line">name: &apos;Anika&apos;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>你可以添加一个新的 age 属性到嵌套的 userProfile 对象：</p>
+<p>Vue.set(vm.userProfile, ‘age’, 27)<br>有时你可能需要为已有对象赋予多个新属性，比如使用 Object.assign() 或 _.extend()。<br>在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(this.userProfile, &#123;</span><br><span class="line">age: 27,</span><br><span class="line">favoriteColor: &apos;Vue Green&apos;</span><br><span class="line">&#125;)</span><br><span class="line">你应该这样做：</span><br><span class="line">this.userProfile = Object.assign(&#123;&#125;, this.userProfile, &#123;</span><br><span class="line">age: 27,</span><br><span class="line">favoriteColor: &apos;Vue Green&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-建议尽可能在使用-v-for-时提供-key"><a href="#4-建议尽可能在使用-v-for-时提供-key" class="headerlink" title="4.建议尽可能在使用 v-for 时提供 key"></a>4.建议尽可能在使用 v-for 时提供 key</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">&lt;!-- 内容 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>它是 Vue 识别节点的一个通用机制，key 并不与 v-for 特别关联，key 还具有其他用途，我们将在后面的指南中看到其他用途，后续补充<br>（2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。）</p>
+<h3 id="5-路由模式改为history后-除了首次启动首页没报错-刷新访问路由都报错"><a href="#5-路由模式改为history后-除了首次启动首页没报错-刷新访问路由都报错" class="headerlink" title="5.路由模式改为history后,除了首次启动首页没报错,刷新访问路由都报错"></a>5.路由模式改为history后,除了首次启动首页没报错,刷新访问路由都报错</h3><p>必须给对应的服务端配置查询的主页面..也可以认为是主路由入口的引导。。。Vue-Router官方文档链接</p>
+<p>（<a href="https://router.vuejs.org/zh-cn/essentials/history-mode.html）包括动态路由匹配、向路由组件传递props等基础知识" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/essentials/history-mode.html）包括动态路由匹配、向路由组件传递props等基础知识</a></p>
+<h3 id="6-Uncaught-ReferenceError-xxx-is-not-define"><a href="#6-Uncaught-ReferenceError-xxx-is-not-define" class="headerlink" title="6.Uncaught ReferenceError: xxx is not define"></a>6.Uncaught ReferenceError: xxx is not define</h3><p>实例内的 data 对应的变量没有声明<br>你导入模块报这个错误,那绝逼是导出没写好</p>
+<h3 id="7-Error-in-render-function-”Type-Error-Cannot-read-property-‘xxx’-of-undefined”"><a href="#7-Error-in-render-function-”Type-Error-Cannot-read-property-‘xxx’-of-undefined”" class="headerlink" title="7.Error in render function:”Type Error: Cannot read property ‘xxx’ of undefined”"></a>7.Error in render function:”Type Error: Cannot read property ‘xxx’ of undefined”</h3><p>这种问题大多都是初始化的姿势不对;<br>比如引入echart这些…仔细去了解下生命周期,再来具体初始化;<br>vue 组件有时候也会(嵌套组件或者 props传递初始化)..也是基本这个问题</p>
+<h3 id="8-Failed-to-mount-component-template-or-render-function-not-defined"><a href="#8-Failed-to-mount-component-template-or-render-function-not-defined" class="headerlink" title="8.Failed to mount component: template or render function not defined"></a>8.Failed to mount component: template or render function not defined</h3><p>组件挂载失败,问题只有这么几个<br>组件没有正确引入; 挂载点顺序错了了;<br>自行动手排查</p>
+<h3 id="9-Vue-warn-Error-in-render-function-“TypeError-Cannot-read-property-‘0’-of-undefined”"><a href="#9-Vue-warn-Error-in-render-function-“TypeError-Cannot-read-property-‘0’-of-undefined”" class="headerlink" title="9.[Vue warn]: Error in render function: “TypeError: Cannot read property ‘0’ of undefined”"></a>9.[Vue warn]: Error in render function: “TypeError: Cannot read property ‘0’ of undefined”</h3><p>想将seller传递给子组件使用，但是我们ajax获取数据是异步过程，也就是说一开始在初始化seller时是空对象，所以把此时的seller传给header就是undefined</p>
+<p>使用v-if可以解决报错问题，和created为空问题  </p>
+<p>【详解vue2父组件传递props异步数据到子组件的问题】【<a href="http://www.jb51.net/article/117447.htm】" target="_blank" rel="noopener">http://www.jb51.net/article/117447.htm】</a></p>
+<h3 id="10-vue-cli-新建项目-缺少dev-server-js和dev-client-js-怎么模拟数据"><a href="#10-vue-cli-新建项目-缺少dev-server-js和dev-client-js-怎么模拟数据" class="headerlink" title="10.vue-cli 新建项目 缺少dev-server.js和dev-client.js , 怎么模拟数据"></a>10.vue-cli 新建项目 缺少dev-server.js和dev-client.js , 怎么模拟数据</h3><p>在使用vue开发过程中，难免需要去本地数据地址进行请求，而原版配置在dev-server.js中，新版vue-webpack-template已经删除dev-server.js，改用webpack.dev.conf.js代替，所以 配置本地访问在webpack.dev.conf.js里配置即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//首先</span><br><span class="line">const express = require(&apos;express&apos;)</span><br><span class="line">const app = express()</span><br><span class="line">var appData = require(&apos;../data.json&apos;)</span><br><span class="line">var seller = appData.seller</span><br><span class="line">var goods = appData.goods</span><br><span class="line">var ratings = appData.ratings</span><br><span class="line">var apiRoutes = express.Router()</span><br><span class="line">app.use(&apos;/api&apos;, apiRoutes)</span><br><span class="line"></span><br><span class="line">//找到devServer,添加</span><br><span class="line">before(app) &#123;</span><br><span class="line">  app.get(&apos;/api/seller&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      // 这里是你的json内容</span><br><span class="line">      errno: 0,</span><br><span class="line">      data: seller</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;),</span><br><span class="line">  app.get(&apos;/api/goods&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      // 这里是你的json内容</span><br><span class="line">      errno: 0,</span><br><span class="line">      data: goods</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;),</span><br><span class="line">  app.get(&apos;/api/ratings&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      // 这里是你的json内容</span><br><span class="line">      errno: 0,</span><br><span class="line">      data: ratings</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="11-WDS-Errors-while-compiling-Reload-prevented"><a href="#11-WDS-Errors-while-compiling-Reload-prevented" class="headerlink" title="11.[WDS] Errors while compiling. Reload prevented."></a>11.[WDS] Errors while compiling. Reload prevented.</h3><p>有一种错误的原因是import的路径不对 </p>
+<p>import header from ‘@views/header/header.vue’</p>
+<h3 id="12-应当避免在模板或计算属性中使用-refs"><a href="#12-应当避免在模板或计算属性中使用-refs" class="headerlink" title="12.应当避免在模板或计算属性中使用 $refs"></a>12.应当避免在模板或计算属性中使用 $refs</h3><p>$refs 只在组件渲染完成后才填充，并且它是非响应式的。它仅仅是一个直接操作子组件的应急方案——应当避免在模板或计算属性中使用 $refs</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年06月17日 23:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/05/02/vue的一些坑/" title="vue的一些坑">https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/&title=《vue的一些坑》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/&title=《vue的一些坑》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue的一些坑》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/05/02/vue的一些坑/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记录vue-的一些坑"><span class="post-toc-text">记录vue 的一些坑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-给link添加事件、给组件绑定原生事件"><span class="post-toc-text">1.给link添加事件、给组件绑定原生事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-修改prop中的数据"><span class="post-toc-text">2.修改prop中的数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-我需要遍历的数组值更新了-值也赋值了-为什么视图不更新？"><span class="post-toc-text">3.我需要遍历的数组值更新了,值也赋值了,为什么视图不更新？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-建议尽可能在使用-v-for-时提供-key"><span class="post-toc-text">4.建议尽可能在使用 v-for 时提供 key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-路由模式改为history后-除了首次启动首页没报错-刷新访问路由都报错"><span class="post-toc-text">5.路由模式改为history后,除了首次启动首页没报错,刷新访问路由都报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-Uncaught-ReferenceError-xxx-is-not-define"><span class="post-toc-text">6.Uncaught ReferenceError: xxx is not define</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-Error-in-render-function-”Type-Error-Cannot-read-property-‘xxx’-of-undefined”"><span class="post-toc-text">7.Error in render function:”Type Error: Cannot read property ‘xxx’ of undefined”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-Failed-to-mount-component-template-or-render-function-not-defined"><span class="post-toc-text">8.Failed to mount component: template or render function not defined</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-Vue-warn-Error-in-render-function-“TypeError-Cannot-read-property-‘0’-of-undefined”"><span class="post-toc-text">9.[Vue warn]: Error in render function: “TypeError: Cannot read property ‘0’ of undefined”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-vue-cli-新建项目-缺少dev-server-js和dev-client-js-怎么模拟数据"><span class="post-toc-text">10.vue-cli 新建项目 缺少dev-server.js和dev-client.js , 怎么模拟数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-WDS-Errors-while-compiling-Reload-prevented"><span class="post-toc-text">11.[WDS] Errors while compiling. Reload prevented.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-应当避免在模板或计算属性中使用-refs"><span class="post-toc-text">12.应当避免在模板或计算属性中使用 $refs</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/05/12/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Hello World
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/05/01/vue初识/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">vue初识</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/javascript/">javascript</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/标签1/" style="font-size: 10px;">标签1</a> <a href="/tags/标签2-可选/" style="font-size: 10px;">标签2 (可选)</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
