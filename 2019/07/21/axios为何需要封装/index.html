@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>axios为何需要封装 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="关于axios的一些封装关于Axios的封装 为何需要在封装应用场景，项目中涉及100个AJAX请求，其中： 1.其中60个需要在请求头header设置token headers: {token: token}用于权限校验; 2.其中20个为上传EXCEL文件需要在请求头中设置Content-Type; 123headers: &amp;#123;        &amp;apos;Content-Type&amp;ap">
+<meta name="keywords" content="javascript,vue,axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios为何需要封装">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="关于axios的一些封装关于Axios的封装 为何需要在封装应用场景，项目中涉及100个AJAX请求，其中： 1.其中60个需要在请求头header设置token headers: {token: token}用于权限校验; 2.其中20个为上传EXCEL文件需要在请求头中设置Content-Type; 123headers: &amp;#123;        &amp;apos;Content-Type&amp;ap">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-28T08:05:24.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="axios为何需要封装">
+<meta name="twitter:description" content="关于axios的一些封装关于Axios的封装 为何需要在封装应用场景，项目中涉及100个AJAX请求，其中： 1.其中60个需要在请求头header设置token headers: {token: token}用于权限校验; 2.其中20个为上传EXCEL文件需要在请求头中设置Content-Type; 123headers: &amp;#123;        &amp;apos;Content-Type&amp;ap">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-axios为何需要封装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      axios为何需要封装
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/vue/">vue</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-07-21
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="关于axios的一些封装"><a href="#关于axios的一些封装" class="headerlink" title="关于axios的一些封装"></a><a href="https://www.cnblogs.com/amysu/p/9957292.html" target="_blank" rel="noopener">关于axios的一些封装</a></h1><p>关于Axios的封装</p>
+<h1 id="为何需要在封装"><a href="#为何需要在封装" class="headerlink" title="为何需要在封装"></a>为何需要在封装</h1><p>应用场景，项目中涉及100个<code>AJAX</code><strong>请求</strong>，其中：</p>
+<p>1.其中60个需要在<strong>请求头header</strong>设置<strong>token</strong> <code>headers: {token: token}</code>用于权限校验;</p>
+<p>2.其中20个为<strong>上传EXCEL文件</strong>需要在请求头中设置<strong>Content-Type</strong>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">headers: &#123;</span><br><span class="line">        &apos;Content-Type&apos;: `multipart/form-data; boundary=$&#123;data._boundary&#125;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面说的 1、2、3可以在<strong>全局</strong><code>request</code><strong>拦截中</strong>进行处理，但是<strong>代价极大</strong>，需要为这100个接口都<strong>做判断再做相应处理</strong>… ；当然也可以不用全局拦截，为每个接口都单独定义，我相信有不少同学仍是这样处理的，<strong>但是</strong>只要有改动，例如现在我要求所有的请求头都新增一个参数，那就只能一个一个接口的改…..这不是我们想要的结果，所以 我们需要对<strong>AJAX再封装！AJAX再封装！AJAX再封装！</strong>，因为相当重要，所以要多说几遍….</p>
+<ol>
+<li><p>③最后20个请求用来<code>获取文件流</code>，需要指定接受类型<code>responseType: &#39;blob&#39;</code></p>
+</li>
+<li><p>需要对<strong>全局发起request</strong>进行<strong>拦截</strong>并做<strong>异步处理</strong>（<strong>强调</strong>：是<strong>异步处理</strong>）；</p>
+</li>
+<li><p>如果你的项目已经做到一半，现在后端要<strong>加上token权限</strong>做认证；</p>
+</li>
+</ol>
+<h1 id="封装实现"><a href="#封装实现" class="headerlink" title="封装实现"></a>封装实现</h1><p>封装其实很简单，就是对原来真正的<strong>AJAX套一个壳</strong>，<strong>这个壳</strong>就是<strong>一个函数！</strong> 在这个函数里都干了些什么见不得人事呢？干什么都可以，上面说的1、 2、 3、 4、 5都可以在这里悄悄的进行，那对原来的<strong>AJAX链式调用</strong>有影响吗？答案是肯定的：<strong>没有影响。</strong> 先来看看我在代码里调用的AJAX：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_initEditParams () &#123;</span><br><span class="line">    this.$axios(&apos;Common/Permission/Get&apos;, &#123;Id&#125;).then(res =&gt; &#123;</span><br><span class="line">    ....</span><br><span class="line">    ....</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>this.$axios可以直接调用是因为这里把请求方法之类的配置项全放在封装里面进行了。</p>
+<p>这里也是通过<code>Vue.prototype.$axios = axios</code>添加到<strong>vue</strong>全局实例的，但这里添加的<code>axios</code>不是直接引入的<strong>axios插件</strong>，而是一个<strong>方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;axios&#125; from &apos;./utils/common&apos;</span><br><span class="line">Vue.prototype.$axios = axios</span><br></pre></td></tr></table></figure>
+<p>当然。也可以不用添加到全局实例里面，可以在组件中通过<code>import</code>语法引入使用。当然是项目里<strong>大量使用的封装方法</strong>直接使用<code>Vue.prototype</code>添加到<code>vue</code>实例。接下来我们看看<strong>axios方法都做了些啥</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import Axios from &apos;axios&apos;</span><br><span class="line">import Store from &apos;../vuex&apos;</span><br><span class="line"></span><br><span class="line">/*********************************</span><br><span class="line">  ** Fn: axios</span><br><span class="line">  ** Intro: 公用封装的axios  已在main.js中进行 $axios代理</span><br><span class="line">  ** Intro: Store.state.permission.constUrl 为公用的接口前缀地址</span><br><span class="line">  ** Intro: url 方法接受参数 为定义的 接口地址后缀</span><br><span class="line">  ** Intro: data 方法接受参数 为定义的参数</span><br><span class="line">  ** Author: zyx</span><br><span class="line">*********************************/</span><br><span class="line"></span><br><span class="line">export function axios (url, data) &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    Axios(&#123;</span><br><span class="line">      url: `$&#123;Store.state.permission.constUrl&#125;$&#123;url&#125;`,</span><br><span class="line">      method: &apos;post&apos;,</span><br><span class="line">      data: data,</span><br><span class="line">      headers: &#123;</span><br><span class="line">        token: Store.state.permission.token</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).then(res =&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Axios的封装</strong></p>
+<p>在目录下新建一个Axios文件夹，在文件夹下新建文件axios.js，文件内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">import Axios from &quot;axios&quot;;</span><br><span class="line">import qs from &quot;qs&quot;;</span><br><span class="line">import router from &quot;@/router/router.js&quot;;</span><br><span class="line">// import &#123; Message &#125; from &quot;element-ui&quot;;</span><br><span class="line"></span><br><span class="line">/****** 创建axios实例 ******/</span><br><span class="line">const Service = Axios.create(&#123;</span><br><span class="line">  baseURL: process.env.BASE_URL, // api的base_url</span><br><span class="line">  timeout: 10000, // 请求超时时间</span><br><span class="line">  responseType: &quot;json&quot;,</span><br><span class="line">  withCredentials: true, // 是否允许带cookie这些</span><br><span class="line">  headers: &#123;</span><br><span class="line">    //   &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded;charset=utf-8&quot;</span><br><span class="line">    &quot;Content-Type&quot;: &quot;application/json;charset=utf-8&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 设置请求拦截器</span><br><span class="line">Service.interceptors.request.use(config =&gt; &#123;</span><br><span class="line">    // 在发送请求之前做某件事</span><br><span class="line">    if (config.method === &quot;post&quot;) &#123;</span><br><span class="line">      // 序列化</span><br><span class="line">      // config.data = qs.stringify(config.data);</span><br><span class="line">      // config.data = JSON.stringify(config.data);</span><br><span class="line">      // 温馨提示,若是公司的提交能直接接受json 格式,可以不用 qs 来序列化的</span><br><span class="line">    &#125;</span><br><span class="line">    // 若是有做鉴权token , 就给头部带上token</span><br><span class="line">    // 若是需要跨站点,存放到 cookie 会好一点,限制也没那么多,有些浏览环境限制了 localstorage 的使用</span><br><span class="line">    // if (localStorage.token) &#123;</span><br><span class="line">    //   config.headers.Authorization = localStorage.token;</span><br><span class="line">    // &#125;</span><br><span class="line">    return config;</span><br><span class="line">  &#125;,</span><br><span class="line">  error =&gt; &#123;</span><br><span class="line">    // error 的回调信息,看公司的定义</span><br><span class="line">    Message(&#123;</span><br><span class="line">      showClose: true,</span><br><span class="line">      message: error,</span><br><span class="line">      type: &quot;warning&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 响应拦截  http 请求回来的一些状态码，包括我们自己的服务器返回的错误码进行一个逻辑处理。</span><br><span class="line">Service.interceptors.response.use(res =&gt; &#123;</span><br><span class="line">  </span><br><span class="line">  //对响应数据做些事</span><br><span class="line">  // if (res.data &amp;&amp; !res.data.success) &#123;</span><br><span class="line">  //     Message(&#123;</span><br><span class="line">  //         //  饿了么的消息弹窗组件,类似toast</span><br><span class="line">  //         showClose: true,</span><br><span class="line">  //         message: res.data.error.message.message ?</span><br><span class="line">  //         res.data.error.message.message :</span><br><span class="line">  //         res.data.error.message,</span><br><span class="line">  //         type: &quot;error&quot;</span><br><span class="line">  //     &#125;);</span><br><span class="line">  //     return Promise.reject(res.data.error.message);</span><br><span class="line">  // &#125;</span><br><span class="line">  return res;</span><br><span class="line">&#125;, (error) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  // 错误处理方式1：</span><br><span class="line">//   if (error.data) &#123;</span><br><span class="line">//     switch (error.data.code) &#123;</span><br><span class="line">//       case 401:</span><br><span class="line">//         // 返回 401 清除token信息并跳转到登录页面</span><br><span class="line">//         // store.commit(&quot;del_token&quot;);</span><br><span class="line">//         router.push(&#123;</span><br><span class="line">//           path: &quot;/login&quot;,</span><br><span class="line">//           //   记录原来的页面路径用于登录后调回原页面</span><br><span class="line">//           query: &#123;</span><br><span class="line">//             redirect: router.currentRoute.fullPath</span><br><span class="line">//           &#125;</span><br><span class="line">//         &#125;);</span><br><span class="line">//         break;</span><br><span class="line">//     &#125;</span><br><span class="line">//   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // 错误处理方式2：</span><br><span class="line">  // 用户登录的时候会拿到一个基础信息,比如用户名,token,过期时间戳</span><br><span class="line">  // 直接丢localStorage或者sessionStorage</span><br><span class="line">  if (!window.localStorage.getItem(&quot;username&quot;)) &#123;</span><br><span class="line">    // 若是接口访问的时候没有发现有鉴权的基础信息,直接返回登录页</span><br><span class="line">    router.push(&#123;</span><br><span class="line">      path: &quot;/login&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">      // 下面是接口回调的satus ,因为我做了一些错误页面,所以都会指向对应的报错页面</span><br><span class="line">      if (error.response.status === 403) &#123;</span><br><span class="line">        router.push(&#123;</span><br><span class="line">          path: &quot;/error/403&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      if (error.response.status === 500) &#123;</span><br><span class="line">        router.push(&#123;</span><br><span class="line">          path: &quot;/error/500&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      if (error.response.status === 502) &#123;</span><br><span class="line">        router.push(&#123;</span><br><span class="line">          path: &quot;/error/502&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      if (error.response.status === 404) &#123;</span><br><span class="line">        router.push(&#123;</span><br><span class="line">          path: &quot;/error/404&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  // 返回 response 里的错误信息</span><br><span class="line">  let errorInfo = error.data.error ? error.data.error.message : error.data;</span><br><span class="line">  return Promise.reject(errorInfo);</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">//封装后导出</span><br><span class="line">export default Service;</span><br></pre></td></tr></table></figure>
+<p>这种方法使用方式有两种：</p>
+<h3 id="使用方式1："><a href="#使用方式1：" class="headerlink" title="使用方式1："></a>使用方式1：</h3><p>1：全局配置：在main.js文件里导入封装的axios文件</p>
+<p>import axios from ‘@/Axios/axios’;</p>
+<p>2：绑定到Vue实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$axios= axios; //在其他vue组件中就可以this.axios调用使用:</span><br></pre></td></tr></table></figure>
+<p>3：在需要使用的单文件VUE组件里面直接使用(因为是全局配置，在使用的单文件里面不需要引入)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.$axios.get(url,&#123;params:&#123;ID:888&#125;&#125;).then(res=&gt;&#123;&#125;).catch(error=&gt;&#123;&#125;)</span><br><span class="line">this.$axios.post(url,&#123;id:888,name:&quot;sdsdsd&quot;&#125;).then(res=&gt;&#123;&#125;).catch(error=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="使用方式2："><a href="#使用方式2：" class="headerlink" title="使用方式2："></a>使用方式2：</h3><p>在Axios文件夹下（或者其他文件夹）先新建一个api(任意名称)文件：api.js</p>
+<p>1：该文件里面下业务接口请求相关的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 封装后使用的方式</span><br><span class="line">import request from &quot;@/Axios/axios.js&quot;</span><br><span class="line">export function tableList(query)&#123;</span><br><span class="line">    return request(&#123;</span><br><span class="line">        url: &apos;http://yapi.demo.qunar.com/mock/27844/apitest/list&apos;,</span><br><span class="line">        method: &apos;get&apos;,</span><br><span class="line">        params: query</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function goodsList(query)&#123;</span><br><span class="line">  return request(&#123;</span><br><span class="line">      url: &apos;http://yapi.demo.qunar.com/mock/27844/apitest/list&apos;,</span><br><span class="line">      method: &apos;get&apos;,</span><br><span class="line">      params: query</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2:在需要使用的单文件里面导入需要调用的接口函数</p>
+<p>比如:home.vue单文件里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;mainBox&quot;&gt;</span><br><span class="line">        &lt;table-component v-if=&quot;data.length&gt;0&quot; :goodslist=&quot;data&quot;&gt;&lt;/table-component&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;style rel=&quot;stylesheet/scss&quot; lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> // 导入接口函数</span><br><span class="line">import &#123;tableList&#125;  from &quot;../Axios/api.js&quot; ;</span><br><span class="line">import tableComponent from &quot;@/view/table/table&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">       return &#123;</span><br><span class="line">            data:[]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">        this.getData()</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        getData()&#123;</span><br><span class="line">            //使用接口函数</span><br><span class="line">            tableList().then(res=&gt;&#123;</span><br><span class="line">                console.log(res.data);</span><br><span class="line">                this.data = res.data.list</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        tableComponent</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 16:05</p>
+        <p>原始链接： <a class="post-url" href="/2019/07/21/axios为何需要封装/" title="axios为何需要封装">https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/&title=《axios为何需要封装》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/&title=《axios为何需要封装》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios为何需要封装》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/07/21/axios为何需要封装/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+    <a href="/tags/axios/" class="color1">axios</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于axios的一些封装"><span class="post-toc-text">关于axios的一些封装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为何需要在封装"><span class="post-toc-text">为何需要在封装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#封装实现"><span class="post-toc-text">封装实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用方式1："><span class="post-toc-text">使用方式1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用方式2："><span class="post-toc-text">使用方式2：</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/07/24/axios的二次封装/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          axios的二次封装
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/07/17/axios post 后端拿不到数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">axios post 后端拿不到数据</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

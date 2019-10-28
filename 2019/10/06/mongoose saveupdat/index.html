@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>mongoose saveupdat | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content=".save()和update() update比find之后save()效率高，因为这样不用读取整个文档。 Mongoose的update是MongoDB的update，但是Mongoose的save可能是MongoDB的插入或是update。 关于save，mongoose会自动diff新文档，只更改更新部分。这有利于原子性。 update不能触发中间件，validation默认不能，但是可以修">
+<meta name="keywords" content="数据库,mongod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose saveupdat">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content=".save()和update() update比find之后save()效率高，因为这样不用读取整个文档。 Mongoose的update是MongoDB的update，但是Mongoose的save可能是MongoDB的插入或是update。 关于save，mongoose会自动diff新文档，只更改更新部分。这有利于原子性。 update不能触发中间件，validation默认不能，但是可以修">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-28T10:14:16.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongoose saveupdat">
+<meta name="twitter:description" content=".save()和update() update比find之后save()效率高，因为这样不用读取整个文档。 Mongoose的update是MongoDB的update，但是Mongoose的save可能是MongoDB的插入或是update。 关于save，mongoose会自动diff新文档，只更改更新部分。这有利于原子性。 update不能触发中间件，validation默认不能，但是可以修">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-mongoose saveupdat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      mongoose saveupdat
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/数据库/">数据库</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-06
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="save-和update"><a href="#save-和update" class="headerlink" title=".save()和update()"></a>.save()和update()</h1><ul>
+<li>update比find之后save()效率高，因为这样不用读取整个文档。</li>
+<li>Mongoose的update是MongoDB的update，但是Mongoose的save可能是MongoDB的插入或是update。</li>
+<li>关于save，mongoose会自动diff新文档，只更改更新部分。这有利于原子性。</li>
+<li>update不能触发中间件，validation默认不能，但是可以修改。</li>
+</ul>
+<h1 id="update-和findOneAndUpdate"><a href="#update-和findOneAndUpdate" class="headerlink" title="update()和findOneAndUpdate()"></a>update()和findOneAndUpdate()</h1><ul>
+<li>update()返回数据处理条数</li>
+<li>findOneAndUpdate()返回处理后的数据</li>
+<li>简单来说，你需要获取数据就用findOneAndUpdate()，只需要修改数据而不关注修改后数据那就用update()。</li>
+</ul>
+<p>首先有两个概念。您的应用程序是<strong>客户端</strong>，Mongodb是<strong>服务器</strong>。</p>
+<p>主要区别在于，<code>.save()</code>在客户端代码中已经有一个对象，或者必须先从服务器检索数据，然后再写回整个内容。</p>
+<p>在另一方面<code>.update()</code>也<strong>不会</strong>需要加载从服务器客户端的数据。所有交互都发生在服务器端，而无需检索到客户端<code>.update()</code>。因此，当您向现有文档中添加内容时，这种方式会非常有效。</p>
+<p>此外，还有一个<code>multi</code>参数，该参数<code>.update()</code>允许对多个符合查询条件的文档执行操作。</p>
+<p>便捷方法中有一些在您<code>.update()</code>用作呼叫时会松懈的东西，但是某些操作的好处是您必须承担“权衡”。有关此信息和可用选项的更多信息，请参阅<a href="http://mongoosejs.com/docs/api.html#model_Model.update" target="_blank" rel="noopener">文档</a>。</p>
+<p>简而言之<code>.save()</code>是客户端接口，<code>.update()</code>是服务器端。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 18:14</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/06/mongoose saveupdat/" title="mongoose saveupdat">https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/&title=《mongoose saveupdat》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/&title=《mongoose saveupdat》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose saveupdat》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/10/06/mongoose saveupdat/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/数据库/" class="color4">数据库</a>
+      
+    <a href="/tags/mongod/" class="color2">mongod</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#save-和update"><span class="post-toc-text">.save()和update()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#update-和findOneAndUpdate"><span class="post-toc-text">update()和findOneAndUpdate()</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/06/node session/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          node session
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/10/05/chrome开发者工具 /" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">chrome开发者工具</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

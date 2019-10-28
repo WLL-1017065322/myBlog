@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>项目遇到的问题-vue | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="shops项目: app.js 123&amp;lt;keep-alive&amp;gt;	&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;&amp;lt;/keep-alive&amp;gt; 缓存导致,点击尺码,到达的页面是缓存的,而不是根据url 1 当引入keep-alive的时候，页面第一次进入，钩子的触发顺序created-&amp;gt; mounted-&amp;gt; activated，退出时触">
+<meta name="keywords" content="问题,项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目遇到的问题-vue">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="shops项目: app.js 123&amp;lt;keep-alive&amp;gt;	&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;&amp;lt;/keep-alive&amp;gt; 缓存导致,点击尺码,到达的页面是缓存的,而不是根据url 1 当引入keep-alive的时候，页面第一次进入，钩子的触发顺序created-&amp;gt; mounted-&amp;gt; activated，退出时触">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-28T08:21:57.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目遇到的问题-vue">
+<meta name="twitter:description" content="shops项目: app.js 123&amp;lt;keep-alive&amp;gt;	&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;&amp;lt;/keep-alive&amp;gt; 缓存导致,点击尺码,到达的页面是缓存的,而不是根据url 1 当引入keep-alive的时候，页面第一次进入，钩子的触发顺序created-&amp;gt; mounted-&amp;gt; activated，退出时触">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-项目遇到的问题-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      项目遇到的问题-vue
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/vue/">vue</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>shops项目:</p>
+<p>app.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">	&lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+<p>缓存导致,点击尺码,到达的页面是缓存的,而不是根据url</p>
+<p>1 当引入<code>keep-alive</code>的时候，页面第一次进入，钩子的触发顺序created-&gt; mounted-&gt; activated，退出时触发deactivated。当再次进入（前进或者后退）时，只触发activated。<br>链接：<a href="https://www.jianshu.com/p/42429f4d8f9e" target="_blank" rel="noopener">https://www.jianshu.com/p/42429f4d8f9e</a></p>
+<p>2.监测$router的变化；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    // 如果路由有变化，会再次执行该方法</span><br><span class="line">   &quot;$route&quot;: &quot;fetchDate&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3 .在keep-alive中直接添加 include，cachedViews（Array类型：包含vue文件的组件name都将被缓存起来）；反之exclude则是不包含；</p>
+<p>　　注意：所有.vue组件文件都必须附上name属性！！！建议用vuex管理cachedViews</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive :include=&quot;cachedViews&quot;&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+<p>4.还有种情况，在不同路由应用了相同的vue组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;path:&apos;aaa&apos;,component:Mompage,name:&apos;mom&apos;&#125;,</span><br><span class="line">&#123;path:&apos;bbb&apos;,component:Mompage,name:&apos;momPlus&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>默认情况下当这两个页面切换时并不会触发vue的created或者mounted钩子，需要手动的watch:$router（又回到上面的步骤），或者在router-view上加上唯一值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//随便抄一段代码过来</span><br><span class="line">&lt;router-view :key=&quot;key&quot;&gt;&lt;/router-view&gt;</span><br><span class="line">computed: &#123;</span><br><span class="line">    key() &#123;</span><br><span class="line">        return this.$route.name !== undefined? this.$route.name + +new Date(): this.$route + +new Date()</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 16:21</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/01/项目遇到的问题-vue/" title="项目遇到的问题-vue">https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/&title=《项目遇到的问题-vue》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/&title=《项目遇到的问题-vue》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《项目遇到的问题-vue》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/10/01/项目遇到的问题-vue/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/问题/" class="color3">问题</a>
+      
+    <a href="/tags/项目/" class="color3">项目</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/02/mongodb导入csv/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          mongodb导入csv
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/09/28/python-Selenium-WebDriverWait/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">python-Selenium-WebDriverWait</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>css瀑布流 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="纯 css 写瀑布流1.multi-columns 方式：通过 Multi-columns 相关的属性 column-count、column-gap配合 break-inside来实现瀑布流布局。 设置这样的 html 结构： ;) 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta name="keywords" content="css,瀑布流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css瀑布流">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/10/13/css瀑布流/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="纯 css 写瀑布流1.multi-columns 方式：通过 Multi-columns 相关的属性 column-count、column-gap配合 break-inside来实现瀑布流布局。 设置这样的 html 结构： ;) 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/copycode-1568298158723.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/1344447-20180410125919659-1958622609.jpg">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/1344447-20180410130900922-918917328.jpg">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/1344447-20180410131318225-135739229.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/1344447-20180410131140018-1659527281.png">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/1344447-20180410132944679-1484805253.png">
+<meta property="og:updated_time" content="2019-10-28T10:12:51.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css瀑布流">
+<meta name="twitter:description" content="纯 css 写瀑布流1.multi-columns 方式：通过 Multi-columns 相关的属性 column-count、column-gap配合 break-inside来实现瀑布流布局。 设置这样的 html 结构： ;) 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/10/13/css瀑布流/assets/copycode-1568298158723.gif">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-css瀑布流" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      css瀑布流
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/css/">css</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-13
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="纯-css-写瀑布流"><a href="#纯-css-写瀑布流" class="headerlink" title="纯 css 写瀑布流"></a>纯 css 写瀑布流</h2><h3 id="1-multi-columns-方式："><a href="#1-multi-columns-方式：" class="headerlink" title="1.multi-columns 方式："></a>1.multi-columns 方式：</h3><p>通过 Multi-columns 相关的属性 <code>column-count</code>、<code>column-gap</code>配合 <code>break-inside</code>来实现瀑布流布局。</p>
+<p>设置这样的 html 结构：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="assets/copycode-1568298158723.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> 1             &lt;div class=&quot;masonry&quot;&gt; </span><br><span class="line"> 2             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line"> 3                 &lt;div class=&quot;item_content content-lar&quot;&gt; 1</span><br><span class="line"> 4                 &lt;/div&gt; </span><br><span class="line"> 5             &lt;/div&gt; </span><br><span class="line"> 6             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line"> 7                 &lt;div class=&quot;item_content content-sma&quot;&gt; 2</span><br><span class="line"> 8                 &lt;/div&gt; </span><br><span class="line"> 9             &lt;/div&gt;</span><br><span class="line">10             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">11                 &lt;div class=&quot;item_content content-mid&quot;&gt; 3</span><br><span class="line">12                 &lt;/div&gt; </span><br><span class="line">13             &lt;/div&gt;</span><br><span class="line">14             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">15                 &lt;div class=&quot;item_content content-sma&quot;&gt; 4</span><br><span class="line">16                 &lt;/div&gt; </span><br><span class="line">17             &lt;/div&gt;</span><br><span class="line">18             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">19                 &lt;div class=&quot;item_content content-mid&quot;&gt; 5</span><br><span class="line">20                 &lt;/div&gt; </span><br><span class="line">21             &lt;/div&gt;</span><br><span class="line">22             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">23                 &lt;div class=&quot;item_content content-lar&quot;&gt; 6</span><br><span class="line">24                 &lt;/div&gt; </span><br><span class="line">25             &lt;/div&gt; </span><br><span class="line">26             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">27                 &lt;div class=&quot;item_content content-sma&quot;&gt; 7</span><br><span class="line">28                 &lt;/div&gt; </span><br><span class="line">29             &lt;/div&gt;</span><br><span class="line">30             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">31                 &lt;div class=&quot;item_content content-lar&quot;&gt; 8</span><br><span class="line">32                 &lt;/div&gt; </span><br><span class="line">33             &lt;/div&gt;</span><br><span class="line">34             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">35                 &lt;div class=&quot;item_content content-lar&quot;&gt; 9</span><br><span class="line">36                 &lt;/div&gt; </span><br><span class="line">37             &lt;/div&gt;</span><br><span class="line">38             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">39                 &lt;div class=&quot;item_content content-sma&quot;&gt; 10</span><br><span class="line">40                 &lt;/div&gt; </span><br><span class="line">41             &lt;/div&gt;</span><br><span class="line">42             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">43                 &lt;div class=&quot;item_content content-mid&quot;&gt; 11</span><br><span class="line">44                 &lt;/div&gt; </span><br><span class="line">45             &lt;/div&gt;</span><br><span class="line">46             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">47                 &lt;div class=&quot;item_content content-mid&quot;&gt; 12</span><br><span class="line">48                 &lt;/div&gt; </span><br><span class="line">49             &lt;/div&gt;</span><br><span class="line">50             &lt;!-- more items --&gt; </span><br><span class="line">51         &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>.masonry 是瀑布流容器，里面放置了列表 item，在 <code>.masonry</code>中设置 <code>column-count（列数）</code>和 <code>column-gap（</code>列间距）</p>
+<p><code>item 中设置 break-inside:avoid，这是</code>为了控制文本块分解成单独的列，以免项目列表的内容跨列，破坏整体的布局。</p>
+<p>在 css 中设置包裹 masonry 和 item 的属性样式：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> 1             .masonry &#123; </span><br><span class="line"> 2                 -moz-column-count:3; /* Firefox */</span><br><span class="line"> 3                 -webkit-column-count:3; /* Safari 和 Chrome */</span><br><span class="line"> 4                 column-count:3;</span><br><span class="line"> 5                 -moz-column-gap: 2em;</span><br><span class="line"> 6                 -webkit-column-gap: 2em;</span><br><span class="line"> 7                 column-gap: 2em;</span><br><span class="line"> 8                 width: 80%;</span><br><span class="line"> 9                 margin:2em auto;</span><br><span class="line">10             &#125;</span><br><span class="line">11             .item &#123; </span><br><span class="line">12                 padding: 2em;</span><br><span class="line">13                 margin-bottom: 2em;</span><br><span class="line">14                 -moz-page-break-inside: avoid;</span><br><span class="line">15                 -webkit-column-break-inside: avoid;</span><br><span class="line">16                 break-inside: avoid;</span><br><span class="line">17                 background: #f60;</span><br><span class="line">18             &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>当然为了布局具有响应式效果，可以借助媒体查询属性，在不同屏幕大小的条件下设置瀑布流容器 masonry 的 <code>column-count 来自适应改变列数</code>：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> 1             @media screen and (max-width: 800px) &#123; </span><br><span class="line"> 2                 .masonry &#123; </span><br><span class="line"> 3                     column-count: 2; // two columns on larger phones </span><br><span class="line"> 4                 &#125; </span><br><span class="line"> 5             &#125; </span><br><span class="line"> 6             @media screen and (max-width: 500px) &#123; </span><br><span class="line"> 7                 .masonry &#123; </span><br><span class="line"> 8                     column-count: 1; // two columns on larger phones </span><br><span class="line"> 9                 &#125; </span><br><span class="line">10             &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>那么所产生的效果是：</p>
+<p><img src="assets/1344447-20180410125919659-1958622609.jpg" alt="img"></p>
+<p>也是根据屏幕大小自适应改变列数</p>
+<h2 id="2-flexbox-方式："><a href="#2-flexbox-方式：" class="headerlink" title="2.flexbox 方式："></a>2.flexbox 方式：</h2><p>html 的结构依旧和上面的 Multi-columns 展示的一样。只是在 <code>.masonry</code>容器中使用的 CSS 不一样：</p>
+<p>在 <code>.masonry</code>中是通过采用 <code>flex-flow</code>来控制列，并且允许它换行。</p>
+<p>这里关键是容器的高度，我这里要显式的设置 <code>height</code>属性，当然除了设置 <code>px</code>值，还可以设置<code>100vh</code>，让 <code>.masonry</code>容器的高度和浏览器视窗高度一样。</p>
+<p>记住，这里<code>height</code>可以设置成任何高度值（采用任何的单位），但不能不显式的设置，如果没有显式的设置，容器就无法包裹住项目列表。</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1             .masonry &#123; </span><br><span class="line">2                 height: 800px;</span><br><span class="line">3                 display: flex; </span><br><span class="line">4                 flex-flow: column wrap;</span><br><span class="line">5                 width: 80%;</span><br><span class="line">6                 margin:2em auto;</span><br><span class="line">7             &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>对于 <code>.item，</code>可以不再使用 <code>break-inside:avoid</code>，但其它属性可以是一样。</p>
+<p>同样的，响应式设置，使用 Flexbox 实现响应式布局比多列布局 Multi-columns 要来得容易，他天生就具备这方面的能力，只不过我们这里需要对容器的高度做相关的处理。</p>
+<p>前面也提到过了，如果不给 <code>.masonry</code>容器显式设置高度是无法包裹项目列表的，那么这里响应式设计中就需要在不同的媒体查询条件下设置不同的高度值：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 1             @media screen and (max-width: 1100px) &#123; </span><br><span class="line"> 2                 .masonry &#123; </span><br><span class="line"> 3                     height: 800px; </span><br><span class="line"> 4                 &#125; </span><br><span class="line"> 5             &#125;</span><br><span class="line"> 6             @media screen and (max-width: 800px) &#123;</span><br><span class="line"> 7                 .masonry &#123; </span><br><span class="line"> 8                     height: 1100px; </span><br><span class="line"> 9                 &#125; </span><br><span class="line">10             &#125; </span><br><span class="line">11             @media screen and (max-width: 600px) &#123; </span><br><span class="line">12                 .masonry &#123; </span><br><span class="line">13                     height: 1300px; </span><br><span class="line">14                 &#125; </span><br><span class="line">15             &#125; </span><br><span class="line">16             @media screen and (max-width: 460px) &#123; </span><br><span class="line">17                 .masonry &#123; </span><br><span class="line">18                     height: 1600px;</span><br><span class="line">19                 &#125; </span><br><span class="line">20             &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>那么所产生的效果是：</p>
+<p><img src="assets/1344447-20180410130900922-918917328.jpg" alt="img"></p>
+<p>也是根据屏幕大小自适应改变列数。</p>
+<p>看到这里，我们可以发现，使用纯 css 写瀑布流，每一块 item 都是从上往下排列，不能做到从左往右排列：</p>
+<p><img src="assets/1344447-20180410131318225-135739229.png" alt="img"></p>
+<p>这样子若是动态加载图片的瀑布流，体验就会很不好</p>
+<p>我们想要的是这样：</p>
+<p><img src="assets/1344447-20180410131140018-1659527281.png" alt="img"></p>
+<p>这样做只能通过 js 来写瀑布流</p>
+<h2 id="js-写瀑布流："><a href="#js-写瀑布流：" class="headerlink" title="js 写瀑布流："></a>js 写瀑布流：</h2><p>html 结构与上面类似，这里我用图片来做示例：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"> 1         &lt;div class=&quot;masonry&quot;&gt; </span><br><span class="line"> 2             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line"> 3                 &lt;img class=&quot;lazy&quot; src=&quot;images/1.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line"> 4             &lt;/div&gt; </span><br><span class="line"> 5             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line"> 6                 &lt;img class=&quot;lazy&quot; src=&quot;images/2.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line"> 7             &lt;/div&gt;</span><br><span class="line"> 8             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line"> 9                 &lt;img class=&quot;lazy&quot; src=&quot;images/3.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">10             &lt;/div&gt;</span><br><span class="line">11             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">12                 &lt;img class=&quot;lazy&quot; src=&quot;images/4.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">13             &lt;/div&gt;</span><br><span class="line">14             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">15                 &lt;img class=&quot;lazy&quot; src=&quot;images/5.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">16             &lt;/div&gt;</span><br><span class="line">17             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">18                 &lt;img class=&quot;lazy&quot; src=&quot;images/6.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">19             &lt;/div&gt; </span><br><span class="line">20             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">21                 &lt;img class=&quot;lazy&quot; src=&quot;images/7.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">22             &lt;/div&gt;</span><br><span class="line">23             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">24                 &lt;img class=&quot;lazy&quot; src=&quot;images/8.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">25             &lt;/div&gt;</span><br><span class="line">26             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">27                 &lt;img class=&quot;lazy&quot; src=&quot;images/9.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">28             &lt;/div&gt;</span><br><span class="line">29             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">30                 &lt;img class=&quot;lazy&quot; src=&quot;images/10.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">31             &lt;/div&gt;</span><br><span class="line">32             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">33                 &lt;img class=&quot;lazy&quot; src=&quot;images/11.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">34             &lt;/div&gt;</span><br><span class="line">35             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">36                 &lt;img class=&quot;lazy&quot; src=&quot;images/12.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">37             &lt;/div&gt;</span><br><span class="line">38             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">39                 &lt;img class=&quot;lazy&quot; src=&quot;images/13.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">40             &lt;/div&gt;</span><br><span class="line">41             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">42                 &lt;img class=&quot;lazy&quot; src=&quot;images/14.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">43             &lt;/div&gt;</span><br><span class="line">44             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">45                 &lt;img class=&quot;lazy&quot; src=&quot;images/15.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">46             &lt;/div&gt;</span><br><span class="line">47             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">48                 &lt;img class=&quot;lazy&quot; src=&quot;images/16.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">49             &lt;/div&gt;</span><br><span class="line">50             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">51                 &lt;img class=&quot;lazy&quot; src=&quot;images/17.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">52             &lt;/div&gt;</span><br><span class="line">53             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">54                 &lt;img class=&quot;lazy&quot; src=&quot;images/18.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">55             &lt;/div&gt;</span><br><span class="line">56             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">57                 &lt;img class=&quot;lazy&quot; src=&quot;images/19.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">58             &lt;/div&gt;</span><br><span class="line">59             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">60                 &lt;img class=&quot;lazy&quot; src=&quot;images/20.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">61             &lt;/div&gt;</span><br><span class="line">62             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">63                 &lt;img class=&quot;lazy&quot; src=&quot;images/21.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">64             &lt;/div&gt;</span><br><span class="line">65             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">66                 &lt;img class=&quot;lazy&quot; src=&quot;images/22.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">67             &lt;/div&gt;</span><br><span class="line">68             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">69                 &lt;img class=&quot;lazy&quot; src=&quot;images/23.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">70             &lt;/div&gt;</span><br><span class="line">71             &lt;div class=&quot;item&quot;&gt; </span><br><span class="line">72                 &lt;img class=&quot;lazy&quot; src=&quot;images/24.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">73             &lt;/div&gt;</span><br><span class="line">74         &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>css 内容：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> 1             .masonry &#123; </span><br><span class="line"> 2                 width: 100%;</span><br><span class="line"> 3                 margin-top: 50px;</span><br><span class="line"> 4                 position:relative;</span><br><span class="line"> 5             &#125;</span><br><span class="line"> 6             .item &#123; </span><br><span class="line"> 7                 z-index: 10;</span><br><span class="line"> 8                 transition: 0.25s;</span><br><span class="line"> 9                 overflow: hidden;</span><br><span class="line">10                 position: absolute;</span><br><span class="line">11             &#125;</span><br><span class="line">12             .item img&#123;</span><br><span class="line">13                 width: 100%;</span><br><span class="line">14                 height:100%;</span><br><span class="line">15                 transition: 0.25s;</span><br><span class="line">16             &#125;</span><br><span class="line">17             .item:hover img&#123;</span><br><span class="line">18                 z-index: 100;</span><br><span class="line">19                 transition: 0.25s;</span><br><span class="line">20                 overflow: hidden;</span><br><span class="line">21                 animation: bounceIn 0.25s ease-in 2 alternate;</span><br><span class="line">22             &#125;</span><br><span class="line">23             @keyframes bounceIn&#123;</span><br><span class="line">24                 100% &#123;</span><br><span class="line">25                     transform: scale(1.07);</span><br><span class="line">26                 &#125;</span><br><span class="line">27             &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>js 瀑布流实现方式：</p>
+<p>css 的绝对定位方式：根据每张图片的位置设置 top 和 left 值：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"> 1 //瀑布流效果</span><br><span class="line"> 2 //这里有一个坑（已经修复）：</span><br><span class="line"> 3 //因为是动态加载远程图片，在未加载完全无法获取图片宽高</span><br><span class="line"> 4 //未加载完全就无法设定每一个item(包裹图片)的top。</span><br><span class="line"> 5 </span><br><span class="line"> 6 //item的top值：第一行：top为0</span><br><span class="line"> 7 //            其他行：必须算出图片宽度在item宽度的缩小比例，与获取的图片高度相乘，从而获得item的高度</span><br><span class="line"> 8 //                   就可以设置每张图片在瀑布流中每块item的top值（每一行中最小的item高度，数组查找）</span><br><span class="line"> 9 //item的left值：第一行：按照每块item的宽度值*块数</span><br><span class="line">10 //             其他行：与自身上面一块的left值相等</span><br><span class="line">11 function waterFall() &#123;</span><br><span class="line">12     // 1- 确定图片的宽度 - 滚动条宽度</span><br><span class="line">13     var pageWidth = getClient().width-8;</span><br><span class="line">14     var columns = 3; //3列</span><br><span class="line">15     var itemWidth = parseInt(pageWidth/columns); //得到item的宽度</span><br><span class="line">16     $(&quot;.item&quot;).width(itemWidth); //设置到item的宽度</span><br><span class="line">17     </span><br><span class="line">18     var arr = [];</span><br><span class="line">19 </span><br><span class="line">20     $(&quot;.masonry .item&quot;).each(function(i)&#123;</span><br><span class="line">21         var height = $(this).find(&quot;img&quot;).height();</span><br><span class="line">22         var width = $(this).find(&quot;img&quot;).width();</span><br><span class="line">23         var bi = itemWidth/width; //获取缩小的比值</span><br><span class="line">24         var boxheight = parseInt(height*bi); //图片的高度*比值 = item的高度</span><br><span class="line">25 </span><br><span class="line">26         if (i &lt; columns) &#123;</span><br><span class="line">27             // 2- 确定第一行</span><br><span class="line">28             $(this).css(&#123;</span><br><span class="line">29                 top:0,</span><br><span class="line">30                 left:(itemWidth) * i</span><br><span class="line">31             &#125;);</span><br><span class="line">32             arr.push(boxheight);</span><br><span class="line">33 </span><br><span class="line">34         &#125; else &#123;</span><br><span class="line">35             // 其他行</span><br><span class="line">36             // 3- 找到数组中最小高度  和 它的索引</span><br><span class="line">37             var minHeight = arr[0];</span><br><span class="line">38             var index = 0;</span><br><span class="line">39             for (var j = 0; j &lt; arr.length; j++) &#123;</span><br><span class="line">40                 if (minHeight &gt; arr[j]) &#123;</span><br><span class="line">41                     minHeight = arr[j];</span><br><span class="line">42                     index = j;</span><br><span class="line">43                 &#125;</span><br><span class="line">44             &#125;</span><br><span class="line">45             // 4- 设置下一行的第一个盒子位置</span><br><span class="line">46             // top值就是最小列的高度 </span><br><span class="line">47             $(this).css(&#123;</span><br><span class="line">48                 top:arr[index],</span><br><span class="line">49                 left:$(&quot;.masonry .item&quot;).eq(index).css(&quot;left&quot;)</span><br><span class="line">50             &#125;);</span><br><span class="line">51 </span><br><span class="line">52             // 5- 修改最小列的高度 </span><br><span class="line">53             // 最小列的高度 = 当前自己的高度 + 拼接过来的高度</span><br><span class="line">54             arr[index] = arr[index] + boxheight;</span><br><span class="line">55         &#125;</span><br><span class="line">56     &#125;);</span><br><span class="line">57 &#125;</span><br><span class="line">58 </span><br><span class="line">59 </span><br><span class="line">60 //clientWidth 处理兼容性</span><br><span class="line">61 function getClient() &#123;</span><br><span class="line">62     return &#123;</span><br><span class="line">63         width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,</span><br><span class="line">64         height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</span><br><span class="line">65     &#125;</span><br><span class="line">66 &#125;</span><br><span class="line">67 </span><br><span class="line">68 </span><br><span class="line">69 </span><br><span class="line">70  // 页面尺寸改变时实时触发</span><br><span class="line">71 window.onresize = function() &#123;</span><br><span class="line">72     //重新定义瀑布流</span><br><span class="line">73     waterFall();</span><br><span class="line">74 &#125;;</span><br><span class="line">75 </span><br><span class="line">76 </span><br><span class="line">77 </span><br><span class="line">78 //初始化</span><br><span class="line">79 window.onload = function()&#123;</span><br><span class="line">80     </span><br><span class="line">81     //实现瀑布流</span><br><span class="line">82     waterFall();</span><br><span class="line">83 </span><br><span class="line">84 &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p> 效果图是：</p>
+<p> <img src="assets/1344447-20180410132944679-1484805253.png" alt="img"></p>
+<p> 这实现了横向排列的瀑布流效果</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 18:12</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/13/css瀑布流/" title="css瀑布流">https://WLL-1017065322.github.io/2019/10/13/css瀑布流/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/&title=《css瀑布流》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/&title=《css瀑布流》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css瀑布流》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/10/13/css瀑布流/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/css/" class="color4">css</a>
+      
+    <a href="/tags/瀑布流/" class="color4">瀑布流</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#纯-css-写瀑布流"><span class="post-toc-text">纯 css 写瀑布流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-multi-columns-方式："><span class="post-toc-text">1.multi-columns 方式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-flexbox-方式："><span class="post-toc-text">2.flexbox 方式：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#js-写瀑布流："><span class="post-toc-text">js 写瀑布流：</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/15/eslint报错/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          eslint报错
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/10/09/chrome使用技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">chrome使用技巧</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

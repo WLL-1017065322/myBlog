@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>vue-cli-service | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="概述 vue启动一个项目的时候，需要执行npm run serve，其中这个serve的内容就是vue-cli-service serve。可见，项目的启动关键是这个vue-cli-service与它的参数serve。接下来我们一起看看service中主要写了什么东东（主要内容以备注形式写到代码中。）。 关键代码 vue-cli-service.js 1`const semver = requir">
+<meta name="keywords" content="javascript,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli-service">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="概述 vue启动一个项目的时候，需要执行npm run serve，其中这个serve的内容就是vue-cli-service serve。可见，项目的启动关键是这个vue-cli-service与它的参数serve。接下来我们一起看看service中主要写了什么东东（主要内容以备注形式写到代码中。）。 关键代码 vue-cli-service.js 1`const semver = requir">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-28T07:52:29.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-cli-service">
+<meta name="twitter:description" content="概述 vue启动一个项目的时候，需要执行npm run serve，其中这个serve的内容就是vue-cli-service serve。可见，项目的启动关键是这个vue-cli-service与它的参数serve。接下来我们一起看看service中主要写了什么东东（主要内容以备注形式写到代码中。）。 关键代码 vue-cli-service.js 1`const semver = requir">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-cli-service" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      vue-cli-service
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/vue/">vue</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-06-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p><strong>概述</strong></p>
+<p>vue启动一个项目的时候，需要执行npm run serve，其中这个serve的内容就是vue-cli-service serve。可见，项目的启动关键是这个vue-cli-service与它的参数serve。接下来我们一起看看service中主要写了什么东东（主要内容以备注形式写到代码中。）。</p>
+<p><strong>关键代码</strong></p>
+<p>vue-cli-service.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`const semver = require(``&apos;semver&apos;``)``const &#123; error &#125; = require(``&apos;@vue/cli-shared-utils&apos;``)``const requiredVersion = require(``&apos;../package.json&apos;``).engines.node` `// 检测node版本是否符合vue-cli运行的需求。不符合则打印错误并退出。``if` `(!semver.satisfies(process.version, requiredVersion)) &#123;`` ``error(``  ```You are using Node $&#123;process.version&#125;, but vue-cli-service ` +``  ```requires Node $&#123;requiredVersion&#125;.\nPlease upgrade your Node version.``` ``)`` ``process.exit(1)``&#125;` `// cli-service的核心类。``const Service = require(``&apos;../lib/Service&apos;``)``// 新建一个service的实例。并将项目路径传入。一般我们在项目根路径下运行该cli命令。所以process.cwd()的结果一般是项目根路径``const service = ``new` `Service(process.env.VUE_CLI_CONTEXT || process.cwd())` `// 参数处理。``const rawArgv = process.argv.slice(2)``const args = require(``&apos;minimist&apos;``)(rawArgv, &#123;`` ``boolean: [``  ``// build``  ``&apos;modern&apos;``,``  ``&apos;report&apos;``,``  ``&apos;report-json&apos;``,``  ``&apos;watch&apos;``,``  ``// serve``  ``&apos;open&apos;``,``  ``&apos;copy&apos;``,``  ``&apos;https&apos;``,``  ``// inspect``  ``&apos;verbose&apos;`` ``]``&#125;)``const command = args._[0]` `// 将参数传入service这个实例并启动后续工作。如果我们运行的是npm run serve。则command = &quot;serve&quot;。``service.run(command, args, rawArgv).``catch``(err =&gt; &#123;`` ``error(err)`` ``process.exit(1)``&#125;)`</span><br></pre></td></tr></table></figure>
+<p>Service.js</p>
+<p>上面实例化并调用了service的run方法，这里从构造函数到run一路浏览即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`const fs = require(``&apos;fs&apos;``)``const path = require(``&apos;path&apos;``)``const debug = require(``&apos;debug&apos;``)``const chalk = require(``&apos;chalk&apos;``)``const readPkg = require(``&apos;read-pkg&apos;``)``const merge = require(``&apos;webpack-merge&apos;``)``const Config = require(``&apos;webpack-chain&apos;``)``const PluginAPI = require(``&apos;./PluginAPI&apos;``)``const loadEnv = require(``&apos;./util/loadEnv&apos;``)``const defaultsDeep = require(``&apos;lodash.defaultsdeep&apos;``)``const &#123; warn, error, isPlugin, loadModule &#125; = require(``&apos;@vue/cli-shared-utils&apos;``)` `const &#123; defaults, validate &#125; = require(``&apos;./options&apos;``)` `module.exports = class Service &#123;`` ``constructor (context, &#123; plugins, pkg, inlineOptions, useBuiltIn &#125; = &#123;&#125;) &#123;``  ``process.VUE_CLI_SERVICE = ``this``  ``this``.initialized = ``false``  ``// 一般是项目根目录路径。``  ``this``.context = context``  ``this``.inlineOptions = inlineOptions``  ``// webpack相关收集。不是本文重点。所以未列出该方法实现``  ``this``.webpackChainFns = []``  ``this``.webpackRawConfigFns = []``  ``this``.devServerConfigFns = []``  ``//存储的命令。``  ``this``.commands = &#123;&#125;``  ``// Folder containing the target package.json for plugins``  ``this``.pkgContext = context``  ``// 键值对存储的pakcage.json对象，不是本文重点。所以未列出该方法实现``  ``this``.pkg = ``this``.resolvePkg(pkg)``  ``// **这个方法下方需要重点阅读。**``  ``this``.plugins = ``this``.resolvePlugins(plugins, useBuiltIn)``  ` `  ``// 结果为&#123;build: production, serve: development, ... &#125;。大意是收集插件中的默认配置信息``  ``// 标注build命令主要用于生产环境。``  ``this``.modes = ``this``.plugins.reduce((modes, &#123; apply: &#123; defaultModes &#125;&#125;) =&gt; &#123;``   ``return` `Object.assign(modes, defaultModes)``  ``&#125;, &#123;&#125;)`` ``&#125;` ` ``init (mode = process.env.VUE_CLI_MODE) &#123;``  ``if` `(``this``.initialized) &#123;``   ``return``  ``&#125;``  ``this``.initialized = ``true``  ``this``.mode = mode` `  ``// 加载.env文件中的配置``  ``if` `(mode) &#123;``   ``this``.loadEnv(mode)``  ``&#125;``  ``// load base .env``  ``this``.loadEnv()` `  ``// 读取用户的配置信息.一般为vue.config.js``  ``const userOptions = ``this``.loadUserOptions()``  ``// 读取项目的配置信息并与用户的配置合并(用户的优先级高)``  ``this``.projectOptions = defaultsDeep(userOptions, defaults())` `  ``debug(``&apos;vue:project-config&apos;``)(``this``.projectOptions)` `  ``// 注册插件。``  ``this``.plugins.forEach((&#123; id, apply &#125;) =&gt; &#123;``   ``apply(``new` `PluginAPI(id, ``this``), ``this``.projectOptions)``  ``&#125;)` `  ``// wepback相关配置收集``  ``if` `(``this``.projectOptions.chainWebpack) &#123;``   ``this``.webpackChainFns.push(``this``.projectOptions.chainWebpack)``  ``&#125;``  ``if` `(``this``.projectOptions.configureWebpack) &#123;``   ``this``.webpackRawConfigFns.push(``this``.projectOptions.configureWebpack)``  ``&#125;`` ``&#125;`  ` ``resolvePlugins (inlinePlugins, useBuiltIn) &#123;``  ``const idToPlugin = id =&gt; (&#123;``   ``id: id.replace(/^.\``//, &apos;built-in:&apos;),``   ``apply: require(id)``  ``&#125;)` `  ``let plugins``  ` `  ` `  ``// 主要是这里。map得到的每个插件都是一个&#123;id, apply的形式&#125;``  ``// 其中require(id)将直接import每个插件的默认导出。``  ``// 每个插件的导出api为``  ``// module.exports = (PluginAPIInstance,projectOptions) =&gt; &#123;``  ``//  PluginAPIInstance.registerCommand(&apos;cmdName（例如npm run serve中的serve）&apos;, args =&gt; &#123;``  ``//    // 根据命令行收到的参数，执行该插件的业务逻辑``  ``//  &#125;)``  ``//  // 业务逻辑需要的其他函数``  ``//&#125;``  ``// 注意着里是先在构造函数中resolve了插件。然后再run-&gt;init-&gt;方法中将命令，通过这里的的apply方法，``  ``// 将插件对应的命令注册到了service实例。``  ``const builtInPlugins = [``   ``&apos;./commands/serve&apos;``,``   ``&apos;./commands/build&apos;``,``   ``&apos;./commands/inspect&apos;``,``   ``&apos;./commands/help&apos;``,``   ``// config plugins are order sensitive``   ``&apos;./config/base&apos;``,``   ``&apos;./config/css&apos;``,``   ``&apos;./config/dev&apos;``,``   ``&apos;./config/prod&apos;``,``   ``&apos;./config/app&apos;``  ``].map(idToPlugin)``  ` `  ``// inlinePlugins与非inline得处理。默认生成的项目直接运行时候，除了上述数组的插件[&apos;./commands/serve&apos;...]外，还会有``  ``// [&apos;@vue/cli-plugin-babel&apos;,&apos;@vue/cli-plugin-eslint&apos;,&apos;@vue/cli-service&apos;]。``  ``// 处理结果是两者的合并，细节省略。``  ``if` `(inlinePlugins) &#123;``    ``//...``  ``&#125; ``else` `&#123;``    ``//...默认走这条路线``   ``plugins = builtInPlugins.concat(projectPlugins)``  ``&#125;` `  ``// Local plugins 处理package.json中引入插件的形式，具体代码省略。` `  ``return` `plugins`` ``&#125;` ` ``async run (name, args = &#123;&#125;, rawArgv = []) &#123;``  ``// mode是dev还是prod？``  ``const mode = args.mode || (name === ``&apos;build&apos;` `&amp;&amp; args.watch ? ``&apos;development&apos;` `: ``this``.modes[name])` `  ``// 收集环境变量、插件、用户配置``  ``this``.init(mode)` `  ``args._ = args._ || []``  ``let command = ``this``.commands[name]``  ``if` `(!command &amp;&amp; name) &#123;``   ``error(`command ``&quot;$&#123;name&#125;&quot;` `does not exist.`)``   ``process.exit(1)``  ``&#125;``  ``if` `(!command || args.help) &#123;``   ``command = ``this``.commands.help``  ``&#125; ``else` `&#123;``   ``args._.shift() ``// remove command itself``   ``rawArgv.shift()``  ``&#125;``  ``// 执行命令。例如vue-cli-service serve 则，执行serve命令。``  ``const &#123; fn &#125; = command``  ``return` `fn(args, rawArgv)`` ``&#125;` ` ``// 收集vue.config.js中的用户配置。并以对象形式返回。`` ``loadUserOptions () &#123;``  ``// 此处代码省略，可以简单理解为``  ``// require(vue.config.js)``  ``return` `resolved`` ``&#125;``&#125;`</span><br></pre></td></tr></table></figure>
+<p><strong>PluginAPI</strong></p>
+<p>这里主要是连接了plugin的注册和service实例。抽象过的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`class PluginAPI &#123;` ` ``constructor (id, service) &#123;``  ``this``.id = id``  ``this``.service = service`` ``&#125;`` ``// 在service的init方法中`` ``// 该函数会被调用，调用处如下。`` ``// // apply plugins.`` ``// 这里的apply就是插件暴露出来的函数。该函数将PluginAPI实例和项目配置信息(例如vue.config.js)作为参数传入`` ``// 通过PluginAPIInstance.registerCommand方法，将命令注册到service实例。`` ``// this.plugins.forEach((&#123; id, apply &#125;) =&gt; &#123;`` ``//  apply(new PluginAPI(id, this), this.projectOptions)`` ``// &#125;)`` ``registerCommand (name, opts, fn) &#123;``  ``if` `(``typeof` `opts === ``&apos;function&apos;``) &#123;``   ``fn = opts``   ``opts = ``null``  ``&#125;``  ``this``.service.commands[name] = &#123; fn, opts: opts || &#123;&#125;&#125;`` ``&#125;`  `&#125;` `module.exports = PluginAPI`</span><br></pre></td></tr></table></figure>
+<p><strong>总结</strong></p>
+<p>通过vue-cli-service中的new Service，加载插件信息，缓存到Service实例的plugins变量中。</p>
+<p>当得到命令行参数后，在通过new Service的run方法，执行命令。</p>
+<p>该run方法中调用了init方法获取到项目中的配置信息（默认&amp;用户的合并）,例如用户的配置在vue.config.js中。</p>
+<p>init过程中通过pluginAPI这个类，将service和插件plugins建立关联。关系存放到service.commands中。<br>最后通过commands[cmdArgName]调用该方法，完成了插件方法的调用。</p>
+<p>初次阅读，只是看到了命令模式的实际应用。能想到的好就是，新增加一个插件的时候，只需要增加一个插件的文件，并不需要更改其他文件的逻辑。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 15:52</p>
+        <p>原始链接： <a class="post-url" href="/2019/06/01/vue-cli-service/" title="vue-cli-service">https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/&title=《vue-cli-service》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/&title=《vue-cli-service》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-cli-service》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/06/01/vue-cli-service/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/06/04/vue-router跳转bug/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          vue-router跳转bug
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/05/29/vue undefined 0/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">vue undefined 0</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

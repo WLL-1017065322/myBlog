@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>python-Selenium-WebDriverWait | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="之前有篇文章介绍过Selenium的等待知识，可惜当时水平有限，只介绍了sleep和implicitly_wait的用法。今天还是补充一下WebDriverWait的知识吧。 一、webdrivewait 示例代码 12345678910111213141516from selenium import webdriverfrom selenium.webdriver.support.ui impo">
+<meta name="keywords" content="python,Selenium,WebDriverWait,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Selenium-WebDriverWait">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="之前有篇文章介绍过Selenium的等待知识，可惜当时水平有限，只介绍了sleep和implicitly_wait的用法。今天还是补充一下WebDriverWait的知识吧。 一、webdrivewait 示例代码 12345678910111213141516from selenium import webdriverfrom selenium.webdriver.support.ui impo">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/20180108161211508.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/20180108161611715.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/20180108162445157.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/20180108162549799.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/1616056-20190807182911549-2006144950.png">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-10-28T10:13:57.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-Selenium-WebDriverWait">
+<meta name="twitter:description" content="之前有篇文章介绍过Selenium的等待知识，可惜当时水平有限，只介绍了sleep和implicitly_wait的用法。今天还是补充一下WebDriverWait的知识吧。 一、webdrivewait 示例代码 12345678910111213141516from selenium import webdriverfrom selenium.webdriver.support.ui impo">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/assets/20180108161211508.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-python-Selenium-WebDriverWait" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      python-Selenium-WebDriverWait
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/python/">python</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>之前有篇文章介绍过Selenium的等待知识，可惜当时水平有限，只介绍了sleep和implicitly_wait的用法。今天还是补充一下WebDriverWait的知识吧。</p>
+<p>一、webdrivewait 示例代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"http://www.baidu.com/"</span>)</span><br><span class="line">locator = (By.ID,<span class="string">"kw"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    ele = WebDriverWait(driver,<span class="number">10</span>).until(EC.presence_of_element_located(locator))</span><br><span class="line">    driver.find_element_by_id(<span class="string">"kw"</span>).send_keys(<span class="string">'abc'</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>) <span class="comment">#为了看效果</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"ele can't find"</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    driver.quit()</span><br></pre></td></tr></table></figure>
+<p>接下来一点点分析下这个语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebDriverWait(driver,<span class="number">10</span>).until(EC.presence_of_element_located(locator))</span><br></pre></td></tr></table></figure>
+<p>（1）WebDriverWait 方法</p>
+<p><img src="assets/20180108161211508.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">driver: 传入WebDriver实例，即我们上例中的driver</span><br><span class="line">timeout: 超时时间，等待的最长时间（同时要考虑隐性等待时间）</span><br><span class="line">poll_frequency: 调用until或until_not中的方法的间隔时间，默认是0.5秒</span><br><span class="line">ignored_exceptions: 忽略的异常，如果在调用until或until_not的过程中抛出这个元组中的异常，</span><br><span class="line">        则不中断代码，继续等待，如果抛出的是这个元组外的异常，则中断代码，抛出异常。默认只有NoSuchElementException。</span><br></pre></td></tr></table></figure>
+<p>（2）WebDriverWait 方法后面有两种等待方式</p>
+<p><img src="assets/20180108161611715.png" alt="img"></p>
+<p>until</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">method: 在等待期间，每隔一段时间（__init__中的poll_frequency）调用这个传入的方法，直到返回值不是False</span><br><span class="line">message: 如果超时，抛出TimeoutException，将message传入异常</span><br></pre></td></tr></table></figure>
+<p>until_not</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">与until相反，until是当某元素出现或什么条件成立则继续执行，</span><br><span class="line"> until_not是当某元素消失或什么条件不成立则继续执行，参数也相同，不再赘述。</span><br></pre></td></tr></table></figure>
+<p>看了以上内容基本上很清楚了，调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebDriverWait(driver, 超时时长, 调用频率, 忽略异常).until(可执行方法, 超时时返回的信息)</span><br></pre></td></tr></table></figure>
+<p>这里需要特别注意的是until或until_not中的可执行方法method参数，很多人传入了WebElement对象，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebDriverWait(driver, <span class="number">10</span>).until(driver.find_element_by_id(<span class="string">'kw'</span>))  <span class="comment"># 错误</span></span><br></pre></td></tr></table></figure>
+<p>这是错误的用法，这里的参数一定要是可以调用的，即这个对象一定有 <code>__call__()</code> 方法，否则会抛出异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: &apos;xxx&apos; object is not callable</span><br></pre></td></tr></table></figure>
+<p>在这里，你可以用selenium提供的 <code>expected_conditions</code> 模块中的各种条件，也可以用WebElement的 <strong>is_displayed() 、is_enabled()、is_selected()</strong> 方法，或者用自己封装的方法都可以，那么接下来我们看一下selenium提供的条件有哪些：</p>
+<h2 id="expected-conditions"><a href="#expected-conditions" class="headerlink" title="expected_conditions"></a><strong>expected_conditions</strong></h2><p><strong><img src="assets/20180108162445157.png" alt="img"></strong></p>
+<p><strong><img src="assets/20180108162549799.png" alt="img"></strong></p>
+<p>expected_conditions是selenium的一个模块，其中包含一系列可用于判断的条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selenium.webdriver.support.expected_conditions（模块）</span><br></pre></td></tr></table></figure>
+<p>以下两个条件类验证title，验证传入的参数title是否等于或包含于driver.title<br><strong>title_is title_contains</strong></p>
+<p>以下两个条件验证元素是否出现，传入的参数都是元组类型的locator，如(By.ID, ‘kw’)<br>顾名思义，一个只要一个符合条件的元素加载出来就通过；另一个必须所有符合条件的元素都加载出来才行<br><strong>presence_of_element_located presence_of_all_elements_located</strong></p>
+<p>以下三个条件验证元素是否可见，前两个传入参数是元组类型的locator，第三个传入WebElement<br>第一个和第三个其实质是一样的<br><strong>visibility_of_element_located invisibility_of_element_located visibility_of</strong></p>
+<p>以下两个条件判断某段文本是否出现在某元素中，一个判断元素的text，一个判断元素的value<br><strong>text_to_be_present_in_element text_to_be_present_in_element_value</strong></p>
+<p>以下条件判断frame是否可切入，可传入locator元组或者直接传入定位方式：id、name、index或WebElement<br><strong>frame_to_be_available_and_switch_to_it</strong></p>
+<p>以下条件判断是否有alert出现<br><strong>alert_is_present</strong></p>
+<p>以下条件判断元素是否可点击，传入locator<br><strong>element_to_be_clickable</strong></p>
+<p>以下四个条件判断元素是否被选中，第一个条件传入WebElement对象，第二个传入locator元组<br>第三个传入WebElement对象以及状态，相等返回True，否则返回False<br>第四个传入locator以及状态，相等返回True，否则返回False<br><strong>element_to_be_selected element_located_to_be_selected element_selection_state_to_be element_located_selection_state_to_be</strong></p>
+<p>最后一个条件判断一个元素是否仍在DOM中，传入WebElement对象，可以判断页面是否刷新了<br><strong>staleness_of</strong></p>
+<p>上面是所有17个condition，与until、until_not组合能够实现很多判断，如果能自己灵活封装，将会大大提高脚本的稳定性。</p>
+<p><strong>图片懒加载</strong></p>
+<p>　　图片懒加载是一种网页优化技术。图片作为一种网络资源，在被请求时也与普通静态资源一样，将占用网络资源，而一次性将整个页面的所有图片加载完，将大大增加页面的首屏加载时间。为了解决这种问题，通过前后端配合，使图片仅在浏览器当前视窗内出现时才加载该图片，达到减少首屏图片请求数的技术就被称为“图片懒加载”。</p>
+<p>　　在网页源码中，在img标签中首先会使用一个“伪属性”（通常使用src2，original……）去存放真正的图片链接而并非是直接存放在src属性中。当图片出现到页面的可视化区域中，会动态将伪属性替换成src属性，完成图片的加载。</p>
+<p>　　因此在爬虫时，对当前页加载的数据进行分析发起请求获取解析数据会出现数据解析不完整，究其原因很有可能是图片的懒加载技术导致，因此要在爬虫时要特别注意准确解析数据！（比如<a href="http://sc.chinaz.com/tupian/" target="_blank" rel="noopener">站长素材高清图片</a>的爬取）</p>
+<p>​      <img src="assets/1616056-20190807182911549-2006144950.png" alt="img">    </p>
+<p>​                </p>
+<p><strong>selenium自动化（测试）工具</strong>　　</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>　　selenium最初是一个<a href="https://www.yiibai.com/selenium" target="_blank" rel="noopener">自动化测试工具</a>,而爬虫中使用它主要是为了解决requests无法直接执行JavaScript代码的问题 selenium本质是通过驱动浏览器，完全模拟浏览器的操作，比如跳转、输入、点击、下拉等，来拿到网页渲染之后的结果，可支持多种浏览器 </p>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a><strong>环境安装</strong></h2><ul>
+<li>下载安装selenium：<strong>pip install selenium</strong></li>
+<li>下载浏览器驱动程序：<ul>
+<li><a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a></li>
+<li><a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/chromedriver</a></li>
+</ul>
+</li>
+<li>查看驱动和浏览器版本的映射关系：<ul>
+<li><a href="http://blog.csdn.net/huilan_same/article/details/51896672" target="_blank" rel="noopener">http://blog.csdn.net/huilan_same/article/details/51896672</a></li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.cnblogs.com/lxbmaomao/p/10389786.html" target="_blank" rel="noopener"><strong>简单使用</strong></a></p>
+<p>　　<strong>以百度搜索为例：</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"> 1 &apos;&apos;&apos;</span><br><span class="line"> 2 下载浏览器驱动程序:https://npm.taobao.org/mirrors/chromedriver</span><br><span class="line"> 3 查看驱动和浏览器版本的映射:http://blog.csdn.net/huilan_same/article/details/51896672</span><br><span class="line"> 4 &apos;&apos;&apos;</span><br><span class="line"> 5 import time</span><br><span class="line"> 6 from lxml.html.clean import etree</span><br><span class="line"> 7</span><br><span class="line"> 8 from selenium import webdriver#pip install selenium 导入浏览器驱动</span><br><span class="line"> 9 #（1）创建（谷歌等）浏览器,参数为浏览器驱动位置</span><br><span class="line">10 browser=webdriver.Chrome(r&quot;./chromedriver.exe&quot;)</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13 #（2）通过浏览器发起get请求</span><br><span class="line">14 browser.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17 #（3）进行关键字搜索等页面操作</span><br><span class="line">18 #①定位搜索框标签（可通过多种方式进行定位）</span><br><span class="line">19 search_input=browser.find_element_by_id(&apos;kw&apos;)</span><br><span class="line">20 #②定位搜索按钮</span><br><span class="line">21 search_button=browser.find_element_by_xpath(&apos;//input[@id=&quot;su&quot;]&apos;)</span><br><span class="line">22 #③在输入框输入关键字</span><br><span class="line">23 search_input.send_keys(&apos;selenium&apos;)</span><br><span class="line">24 time.sleep(2)</span><br><span class="line">25 #④清空输入框</span><br><span class="line">26 search_input.clear()</span><br><span class="line">27 time.sleep(2)</span><br><span class="line">28 search_input.send_keys(&apos;selenium工具包&apos;)</span><br><span class="line">29 time.sleep(2)</span><br><span class="line">30 #⑤点击搜索按钮</span><br><span class="line">31 search_button.click()</span><br><span class="line">32 time.sleep(2)</span><br><span class="line">33 #⑥向下滑动滚动条到底部</span><br><span class="line">34 browser.execute_script(&quot;window.scrollTo(0,document.body.scrollHeight)&quot;)</span><br><span class="line">35 time.sleep(2)</span><br><span class="line">36 #⑦向下滑动滚动条到顶部</span><br><span class="line">37 browser.execute_script(&quot;window.scrollTo(0,-document.body.scrollHeight)&quot;)</span><br><span class="line">38 time.sleep(2)</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41 #获取当前页面内容进行说数据解析</span><br><span class="line">42 page_text=browser.page_source</span><br><span class="line">43 print(etree.HTML(page_text).xpath(&apos;//span[@class=&quot;nums_text&quot;]/text()&apos;)[0])</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46 # 处理弹出的警告页面:确定accept() 和 取消dismiss()</span><br><span class="line">47 # browser.switch_to_alert().accept()</span><br><span class="line">48 # time.sleep(2)</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51 #（3）关闭浏览器</span><br><span class="line">52 # browser.close()</span><br><span class="line">53 browser.quit()</span><br></pre></td></tr></table></figure>
+<p>　　<strong>浏览器驱动</strong>　　</p>
+<blockquote>
+<p>Selenium支持非常多的浏览器，如Chrome、Firefox、Edge等，还有Android、BlackBerry等手机端的浏览器。另外，也支持无界面浏览器PhantomJS。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; 　　<span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">&gt; browser = webdriver.Chrome()</span><br><span class="line">&gt; browser = webdriver.Firefox()</span><br><span class="line">&gt; browser = webdriver.Edge()</span><br><span class="line">&gt; browser = webdriver.PhantomJS()</span><br><span class="line">&gt; browser = webdriver.Safari()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="元素定位"><a href="#元素定位" class="headerlink" title="　　元素定位"></a>　　<strong>元素定位</strong></h2><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; webdriver 提供了一系列的元素定位方法，常用的有以下几种：</span><br><span class="line">&gt; </span><br><span class="line">&gt; find_element_by_id()</span><br><span class="line">&gt; find_element_by_name()</span><br><span class="line">&gt; find_element_by_class_name()</span><br><span class="line">&gt; find_element_by_tag_name()</span><br><span class="line">&gt; find_element_by_link_text()</span><br><span class="line">&gt; find_element_by_partial_link_text()</span><br><span class="line">&gt; find_element_by_xpath()</span><br><span class="line">&gt; find_element_by_css_selector()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>注意</p>
+<p>　　1、find_element_by_xxx找的是第一个符合条件的标签，find_elements_by_xxx找的是所有符合条件的标签。</p>
+<p>　　2、根据ID、CSS选择器和XPath获取，它们返回的结果完全一致。</p>
+<p>　　3、另外，Selenium还提供了通用方法<code>find_element()</code>，它需要传入两个参数：查找方式<code>By</code>和值。实际上，它就是<code>find_element_by_id()</code>这种方法的通用函数版本，比如f<code>ind_element_by_id(id)</code>就等价于<code>find_element(By.ID, id)</code>，二者得到的结果完全一致。</p>
+</blockquote>
+<p>　　 <strong>节点交互（文本输出与清空）</strong></p>
+<blockquote>
+<p>　Selenium可以驱动浏览器来执行一些操作，也就是说可以让浏览器模拟执行一些动作。比较常见的用法有：输入文字时用<code>send_keys()</code>方法，清空文字时用<code>clear()</code>方法，点击按钮时用<code>click()</code>方法。　</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; 　　import time</span><br><span class="line">&gt; </span><br><span class="line">&gt; from selenium import webdriver</span><br><span class="line">&gt; </span><br><span class="line">&gt; 　　browser=webdriver.Chrome(r&quot;./chromedriver.exe&quot;)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 　　browser.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 　　search_input=browser.find_element_by_id(&apos;kw&apos;)</span><br><span class="line">&gt; 　　search_input.send_keys(&apos;selenium&apos;)#输入文字</span><br><span class="line">&gt; </span><br><span class="line">&gt; time.sleep(2)</span><br><span class="line">&gt; </span><br><span class="line">&gt; </span><br><span class="line">&gt; </span><br><span class="line">&gt; 　　search_input.clear()#清空文字</span><br><span class="line">&gt; </span><br><span class="line">&gt; time.sleep(2) </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>　 <strong>动作链</strong></p>
+<blockquote>
+<p>　　一些交互动作是针对某个节点执行的。比如，对于输入框，我们就调用它的输入文字和清空文字方法；对于按钮，就调用它的点击方法。其实，还有另外一些操作，它们没有特定的执行对象，比如鼠标拖曳、键盘按键等，这些动作用另一种方式来执行，那就是动作链。 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> 1 # 实现一个节点的拖曳操作，将某个节点从一处拖曳到另外一处，可以这样实现</span><br><span class="line"> 2 import time</span><br><span class="line"> 3 from selenium import webdriver</span><br><span class="line"> 4 from selenium.webdriver import ActionChains</span><br><span class="line"> 5</span><br><span class="line"> 6 browser = webdriver.Chrome(r&apos;./chromedriver.exe&apos;)</span><br><span class="line"> 7 browser.get(&quot;https://www.runoob.com/try/try.php?filename=jqueryui-api-droppable&quot;)</span><br><span class="line"> 8</span><br><span class="line"> 9 # 分析页面标签可以发现页面中嵌套了html，实用的是frame框架，因此需要先定位iframe</span><br><span class="line">10 browser.switch_to_frame(&quot;iframeResult&quot;) # 通过id定位iframe</span><br><span class="line">11</span><br><span class="line">12 # 找到要拖动的标签和要拖动到的标签</span><br><span class="line">13 start = browser.find_element_by_id(&quot;draggable&quot;)</span><br><span class="line">14 end = browser.find_element_by_id(&quot;droppable&quot;)</span><br><span class="line">15 # 实例化动作对象</span><br><span class="line">16 actions = ActionChains(browser)</span><br><span class="line">17</span><br><span class="line">18 # (1)拖拽动作，参数为起始对象，perform()立即执行</span><br><span class="line">19 # actions.drag_and_drop(start,end).perform()</span><br><span class="line">20 # time.sleep(2)</span><br><span class="line">21</span><br><span class="line">22 # (2)缓慢执行拖动动作</span><br><span class="line">23 actions.click_and_hold(start)</span><br><span class="line">24 for i in range(5):</span><br><span class="line">25 actions.move_by_offset(xoffset=18,yoffset=0).perform()</span><br><span class="line">26 time.sleep(0.5)</span><br><span class="line">27 actions.release()</span><br><span class="line">28 start.click()</span><br><span class="line">29 time.sleep(2)</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32 # 处理页面的弹出警示框</span><br><span class="line">33 browser.switch_to_alert().accept()</span><br><span class="line">34 time.sleep(2)</span><br><span class="line">35</span><br><span class="line">36 browser.close()</span><br><span class="line">37 browser.quit()</span><br></pre></td></tr></table></figure>
+<p>　 <strong>执行JavaScript</strong></p>
+<blockquote>
+<p>　　对于某些操作，Selenium API并没有提供。比如，下拉进度条，它可以直接模拟运行JavaScript，此时使用<code>execute_script()</code>方法即可实现。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1 import time</span><br><span class="line"> 2 from selenium import webdriver</span><br><span class="line"> 3</span><br><span class="line"> 4 browser = webdriver.Chrome()</span><br><span class="line"> 5 browser.get(&apos;https://www.jd.com/&apos;)</span><br><span class="line"> 6 time.sleep(1)</span><br><span class="line"> 7 browser.execute_script(&apos;window.scrollTo(0, document.body.scrollHeight)&apos;)#操作滚动条</span><br><span class="line"> 8 time.sleep(2)</span><br><span class="line"> 9 browser.execute_script(&apos;alert(&quot;123&quot;)&apos;)#操作警示弹窗</span><br><span class="line">10 time.sleep(2)</span><br><span class="line">11 browser.switch_to_alert().accept()</span><br><span class="line">12 time.sleep(2)</span><br><span class="line">13 browser.quit()</span><br></pre></td></tr></table></figure>
+<p>　　<strong>获取页面源码数据</strong></p>
+<blockquote>
+<p>　　通过<code>page_source</code>属性可以获取网页的源代码，接着就可以使用解析库（如正则表达式、Beautiful Soup、pyquery等）来提取信息了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> 1 import time</span><br><span class="line"> 2 from lxml.html.clean import etree</span><br><span class="line"> 3</span><br><span class="line"> 4 from selenium import webdriver</span><br><span class="line"> 5</span><br><span class="line"> 6 browser=webdriver.Chrome(r&quot;./chromedriver.exe&quot;)</span><br><span class="line"> 7 browser.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line"> 8 search_input=browser.find_element_by_id(&apos;kw&apos;)</span><br><span class="line"> 9 search_button=browser.find_element_by_xpath(&apos;//input[@id=&quot;su&quot;]&apos;)</span><br><span class="line">10 search_input.send_keys(&apos;selenium工具包&apos;)</span><br><span class="line">11 time.sleep(2)</span><br><span class="line">12 search_button.click()</span><br><span class="line">13 time.sleep(2)</span><br><span class="line">14</span><br><span class="line">15 page_text=browser.page_source#获取页面源码</span><br><span class="line">16 print(etree.HTML(page_text).xpath(&apos;//span[@class=&quot;nums_text&quot;]/text()&apos;)[0])</span><br><span class="line">17 browser.quit()</span><br></pre></td></tr></table></figure>
+<p>　　<strong>前进和后退</strong></p>
+<blockquote>
+<p>　　模拟浏览器的前进和回退功能　　</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> 1 import time</span><br><span class="line"> 2 from selenium import webdriver</span><br><span class="line"> 3 browser=webdriver.Chrome()</span><br><span class="line"> 4</span><br><span class="line"> 5 browser.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line"> 6 browser.get(&apos;https://www.jd.com/&apos;)</span><br><span class="line"> 7 browser.get(&apos;https://www.sina.com.cn/&apos;)</span><br><span class="line"> 8</span><br><span class="line"> 9 time.sleep(3)</span><br><span class="line">10 browser.back()#浏览器后退</span><br><span class="line">11 time.sleep(3)</span><br><span class="line">12 browser.forward()#浏览器前进</span><br><span class="line">13 time.sleep(3)</span><br><span class="line">14 browser.close()</span><br></pre></td></tr></table></figure>
+<p>　　<strong>规避被检测识别</strong></p>
+<blockquote>
+<p>　　不少大网站有对selenium采取了监测机制。比如正常情况下我们用浏览器访问淘宝等网站的 window.navigator.webdriver的值为 undefined。而使用selenium访问则该值为true。因此需要设置Chromedriver的启动参数来解决问题。</p>
+<p>　　在启动Chromedriver之前，为Chrome开启实验性功能参数<code>excludeSwitches</code>，它的值为<code>[&#39;enable-automation&#39;]</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 from selenium import webdriver</span><br><span class="line">2 from selenium.webdriver import ChromeOptions</span><br><span class="line">3 option=ChromeOptions()</span><br><span class="line">4 option.add_experimental_option(&apos;excludeSwitches&apos;, [&apos;enable-automation&apos;])</span><br><span class="line">5 browser=webdriver.Chrome(options=option)</span><br><span class="line">6</span><br><span class="line">7 browser.get(&apos;https://www.baidu.com/&apos;)</span><br></pre></td></tr></table></figure>
+<p>　　<strong>Cookie处理</strong></p>
+<blockquote>
+<p>　　selenium模拟浏览器操作，可以不用考虑在页面数据获取时cookie问题，但是如果想操作cookie,使用Selenium也是可以实现的，例如获取、添加、删除Cookies等。　</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 from selenium import webdriver</span><br><span class="line">2 browser = webdriver.Chrome()</span><br><span class="line">3 browser.get(&apos;https://www.baidu.com&apos;)</span><br><span class="line">4 print(browser.get_cookies())</span><br><span class="line">5 browser.add_cookie(&#123;&apos;name&apos;: &apos;name&apos;, &apos;value&apos;: &apos;12345&apos;&#125;)</span><br><span class="line">6 print(browser.get_cookies())</span><br><span class="line">7 browser.delete_all_cookies()</span><br><span class="line">8 print(browser.get_cookies())</span><br></pre></td></tr></table></figure>
+<h2 id="phantomJS"><a href="#phantomJS" class="headerlink" title="phantomJS"></a><strong>phantomJS</strong></h2><blockquote>
+<p>　　PhantomJS是一款无界面的浏览器，其自动化操作流程和上述操作谷歌浏览器是一致的。由于是无界面的，为了能够展示自动化操作流程，PhantomJS为用户提供了一个截屏的功能，使用save_screenshot函数实现。PhantomJS下载地址：<a href="https://phantomjs.org/download.html" target="_blank" rel="noopener">https://phantomjs.org/download.html</a>，目前已经停止维护和更新，因此不建议使用，可以使用谷歌的无头浏览器。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> 1 from selenium import webdriver</span><br><span class="line"> 2 import time</span><br><span class="line"> 3</span><br><span class="line"> 4 # phantomjs路径</span><br><span class="line"> 5 path = r&apos;PhantomJS驱动路径&apos;</span><br><span class="line"> 6 browser = webdriver.PhantomJS(path)</span><br><span class="line"> 7</span><br><span class="line"> 8 # 打开百度</span><br><span class="line"> 9 url = &apos;http://www.baidu.com/&apos;</span><br><span class="line">10 browser.get(url)</span><br><span class="line">11</span><br><span class="line">12 time.sleep(3)</span><br><span class="line">13</span><br><span class="line">14 browser.save_screenshot(r&apos;phantomjs\baidu.png&apos;)</span><br><span class="line">15</span><br><span class="line">16 # 查找input输入框</span><br><span class="line">17 my_input = browser.find_element_by_id(&apos;kw&apos;)</span><br><span class="line">18 # 往框里面写文字</span><br><span class="line">19 my_input.send_keys(&apos;美女&apos;)</span><br><span class="line">20 time.sleep(3)</span><br><span class="line">21 #截屏</span><br><span class="line">22 browser.save_screenshot(r&apos;phantomjs\meinv.png&apos;)</span><br><span class="line">23</span><br><span class="line">24 # 查找搜索按钮</span><br><span class="line">25 button = browser.find_elements_by_class_name(&apos;s_btn&apos;)[0]</span><br><span class="line">26 button.click()</span><br><span class="line">27</span><br><span class="line">28 time.sleep(3)</span><br><span class="line">29</span><br><span class="line">30 browser.save_screenshot(r&apos;phantomjs\show.png&apos;)</span><br><span class="line">31</span><br><span class="line">32 time.sleep(3)</span><br><span class="line">33</span><br><span class="line">34 browser.quit()</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p><strong>谷歌无头浏览器</strong>　　</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 1 import time</span><br><span class="line"> 2 from selenium import webdriver</span><br><span class="line"> 3 from selenium.webdriver.chrome.options import Options</span><br><span class="line"> 4 # 创建一个参数对象，用来控制chrome以无界面模式打开</span><br><span class="line"> 5 chrome_options=Options()</span><br><span class="line"> 6 chrome_options.add_argument(&apos;--headless&apos;)</span><br><span class="line"> 7 chrome_options.add_argument(&apos;--disable-gpu&apos;)</span><br><span class="line"> 8</span><br><span class="line"> 9 #谷歌浏览器驱动路径</span><br><span class="line">10 chrome_path=r&apos;chromedriver.exe&apos;#当前目录</span><br><span class="line">11</span><br><span class="line">12 #创建浏览器对象</span><br><span class="line">13 # browser=webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)</span><br><span class="line">14 browser=webdriver.Chrome(chrome_path,chrome_options=chrome_options)</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17 browser.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line">18 time.sleep(4)</span><br><span class="line">19 browser.save_screenshot(&apos;baidu.png&apos;)#截图</span><br><span class="line">20 browser.quit()</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)  </p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 18:13</p>
+        <p>原始链接： <a class="post-url" href="/2019/09/28/python-Selenium-WebDriverWait/" title="python-Selenium-WebDriverWait">https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/&title=《python-Selenium-WebDriverWait》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/&title=《python-Selenium-WebDriverWait》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python-Selenium-WebDriverWait》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/09/28/python-Selenium-WebDriverWait/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/python/" class="color2">python</a>
+      
+    <a href="/tags/Selenium/" class="color4">Selenium</a>
+      
+    <a href="/tags/WebDriverWait/" class="color4">WebDriverWait</a>
+      
+    <a href="/tags/爬虫/" class="color3">爬虫</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#expected-conditions"><span class="post-toc-text">expected_conditions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境安装"><span class="post-toc-text">环境安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元素定位"><span class="post-toc-text">　　元素定位</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#phantomJS"><span class="post-toc-text">phantomJS</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/01/项目遇到的问题-vue/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          项目遇到的问题-vue
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/09/25/js类数组/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">js类数组</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

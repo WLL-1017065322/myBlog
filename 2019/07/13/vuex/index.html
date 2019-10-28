@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>vuex | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="一. 什么是Vuex?Vuex是一个专门为Vue.js应用程序开发的状态管理模式, 它采用集中式存储管理所有组件的公共状态, 并以相应的规则保证状态以一种可预测的方式发生变化.  Vuex核心 上图中绿色虚线包裹起来的部分就是Vuex的核心, state中保存的就是公共状态, 改变state的唯一方式就是通过mutations进行更改. 可能你现在看这张图有点不明白, 等经过本文的解释和案例演示,">
+<meta name="keywords" content="javascript,vue,vuex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/07/13/vuex/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="一. 什么是Vuex?Vuex是一个专门为Vue.js应用程序开发的状态管理模式, 它采用集中式存储管理所有组件的公共状态, 并以相应的规则保证状态以一种可预测的方式发生变化.  Vuex核心 上图中绿色虚线包裹起来的部分就是Vuex的核心, state中保存的就是公共状态, 改变state的唯一方式就是通过mutations进行更改. 可能你现在看这张图有点不明白, 等经过本文的解释和案例演示,">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/07/13/vuex/assets/image_1bqru9fcu1pq917q61ktk18cn1sov9.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/07/13/vuex/assets/image_1bqruul922q0146t1tjr1u91173bm.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/07/13/vuex/assets/image_1bqs3mi8no0iv0t18qh1er0dks2a.png">
+<meta property="og:updated_time" content="2019-10-28T08:56:10.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuex">
+<meta name="twitter:description" content="一. 什么是Vuex?Vuex是一个专门为Vue.js应用程序开发的状态管理模式, 它采用集中式存储管理所有组件的公共状态, 并以相应的规则保证状态以一种可预测的方式发生变化.  Vuex核心 上图中绿色虚线包裹起来的部分就是Vuex的核心, state中保存的就是公共状态, 改变state的唯一方式就是通过mutations进行更改. 可能你现在看这张图有点不明白, 等经过本文的解释和案例演示,">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/07/13/vuex/assets/image_1bqru9fcu1pq917q61ktk18cn1sov9.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vuex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      vuex
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/vue/">vue</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-07-13
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一-什么是Vuex"><a href="#一-什么是Vuex" class="headerlink" title="一. 什么是Vuex?"></a><strong>一. 什么是Vuex?</strong></h3><p>Vuex是一个专门为Vue.js应用程序开发的状态管理模式, 它采用集中式存储管理所有组件的公共状态, 并以相应的规则保证状态以一种可预测的方式发生变化.</p>
+<p><img src="assets/image_1bqru9fcu1pq917q61ktk18cn1sov9.png" alt="Vuex核心"></p>
+<p>Vuex核心</p>
+<p>上图中绿色虚线包裹起来的部分就是Vuex的核心, <code>state</code>中保存的就是公共状态, 改变<code>state</code>的唯一方式就是通过<code>mutations</code>进行更改. 可能你现在看这张图有点不明白, 等经过本文的解释和案例演示, 再回来看这张图, 相信你会有更好的理解.</p>
+<h3 id="二-为什么要使用Vuex"><a href="#二-为什么要使用Vuex" class="headerlink" title="二. 为什么要使用Vuex?"></a><strong>二. 为什么要使用Vuex?</strong></h3><p>试想这样的场景, 比如一个Vue的根实例下面有一个根组件名为<code>App.vue</code>, 它下面有两个子组件<code>A.vue</code>和<code>B.vue</code>, <code>App.vue</code>想要与<code>A.vue</code>或者<code>B.vue</code>通讯可以通过props传值的方式, 但是如果<code>A.vue</code>和<code>B.vue</code>之间的通讯就很麻烦了, 他们需要共有的父组件通过<strong>自定义事件</strong>进行实现, A组件想要和B组件通讯往往是这样的:</p>
+<p><img src="assets/image_1bqruul922q0146t1tjr1u91173bm.png" alt="组件通讯"> </p>
+<p>组件通讯</p>
+<ul>
+<li>A组件说: “报告老大, 能否帮我托个信给小弟B” =&gt; dispatch一个事件给App</li>
+<li>App老大说: “包在我身上, 它需要监听A组件的dispatch的时间, 同时需要broadcast一个事件给B组件”</li>
+<li>B小弟说: “信息已收到”, 它需要on监听App组件分发的事件</li>
+</ul>
+<p>这只是一条通讯路径, 如果父组件下有多个子组件, 子组件之间通讯的路径就会变的很繁琐, 父组件需要监听大量的事件, 还需要负责分发给不同的子组件, 很显然这并不是我们想要的组件化的开发体验.</p>
+<blockquote>
+<p><strong>Vuex就是为了解决这一问题出现的</strong></p>
+</blockquote>
+<h3 id="三-如何引入Vuex"><a href="#三-如何引入Vuex" class="headerlink" title="三.如何引入Vuex?"></a><strong>三.如何引入Vuex?</strong></h3><ol>
+<li>下载<code>vuex</code>: <code>npm install vuex --save</code> </li>
+<li>在<code>main.js</code>添加:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import Vuex from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">Vue.use( Vuex );</span><br><span class="line"></span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">    //待添加</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    store,</span><br><span class="line">    render: h =&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="四-Vuex的核心概念"><a href="#四-Vuex的核心概念" class="headerlink" title="四. Vuex的核心概念?"></a><strong>四. Vuex的核心概念?</strong></h3><p>在介绍Vuex的核心概念之前, 我使用<code>vue-cli</code>初始化了一个demo, 准备以代码的形式来说明Vuex的核心概念, 大家可以在github上的<a href="https://github.com/Lee-Tanghui/Vuex-Demo" target="_blank" rel="noopener">master分支</a>进行下载.这个demo分别有两个组件<code>ProductListOne.vue</code>和<code>ProductListTwo.vue</code>, 在<code>App.vue</code>的<code>datat</code>中保存着共有的商品列表, 代码和初始化的效果如下图所示:<br> <img src="assets/image_1bqs3mi8no0iv0t18qh1er0dks2a.png" alt="初始化效果"></p>
+<p>初始化效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">//App.vue中的初始化代码</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;product-list-one v-bind:products=&quot;products&quot;&gt;&lt;/product-list-one&gt;</span><br><span class="line">    &lt;product-list-two v-bind:products=&quot;products&quot;&gt;&lt;/product-list-two&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ProductListOne from &apos;./components/ProductListOne.vue&apos;</span><br><span class="line">import ProductListTwo from &apos;./components/ProductListTwo.vue&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &apos;app&apos;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        &apos;product-list-one&apos;: ProductListOne,</span><br><span class="line">        &apos;product-list-two&apos;: ProductListTwo</span><br><span class="line">    &#125;,</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products: [</span><br><span class="line">                &#123;name: &apos;鼠标&apos;, price: 20&#125;,</span><br><span class="line">                &#123;name: &apos;键盘&apos;, price: 40&#125;,</span><br><span class="line">                &#123;name: &apos;耳机&apos;, price: 60&#125;,</span><br><span class="line">                &#123;name: &apos;显示屏&apos;, price: 80&#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">body&#123;</span><br><span class="line">    font-family: Ubuntu;</span><br><span class="line">    color: #555;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">//ProductListOne.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;product-list-one&quot;&gt;</span><br><span class="line">        &lt;h2&gt;Product List One&lt;/h2&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for=&quot;product in products&quot;&gt;</span><br><span class="line">                &lt;span class=&quot;name&quot;&gt;&#123;&#123; product.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;span class=&quot;price&quot;&gt;$&#123;&#123; product.price &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    props: [&apos;products&apos;],</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">#product-list-one&#123;</span><br><span class="line">    background: #FFF8B1;</span><br><span class="line">    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">    padding: 10px 20px;</span><br><span class="line">&#125;</span><br><span class="line">#product-list-one ul&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">#product-list-one li&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">    margin-top: 10px;</span><br><span class="line">    padding: 20px;</span><br><span class="line">    background: rgba(255,255,255,0.7);</span><br><span class="line">&#125;</span><br><span class="line">.price&#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    color: #E8800C;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">//ProductListTwo.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;product-list-two&quot;&gt;</span><br><span class="line">        &lt;h2&gt;Product List Two&lt;/h2&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for=&quot;product in products&quot;&gt;</span><br><span class="line">                &lt;span class=&quot;name&quot;&gt;&#123;&#123; product.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;span class=&quot;price&quot;&gt;$&#123;&#123; product.price &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    props: [&apos;products&apos;],</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">#product-list-two&#123;</span><br><span class="line">    background: #D1E4FF;</span><br><span class="line">    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">    padding: 10px 20px;</span><br><span class="line">&#125;</span><br><span class="line">#product-list-two ul&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    list-style-type: none;</span><br><span class="line">&#125;</span><br><span class="line">#product-list-two li&#123;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">    margin-top: 10px;</span><br><span class="line">    padding: 20px;</span><br><span class="line">    background: rgba(255,255,255,0.7);</span><br><span class="line">&#125;</span><br><span class="line">.price&#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    color: #860CE8;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="核心概念1-State"><a href="#核心概念1-State" class="headerlink" title="核心概念1: State"></a><strong>核心概念1: State</strong></h4><p><code>state</code>就是Vuex中的公共的状态, 我是将<code>state</code>看作是所有组件的<code>data</code>, 用于保存所有组件的公共数据.</p>
+<ul>
+<li>此时我们就可以把<code>App.vue</code>中的两个组件共同使用的data抽离出来, 放到<code>state</code>中,代码如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import App from &apos;./App.vue&apos;</span><br><span class="line">import Vuex from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">Vue.use( Vuex )</span><br><span class="line"></span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123; </span><br><span class="line">    products: [</span><br><span class="line">      &#123;name: &apos;鼠标&apos;, price: 20&#125;,</span><br><span class="line">      &#123;name: &apos;键盘&apos;, price: 40&#125;,</span><br><span class="line">      &#123;name: &apos;耳机&apos;, price: 60&#125;,</span><br><span class="line">      &#123;name: &apos;显示屏&apos;, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此时,<code>ProductListOne.vue</code>和<code>ProductListTwo.vue</code>也需要做相应的更改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//ProductListOne.vue</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products : this.$store.state.products //获取store中state的数据</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//ProductListTwo.vue</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products: this.$store.state.products //获取store中state的数据</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此时的页面如下图所示, 可以看到, 将公共数据抽离出来后, 页面没有发生变化.</li>
+</ul>
+<p>  state效果</p>
+<blockquote>
+<p>到此处的Github仓库中代码为: <a href="https://github.com/Lee-Tanghui/Vuex-Demo/tree/code01" target="_blank" rel="noopener">分支code01</a></p>
+</blockquote>
+<h4 id="核心概念2-Getters"><a href="#核心概念2-Getters" class="headerlink" title="核心概念2: Getters"></a><strong>核心概念2: Getters</strong></h4><p>我将<code>getters</code>属性理解为所有组件的<code>computed</code>属性, 也就是计算属性. vuex的官方文档也是说到可以将getter理解为store的计算属性, getters的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。</p>
+<ul>
+<li>此时,我们可以在<code>main.js</code>中添加一个<code>getters</code>属性, 其中的<code>saleProducts</code>对象将<code>state</code>中的价格减少一半(除以2)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123;</span><br><span class="line">    products: [</span><br><span class="line">      &#123;name: &apos;鼠标&apos;, price: 20&#125;,</span><br><span class="line">      &#123;name: &apos;键盘&apos;, price: 40&#125;,</span><br><span class="line">      &#123;name: &apos;耳机&apos;, price: 60&#125;,</span><br><span class="line">      &#123;name: &apos;显示屏&apos;, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters:&#123; //添加getters</span><br><span class="line">    saleProducts: (state) =&gt; &#123;</span><br><span class="line">      let saleProducts = state.products.map( product =&gt; &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          name: product.name,</span><br><span class="line">          price: product.price / 2</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      return saleProducts;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将<code>productListOne.vue</code>中的<code>products</code>的值更换为<code>this.$store.getters.saleProducts</code> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products : this.$store.getters.saleProducts </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>现在的页面中,Product List One中的每项商品的价格都减少了一半</li>
+</ul>
+<p>getters效果</p>
+<blockquote>
+<p>到此处的Github仓库中代码为: <a href="https://github.com/Lee-Tanghui/Vuex-Demo/tree/code02" target="_blank" rel="noopener">分支code02</a></p>
+</blockquote>
+<h4 id="核心概念3-Mutations"><a href="#核心概念3-Mutations" class="headerlink" title="核心概念3: Mutations"></a><strong>核心概念3: Mutations</strong></h4><p>我将<code>mutaions</code>理解为<code>store</code>中的<code>methods</code>, <code>mutations</code>对象中保存着更改数据的回调函数,该函数名官方规定叫<code>type</code>, 第一个参数是<code>state</code>, 第二参数是<code>payload</code>, 也就是自定义的参数.</p>
+<ul>
+<li>下面,我们在<code>main.js</code>中添加<code>mutations</code>属性,其中<code>minusPrice</code>这个回调函数用于将商品的价格减少<code>payload</code>这么多, 代码如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123;</span><br><span class="line">    products: [</span><br><span class="line">      &#123;name: &apos;鼠标&apos;, price: 20&#125;,</span><br><span class="line">      &#123;name: &apos;键盘&apos;, price: 40&#125;,</span><br><span class="line">      &#123;name: &apos;耳机&apos;, price: 60&#125;,</span><br><span class="line">      &#123;name: &apos;显示屏&apos;, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters:&#123;</span><br><span class="line">    saleProducts: (state) =&gt; &#123;</span><br><span class="line">      let saleProducts = state.products.map( product =&gt; &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          name: product.name,</span><br><span class="line">          price: product.price / 2</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      return saleProducts;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations:&#123; //添加mutations</span><br><span class="line">    minusPrice (state, payload ) &#123;</span><br><span class="line">      let newPrice = state.products.forEach( product =&gt; &#123;</span><br><span class="line">        product.price -= payload</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>ProductListTwo.vue</code>中添加一个按钮,为其添加一个点击事件, 给点击事件触发<code>minusPrice</code>方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//ProductListTwo.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;product-list-two&quot;&gt;</span><br><span class="line">        &lt;h2&gt;Product List Two&lt;/h2&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for=&quot;product in products&quot;&gt;</span><br><span class="line">                &lt;span class=&quot;name&quot;&gt;&#123;&#123; product.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;span class=&quot;price&quot;&gt;$&#123;&#123; product.price &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;button @click=&quot;minusPrice&quot;&gt;减少价格&lt;/button&gt; //添加按钮</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>ProductListTwo.vue</code>中注册<code>minusPrice</code>方法, 在该方法中commit<code>mutations</code>中的<code>minusPrice</code>这个回调函数<br> <strong>注意:调用mutaions中回调函数, 只能使用store.commit(type, payload)</strong> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//ProductListTwo.vue</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products: this.$store.state.products</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        minusPrice() &#123;</span><br><span class="line">            this.$store.commit(&apos;minusPrice&apos;, 2); //提交`minusPrice,payload为2</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>添加按钮, 可以发现, Product List Two中的价格减少了2, 当然你可以自定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload</span><br></pre></td></tr></table></figure>
+<p>,以此自定义减少对应的价格.</p>
+</li>
+</ul>
+<p>  mutations效果</p>
+<p>(Product List One中的价格没有发生变化，原因是getter 监听的是map方法产生的新对象)</p>
+<blockquote>
+<p>到此处的Github仓库中代码为: <a href="https://github.com/Lee-Tanghui/Vuex-Demo/tree/code03" target="_blank" rel="noopener">分支code03</a></p>
+</blockquote>
+<h4 id="核心概念4-Actions"><a href="#核心概念4-Actions" class="headerlink" title="核心概念4: Actions"></a><strong>核心概念4: Actions</strong></h4><p><code>actions</code> 类似于 <code>mutations</code>，不同在于：</p>
+<ul>
+<li><code>actions</code>提交的是<code>mutations</code>而不是直接变更状态</li>
+<li><code>actions</code>中可以包含异步操作, <code>mutations</code>中绝对不允许出现异步</li>
+<li><code>actions</code>中的回调函数的第一个参数是<code>context</code>, 是一个与<code>store</code>实例具有相同属性和方法的对象</li>
+<li>此时,我们在<code>store</code>中添加<code>actions</code>属性, 其中<code>minusPriceAsync</code>采用<code>setTimeout</code>来模拟异步操作,延迟2s执行 该方法用于异步改变我们刚才在<code>mutaions</code>中定义的<code>minusPrice</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state:&#123;</span><br><span class="line">    products: [</span><br><span class="line">      &#123;name: &apos;鼠标&apos;, price: 20&#125;,</span><br><span class="line">      &#123;name: &apos;键盘&apos;, price: 40&#125;,</span><br><span class="line">      &#123;name: &apos;耳机&apos;, price: 60&#125;,</span><br><span class="line">      &#123;name: &apos;显示屏&apos;, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters:&#123;</span><br><span class="line">    saleProducts: (state) =&gt; &#123;</span><br><span class="line">      let saleProducts = state.products.map( product =&gt; &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          name: product.name,</span><br><span class="line">          price: product.price / 2</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      return saleProducts;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations:&#123;</span><br><span class="line">    minusPrice (state, payload ) &#123;</span><br><span class="line">      let newPrice = state.products.forEach( product =&gt; &#123;</span><br><span class="line">        product.price -= payload</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions:&#123; //添加actions</span><br><span class="line">    minusPriceAsync( context, payload ) &#123;</span><br><span class="line">      setTimeout( () =&gt; &#123;</span><br><span class="line">        context.commit( &apos;minusPrice&apos;, payload ); //context提交</span><br><span class="line">      &#125;, 2000)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>ProductListTwo.vue</code>中添加一个按钮,为其添加一个点击事件, 给点击事件触发<code>minusPriceAsync</code>方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;product-list-two&quot;&gt;</span><br><span class="line">        &lt;h2&gt;Product List Two&lt;/h2&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for=&quot;product in products&quot;&gt;</span><br><span class="line">                &lt;span class=&quot;name&quot;&gt;&#123;&#123; product.name &#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;span class=&quot;price&quot;&gt;$&#123;&#123; product.price &#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;button @click=&quot;minusPrice&quot;&gt;减少价格&lt;/button&gt;</span><br><span class="line">            &lt;button @click=&quot;minusPriceAsync&quot;&gt;异步减少价格&lt;/button&gt; //添加按钮</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>ProductListTwo.vue</code>中注册<code>minusPriceAsync</code>方法, 在该方法中dispatch<code>actions</code>中的<code>minusPriceAsync</code>这个回调函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            products: this.$store.state.products</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        minusPrice() &#123;</span><br><span class="line">            this.$store.commit(&apos;minusPrice&apos;, 2);</span><br><span class="line">        &#125;,</span><br><span class="line">        minusPriceAsync() &#123;</span><br><span class="line">            this.$store.dispatch(&apos;minusPriceAsync&apos;, 5); //分发actions中的minusPriceAsync这个异步函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加按钮, 可以发现, Product List Two中的价格延迟2s后减少了5</li>
+</ul>
+<p>  actions效果</p>
+<blockquote>
+<p>到此处的Github仓库中代码为: <a href="https://github.com/Lee-Tanghui/Vuex-Demo/tree/code04" target="_blank" rel="noopener">分支code04</a></p>
+</blockquote>
+<h4 id="核心概念5-Modules"><a href="#核心概念5-Modules" class="headerlink" title="核心概念5: Modules"></a><strong>核心概念5: Modules</strong></h4><blockquote>
+<p>由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const moduleA = &#123;</span><br><span class="line">  state: &#123; ... &#125;,</span><br><span class="line">  mutations: &#123; ... &#125;,</span><br><span class="line">  actions: &#123; ... &#125;,</span><br><span class="line">  getters: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const moduleB = &#123;</span><br><span class="line">  state: &#123; ... &#125;,</span><br><span class="line">  mutations: &#123; ... &#125;,</span><br><span class="line">  actions: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    a: moduleA,</span><br><span class="line">    b: moduleB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.state.a // -&gt; moduleA 的状态</span><br><span class="line">store.state.b // -&gt; moduleB 的状态</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>【相关链接】</strong></p>
+<ol>
+<li>本文代码地址: <a href="https://github.com/Lee-Tanghui/Vuex-Demo" target="_blank" rel="noopener">https://github.com/Lee-Tanghui/Vuex-Demo</a> </li>
+<li>Vuex官方文档: <a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/intro.html</a> </li>
+<li>Vuex官方案例演示源码: <a href="https://github.com/vuejs/vuex/tree/dev/examples" target="_blank" rel="noopener">https://github.com/vuejs/vuex/tree/dev/examples</a></li>
+</ol>
+<p>作者：李棠辉</p>
+<p>链接：<a href="https://www.jianshu.com/p/a804606ad8e9" target="_blank" rel="noopener">https://www.jianshu.com/p/a804606ad8e9</a></p>
+<p>来源：简书</p>
+<p>简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 16:56</p>
+        <p>原始链接： <a class="post-url" href="/2019/07/13/vuex/" title="vuex">https://WLL-1017065322.github.io/2019/07/13/vuex/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/07/13/vuex/&title=《vuex》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/07/13/vuex/&title=《vuex》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/07/13/vuex/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vuex》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/07/13/vuex/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/07/13/vuex/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/07/13/vuex/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+    <a href="/tags/vuex/" class="color5">vuex</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-什么是Vuex"><span class="post-toc-text">一. 什么是Vuex?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-为什么要使用Vuex"><span class="post-toc-text">二. 为什么要使用Vuex?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-如何引入Vuex"><span class="post-toc-text">三.如何引入Vuex?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四-Vuex的核心概念"><span class="post-toc-text">四. Vuex的核心概念?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心概念1-State"><span class="post-toc-text">核心概念1: State</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心概念2-Getters"><span class="post-toc-text">核心概念2: Getters</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心概念3-Mutations"><span class="post-toc-text">核心概念3: Mutations</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心概念4-Actions"><span class="post-toc-text">核心概念4: Actions</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心概念5-Modules"><span class="post-toc-text">核心概念5: Modules</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/07/17/axios post 后端拿不到数据/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          axios post 后端拿不到数据
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/07/09/vuerouter传参/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">vuerouter传参</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

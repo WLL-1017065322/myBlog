@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>跨域导致cookie设置失败 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="nodejs 跨域设置cookie在做vue全家桶+express 做项目。 想做一个免登陆功能，选择session方案。 服务器设置session 后， 返回的响应头有Set-Cookie,但是浏览器的Application的cookies缺没有返回的sessionID的cookie。 折腾了很久，才意识到这是跨域造成了问题。前端是8080端口，后端是4000端口。 默认情况下跨域请求浏览器不会">
+<meta name="keywords" content="跨域,cookie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域导致cookie设置失败">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="nodejs 跨域设置cookie在做vue全家桶+express 做项目。 想做一个免登陆功能，选择session方案。 服务器设置session 后， 返回的响应头有Set-Cookie,但是浏览器的Application的cookies缺没有返回的sessionID的cookie。 折腾了很久，才意识到这是跨域造成了问题。前端是8080端口，后端是4000端口。 默认情况下跨域请求浏览器不会">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/assets/943101-20171209195232400-1831095022.png">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/assets/copycode-1568814755538.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/assets/copycode-1568814755538.gif">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/assets/bn8b5elcx9.png">
+<meta property="og:updated_time" content="2019-10-28T08:17:43.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域导致cookie设置失败">
+<meta name="twitter:description" content="nodejs 跨域设置cookie在做vue全家桶+express 做项目。 想做一个免登陆功能，选择session方案。 服务器设置session 后， 返回的响应头有Set-Cookie,但是浏览器的Application的cookies缺没有返回的sessionID的cookie。 折腾了很久，才意识到这是跨域造成了问题。前端是8080端口，后端是4000端口。 默认情况下跨域请求浏览器不会">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/assets/943101-20171209195232400-1831095022.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-跨域导致cookie设置失败" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      跨域导致cookie设置失败
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="nodejs-跨域设置cookie"><a href="#nodejs-跨域设置cookie" class="headerlink" title="nodejs 跨域设置cookie"></a><a href="https://www.cnblogs.com/lijinwen/p/8012547.html" target="_blank" rel="noopener">nodejs 跨域设置cookie</a></h1><p>在做vue全家桶+express 做项目。 想做一个免登陆功能，选择session方案。 服务器设置session 后， 返回的响应头有Set-Cookie,但是浏览器的Application的cookies缺没有返回的sessionID的cookie。 折腾了很久，才意识到这是跨域造成了问题。前端是8080端口，后端是4000端口。 默认情况下跨域请求浏览器不会携带凭证信息（cookie, ssl证明等），服务器设置的cookie也会被浏览器拦截</p>
+<p>所以解决方案是</p>
+<p>前端的ajax后者axios需要设置withCredentials为true。我的是axios，这样请求会携带上cookie</p>
+<p><img src="assets/943101-20171209195232400-1831095022.png" alt="img"></p>
+<p>同时后端使用cors中间件。 即可</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="assets/copycode-1568814755538.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//需要安装并且引入中间件cors</span><br><span class="line">const cors = require(&apos;cors&apos;);</span><br><span class="line"></span><br><span class="line">var corsOptions = &#123;</span><br><span class="line">  origin: &apos;http://localhost:8080&apos;,</span><br><span class="line">  credentials: true,</span><br><span class="line">  maxAge: &apos;1728000&apos;</span><br><span class="line">  //这一项是为了跨域专门设置的</span><br><span class="line">&#125;</span><br><span class="line">app.use(cors(corsOptions))</span><br><span class="line">//设置跨域</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>如果不用中间件，也可以这样，显示的设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials 为true</span><br></pre></td></tr></table></figure>
+<p>注意origin不能是*号.。 这样浏览器就不会拦截服务器设置的cookie了</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 app.all(&apos;*&apos;, function(req, res, next) &#123;</span><br><span class="line">2     res.header(&quot;Access-Control-Allow-Origin&quot;, req.headers.origin); //需要显示设置来源</span><br><span class="line">3     res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Origin, X-Requested-With, Content-Type, Accept&quot;);</span><br><span class="line">4     res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;PUT,POST,GET,DELETE,OPTIONS&quot;);</span><br><span class="line">5     res.header(&quot;Access-Control-Allow-Credentials&quot;,true); //带cookies7     res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);</span><br><span class="line">8     next();</span><br><span class="line">9 &#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="assets/copycode-1568814755538.gif" alt="复制代码"></a>;)</p>
+<p><strong>nodejs端 （适用于 express  koa  egg）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const cors = require(&apos;cors&apos;);</span><br><span class="line">var app=express();</span><br><span class="line">var corsOptions = &#123;</span><br><span class="line">  origin: &apos;http://localhost:8080&apos;,</span><br><span class="line">  credentials: true,</span><br><span class="line">  maxAge: &apos;1728000&apos;</span><br><span class="line">  //这一项是为了跨域专门设置的</span><br><span class="line">&#125;</span><br><span class="line">app.use(cors(corsOptions))</span><br></pre></td></tr></table></figure>
+<h3 id="1、前端-vue-ajax请求解决cookie跨域-vue-resource"><a href="#1、前端-vue-ajax请求解决cookie跨域-vue-resource" class="headerlink" title="1、前端 vue ajax请求解决cookie跨域 vue-resource"></a>1、前端 vue ajax请求解决cookie跨域 vue-resource</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">this.$http.get(&apos;getlogin&apos;,&#123; credentials: true &#125;).then(res =&gt; &#123;</span><br><span class="line">                    console.log(res)</span><br><span class="line">                &#125;)</span><br><span class="line"></span><br><span class="line"> this.$http.post(&apos;postlogin&apos;,&#123;userInfo: $(&apos;.form-signin&apos;).serialize()&#125;,&#123; credentials: true &#125;).then(res =&gt; &#123;</span><br><span class="line">                    console.log(res)</span><br><span class="line">                    if(res.body.status != 200) &#123;</span><br><span class="line">                        console.log(&apos;登录失败&apos;)</span><br><span class="line">                    &#125;else &#123;</span><br><span class="line">                        console.log(&apos;登录成功&apos;)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="2、原生js中ajax请求api-cookie跨域"><a href="#2、原生js中ajax请求api-cookie跨域" class="headerlink" title="2、原生js中ajax请求api cookie跨域"></a>2、原生js中ajax请求api cookie跨域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&apos;GET&apos;, &apos;http://www.xxx.com/api&apos;);</span><br><span class="line">xhr.withCredentials = true;</span><br><span class="line">xhr.onload = onLoadHandler;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
+<h3 id="3、jquery中ajax请求api-cookie跨域"><a href="#3、jquery中ajax请求api-cookie跨域" class="headerlink" title="3、jquery中ajax请求api cookie跨域"></a>3、jquery中ajax请求api cookie跨域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">            url: &quot;http://localhost:8080/orders&quot;,</span><br><span class="line">            type: &quot;GET&quot;,</span><br><span class="line">            xhrFields: &#123;</span><br><span class="line">                withCredentials: true</span><br><span class="line">            &#125;,</span><br><span class="line">            crossDomain: true,</span><br><span class="line">            success: function (data) &#123;</span><br><span class="line">                render(data);</span><br><span class="line">            &#125;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="4-axios-ajax请求api-cookie跨域-（vue-react-angular通用）"><a href="#4-axios-ajax请求api-cookie跨域-（vue-react-angular通用）" class="headerlink" title="4.axios ajax请求api cookie跨域 （vue react angular通用）"></a>4.axios ajax请求api cookie跨域 （vue react angular通用）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const service = axios.create(&#123;</span><br><span class="line">  baseURL: process.env.BASE_API, // node环境的不同，对应不同的baseURL</span><br><span class="line">  timeout: 5000, // 请求的超时时间</span><br><span class="line">  //设置默认请求头，使post请求发送的是formdata格式数据// axios的header默认的Content-Type好像是&apos;application/json;charset=UTF-8&apos;,我的项目都是用json格式传输，如果需要更改的话，可以用这种方式修改</span><br><span class="line">  // headers: &#123;  </span><br><span class="line">    // &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;</span><br><span class="line">  // &#125;,</span><br><span class="line">  withCredentials: true // 允许携带cookie</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-3-设置-Access-Control-Allow-Origin-就行吗"><a href="#3-3-3-设置-Access-Control-Allow-Origin-就行吗" class="headerlink" title="3.3.3 设置 Access-Control-Allow-Origin: * 就行吗"></a>3.3.3 设置 Access-Control-Allow-Origin: * 就行吗</h4><p><img src="assets/bn8b5elcx9.png" alt="img">带cookie的跨域</p>
+<p>当我们需要发送带 cookie 的请求时，Access-Control-Allow-Origin 直接设置为通配符 * 时是无法通过浏览器的检查的，此时该响应头的值必须与发出请求的域完全匹配才行，另外，还需要设置 Access-Control-Allow-Credentials 响应头的值为 true，表示支持带 cookie 的跨域请求。</p>
+<h4 id="3-3-4-CORS请求头和响应头总结"><a href="#3-3-4-CORS请求头和响应头总结" class="headerlink" title="3.3.4 CORS请求头和响应头总结"></a>3.3.4 CORS请求头和响应头总结</h4><p>请求头：</p>
+<ul>
+<li>Origin： 浏览器发出 Ajax 跨域请求之前会添加此头部，值为发送请求的域</li>
+<li>Access-Control-Request-Method：使用了除 GET、POST 请求方法之外的方法，浏览器会添加此头部，值为当前请求方法</li>
+<li>Access-Control-Request-Headers：使用了自定义头部或除了Accept、Accept-Language、Content-Language、Content-Type 之外的头部，浏览器会添加此头部，值为当前的请求方法</li>
+</ul>
+<p>响应头：</p>
+<ul>
+<li>Access-Control-Allow-Origin： 表示服务端允许哪些域请求资源</li>
+<li>Access-Control-Allow-Methods： 当客户端包含 Access-Control-Request-Method 请求头时，服务端需要响应该头部，值通常由 Reauest 的 header 中 Access-Control-Request-Method 取得</li>
+<li>Access-Control-Allow-Headers： 当客户端包含 Access-Control-Request-Headers 请求头时，服务端需要响应该头部，值通常由 Reauest 的 header 中 Access-Control-Request-Headers 取得</li>
+<li>Access-Control-Expose-Headers： 指出客户端通过 XHR 对象的 getResponseHeaders 方法可以获取的响应头有哪些</li>
+<li>Access-Control-Allow-Credentials： 允许带 cookie 的跨域请求</li>
+<li>Access-Control-Max-Age： 预检请求的缓存时间</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 16:17</p>
+        <p>原始链接： <a class="post-url" href="/2019/09/04/跨域导致cookie设置失败/" title="跨域导致cookie设置失败">https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/&title=《跨域导致cookie设置失败》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/&title=《跨域导致cookie设置失败》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跨域导致cookie设置失败》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/09/04/跨域导致cookie设置失败/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/跨域/" class="color3">跨域</a>
+      
+    <a href="/tags/cookie/" class="color2">cookie</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nodejs-跨域设置cookie"><span class="post-toc-text">nodejs 跨域设置cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、前端-vue-ajax请求解决cookie跨域-vue-resource"><span class="post-toc-text">1、前端 vue ajax请求解决cookie跨域 vue-resource</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、原生js中ajax请求api-cookie跨域"><span class="post-toc-text">2、原生js中ajax请求api cookie跨域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、jquery中ajax请求api-cookie跨域"><span class="post-toc-text">3、jquery中ajax请求api cookie跨域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-axios-ajax请求api-cookie跨域-（vue-react-angular通用）"><span class="post-toc-text">4.axios ajax请求api cookie跨域 （vue react angular通用）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-3-设置-Access-Control-Allow-Origin-就行吗"><span class="post-toc-text">3.3.3 设置 Access-Control-Allow-Origin: * 就行吗</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-4-CORS请求头和响应头总结"><span class="post-toc-text">3.3.4 CORS请求头和响应头总结</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/09/07/类数组转化为数组/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          类数组转化为数组
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/09/01/跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">跨域</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

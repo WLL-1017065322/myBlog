@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>axios的二次封装 | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="一、场景在vue2.x的版本中请求数据推荐使用的axios，之前我常常使用的axios的别名方法,比如说在vue组件中: 1234567axios.get(&apos;http://localhost:3000/user&apos;)    .then(res =&amp;gt; &amp;#123;        console.log(res)    &amp;#125;)    .catch(err =&amp;gt; &amp;#123;">
+<meta name="keywords" content="javascript,vue,axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios的二次封装">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="一、场景在vue2.x的版本中请求数据推荐使用的axios，之前我常常使用的axios的别名方法,比如说在vue组件中: 1234567axios.get(&apos;http://localhost:3000/user&apos;)    .then(res =&amp;gt; &amp;#123;        console.log(res)    &amp;#125;)    .catch(err =&amp;gt; &amp;#123;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/07/24/axios的二次封装/assets/v2-7ec210e1ff9a13baf887787492b47cba_hd.jpg">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/07/24/axios的二次封装/assets/v2-4b3c3e97c5502982a68e87ddcd52f7ab_hd.jpg">
+<meta property="og:updated_time" content="2019-10-28T08:06:07.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="axios的二次封装">
+<meta name="twitter:description" content="一、场景在vue2.x的版本中请求数据推荐使用的axios，之前我常常使用的axios的别名方法,比如说在vue组件中: 1234567axios.get(&apos;http://localhost:3000/user&apos;)    .then(res =&amp;gt; &amp;#123;        console.log(res)    &amp;#125;)    .catch(err =&amp;gt; &amp;#123;">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/07/24/axios的二次封装/assets/v2-7ec210e1ff9a13baf887787492b47cba_hd.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-axios的二次封装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      axios的二次封装
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/vue/">vue</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-07-24
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>在vue2.x的版本中请求数据推荐使用的axios，之前我常常使用的axios的别名方法,比如说在vue组件中:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'http://localhost:3000/user'</span>)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>如果一个页面或者组件发多个请求,那写法上还是比较麻烦的，并没有async,await的写法清爽。每发起一个请求，就要写.then，.catch这些代码，这也太麻烦了吧，请求过多的话，接口难维护，重复的代码量也会增多。这里我们来封装一个接口。这里默认你已经会axios的基本用法了，还没接触axios的移步<a href="https://link.zhihu.com/?target=https%3A//github.com/axios/axios" target="_blank" rel="noopener">官网</a>。</p>
+<h2 id="二、目录结构"><a href="#二、目录结构" class="headerlink" title="二、目录结构"></a>二、目录结构</h2><p><img src="assets/v2-7ec210e1ff9a13baf887787492b47cba_hd.jpg" alt="img"></p>
+<p>这里把接口代码放在requests.js文件。</p>
+<h2 id="三、接口实现"><a href="#三、接口实现" class="headerlink" title="三、接口实现"></a>三、接口实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> &#123; MessageBox, Message&#125; <span class="keyword">from</span> <span class="string">"element-ui"</span></span><br><span class="line"><span class="keyword">import</span> &#123; getToken &#125; <span class="keyword">from</span> <span class="string">'@/utils/auth'</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'@/store'</span></span><br><span class="line"><span class="comment">// 默认情况下，axios将JavaScript对象序列化为JSON。要以application/x-www-form-urlencoded格式发送数据，可以使用qs库进行编码</span></span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// create an axios instance</span></span><br><span class="line"><span class="keyword">const</span> service = axios.create(&#123;</span><br><span class="line">  <span class="comment">// baseURL: 'localhost:8080', // url = base url + request url</span></span><br><span class="line">  withCredentials: <span class="literal">true</span>, <span class="comment">// send cookies when cross-domain requests</span></span><br><span class="line">  timeout: <span class="number">5000</span> <span class="comment">// request timeout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// request interceptor</span></span><br><span class="line">service.interceptors.request.use(</span><br><span class="line">  config =&gt; &#123;</span><br><span class="line">    <span class="comment">// do something before request is sent</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (store.getters.token) &#123;</span><br><span class="line">      <span class="comment">// let each request carry token</span></span><br><span class="line">      <span class="comment">// ['X-Token'] is a custom headers key</span></span><br><span class="line">      <span class="comment">// please modify it according to the actual situation</span></span><br><span class="line">      config.headers[<span class="string">'X-Token'</span>] = getToken()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">  &#125;,</span><br><span class="line">  error =&gt; &#123;</span><br><span class="line">    <span class="comment">// do something with request error</span></span><br><span class="line">    <span class="built_in">console</span>.log(error) <span class="comment">// for debug</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// response interceptor</span></span><br><span class="line">service.interceptors.response.use(</span><br><span class="line">  response =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> res = response.data</span><br><span class="line">    <span class="comment">// 2000状态码表示正确；下面进行错误处理</span></span><br><span class="line">    <span class="keyword">if</span> (res.code !== <span class="number">20000</span>) &#123;</span><br><span class="line">      Message(&#123;</span><br><span class="line">        message: res.message || <span class="string">'error'</span>,</span><br><span class="line">        type: <span class="string">'error'</span>,</span><br><span class="line">        duration: <span class="number">5</span> * <span class="number">1000</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;</span></span><br><span class="line">      <span class="keyword">if</span> (res.code === <span class="number">50008</span> || res.code === <span class="number">50012</span> || res.code === <span class="number">50014</span>) &#123;</span><br><span class="line">        <span class="comment">// to re-login</span></span><br><span class="line">        MessageBox.confirm(<span class="string">'You have been logged out, you can cancel to stay on this page, or log in again'</span>, <span class="string">'Confirm logout'</span>, &#123;</span><br><span class="line">          confirmButtonText: <span class="string">'Re-Login'</span>,</span><br><span class="line">          cancelButtonText: <span class="string">'Cancel'</span>,</span><br><span class="line">          type: <span class="string">'warning'</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// 返回promise对象store.dispatch('user/resetToken')</span></span><br><span class="line">          store.dispatch(<span class="string">'user/resetToken'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            location.reload()</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(res.message || <span class="string">'error'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  error =&gt; &#123;</span><br><span class="line">    Message(&#123;</span><br><span class="line">      message: error.message,</span><br><span class="line">      type: <span class="string">'error'</span>,</span><br><span class="line">      duration: <span class="number">5</span> * <span class="number">1000</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> httpServer = <span class="function">(<span class="params">method, opts</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> httpDefaultOpts = &#123;</span><br><span class="line">    method: method,</span><br><span class="line">    url: opts.url,</span><br><span class="line">    params:opts,</span><br><span class="line">    data: qs.stringify(opts.data),</span><br><span class="line">    <span class="comment">// headers: method === 'get' ? &#123;'X-Requested-With': 'XMLHttpRequest'&#125;:&#123;'content-type': 'application/x-www-form-urlencoded'&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (method === <span class="string">'get'</span>)&#123;</span><br><span class="line">    <span class="keyword">delete</span> httpDefaultOpts.data</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">delete</span> httpDefaultOpts.params</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'opt'</span>, httpDefaultOpts)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    service(httpDefaultOpts).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;) <span class="comment">// end promise</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> httpServer</span><br></pre></td></tr></table></figure>
+<p>接口写好了，接下来就差调用了，在组件中调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import httpServer from &apos;@/utils/requests&apos;</span><br><span class="line"></span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">mounted() &#123;</span><br><span class="line">  this.imgPost()</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  async imgPost() &#123;</span><br><span class="line">    console.log(&apos;imgPost&apos;)</span><br><span class="line">    let opts = &#123;</span><br><span class="line">      data: &#123;</span><br><span class="line">        firstName: &apos;Fred&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      url: &apos;/api/imgOperate&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    let res = await httpServer(&apos;post&apos;, opts)</span><br><span class="line">    this.compareShow = true</span><br><span class="line">    console.log(&apos;end&apos;, res)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p>组件挂载时就调用接口。但现在没有真正的API接口，可以用mockjs来模拟接口。对mockjs不了解的可去看<a href="https://zhuanlan.zhihu.com/p/66838026" target="_blank" rel="noopener">上一篇文章</a>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入mockjs</span></span><br><span class="line"><span class="keyword">const</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置请求延时时间</span></span><br><span class="line">Mock.setup(&#123;</span><br><span class="line">  timeout:<span class="number">2000</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 mock.Random 对象</span></span><br><span class="line"><span class="keyword">const</span> Random = Mock.Random</span><br><span class="line"></span><br><span class="line"><span class="comment">// mock一组数据</span></span><br><span class="line"><span class="keyword">const</span> produceNewsData = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newImg = &#123;</span><br><span class="line">    title: Random.csentence(<span class="number">5</span>, <span class="number">30</span>), <span class="comment">//  Random.csentence( min, max )</span></span><br><span class="line">    thumbnail_pic_s: Random.dataImage(<span class="string">'300x250'</span>, <span class="string">'mock的图片'</span>), <span class="comment">// Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码</span></span><br><span class="line">    author_name: Random.cname(), <span class="comment">// Random.cname() 随机生成一个常见的中文姓名</span></span><br><span class="line">    date: Random.date() + <span class="string">' '</span> + Random.time() <span class="comment">// Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    data: newImg,</span><br><span class="line">    code: <span class="number">20000</span>,</span><br><span class="line">    message: <span class="string">'success'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 拦截ajax请求，配置mock的数据</span></span><br><span class="line">Mock.mock(<span class="string">'/api/imgOperate'</span>, <span class="string">'post'</span>, produceNewsData)</span><br></pre></td></tr></table></figure>
+<h2 id="四、效果"><a href="#四、效果" class="headerlink" title="四、效果"></a>四、效果</h2><p><img src="assets/v2-4b3c3e97c5502982a68e87ddcd52f7ab_hd.jpg" alt="img"></p>
+<p>通过控制台可以看到请求参数，返回结果成功。<a href="https://link.zhihu.com/?target=https%3A//github.com/0zcl/CNode" target="_blank" rel="noopener">0zcl/CNode</a>通过控制台可以看到请求参数，返回结果成功。项目代码已存放到git。用到的技术有vue,vuex,axios,mockjs,less,vue-router,vue filter过滤器，阿里iconfont，element-ui，还有引用第三方库。如果是入门vue不久，把项目clone下来当作练习也是不错的。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 16:06</p>
+        <p>原始链接： <a class="post-url" href="/2019/07/24/axios的二次封装/" title="axios的二次封装">https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/&title=《axios的二次封装》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/&title=《axios的二次封装》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios的二次封装》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/07/24/axios的二次封装/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+    <a href="/tags/axios/" class="color1">axios</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、场景"><span class="post-toc-text">一、场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、目录结构"><span class="post-toc-text">二、目录结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、接口实现"><span class="post-toc-text">三、接口实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、效果"><span class="post-toc-text">四、效果</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/07/25/vue axios封装/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          vue axios封装
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/07/21/axios为何需要封装/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">axios为何需要封装</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

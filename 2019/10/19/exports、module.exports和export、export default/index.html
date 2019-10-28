@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>exports、module.exports和export、export default | 阿龙的小型博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="along,along's Blog">
+  
+  <meta name="description" content="前言难得有空，今天开始重新规范的学习一下node编程。但是引入模块我看到用 require的方式，再联想到咱们的ES6各种export 、export default。 阿西吧，头都大了…. 头大完了，那我们坐下先理理他们的使用范围。  require: node 和 es6 都支持的引入export / import : 只有es6 支持的导出引入module.exports / exports">
+<meta name="keywords" content="node,export">
+<meta property="og:type" content="article">
+<meta property="og:title" content="exports、module.exports和export、export default">
+<meta property="og:url" content="https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/index.html">
+<meta property="og:site_name" content="阿龙的小型博客">
+<meta property="og:description" content="前言难得有空，今天开始重新规范的学习一下node编程。但是引入模块我看到用 require的方式，再联想到咱们的ES6各种export 、export default。 阿西吧，头都大了…. 头大完了，那我们坐下先理理他们的使用范围。  require: node 和 es6 都支持的引入export / import : 只有es6 支持的导出引入module.exports / exports">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wll-1017065322.github.io/2019/10/19/exports、module.exports和export、export%20default/assets/1042726218-597aee464dc71_articlex.png">
+<meta property="og:updated_time" content="2019-10-28T10:13:17.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="exports、module.exports和export、export default">
+<meta name="twitter:description" content="前言难得有空，今天开始重新规范的学习一下node编程。但是引入模块我看到用 require的方式，再联想到咱们的ES6各种export 、export default。 阿西吧，头都大了…. 头大完了，那我们坐下先理理他们的使用范围。  require: node 和 es6 都支持的引入export / import : 只有es6 支持的导出引入module.exports / exports">
+<meta name="twitter:image" content="https://wll-1017065322.github.io/2019/10/19/exports、module.exports和export、export%20default/assets/1042726218-597aee464dc71_articlex.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">along&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>档案</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>个人信息</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        along&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        但行前路，莫问前途
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="along’s website" target="_blank" href="http://www.wanglvlong.top/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/WLL-1017065322">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weixin" target="_blank" href="//baidu.com">
+                            <i class="fa fa-weixin fa-2x"></i></a>
+                    
+                        <a title="QQ" target="_blank" href="//qq.com">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-exports、module.exports和export、export default" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      exports、module.exports和export、export default
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/node/">node</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>难得有空，今天开始重新规范的学习一下node编程。<br>但是引入模块我看到用 <code>require</code>的方式，再联想到咱们的<code>ES6</code>各种<code>export</code> 、<code>export default</code>。</p>
+<p>阿西吧，头都大了….</p>
+<p>头大完了，那我们坐下先理理他们的使用范围。</p>
+<blockquote>
+<p><code>require</code>: node 和 es6 都支持的引入<br><code>export / import</code> : 只有es6 支持的导出引入<br><code>module.exports / exports</code>: 只有 node 支持的导出</p>
+</blockquote>
+<p>这一刻起，我觉得是时候要把它们之间的关系都给捋清楚了，不然我得混乱死。话不多少，咱们开干！！</p>
+<h2 id="node模块"><a href="#node模块" class="headerlink" title="node模块"></a>node模块</h2><p><code>Node</code>里面的模块系统遵循的是<code>CommonJS</code>规范。<br>那问题又来了，什么是<code>CommonJS</code>规范呢？<br>由于<code>js</code>以前比较混乱，各写各的代码，没有一个模块的概念，而这个规范出来其实就是对模块的一个定义。</p>
+<blockquote>
+<p><code>CommonJS</code>定义的模块分为: 模块标识(<code>module</code>)、模块定义(<code>exports</code>) 、模块引用(<code>require</code>)</p>
+</blockquote>
+<p>先解释 <code>exports</code> 和 <code>module.exports</code><br>在一个node执行一个文件时，会给这个文件内生成一个 <code>exports</code>和<code>module</code>对象，<br>而<code>module</code>又有一个<code>exports</code>属性。他们之间的关系如下图，都指向一块{}内存区域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exports = module.exports = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="assets/1042726218-597aee464dc71_articlex.png" alt="clipboard.png"></p>
+<p>那下面我们来看看代码的吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//utils.js</span><br><span class="line">let a = 100;</span><br><span class="line"></span><br><span class="line">console.log(module.exports); //能打印出结果为：&#123;&#125;</span><br><span class="line">console.log(exports); //能打印出结果为：&#123;&#125;</span><br><span class="line"></span><br><span class="line">exports.a = 200; //这里辛苦劳作帮 module.exports 的内容给改成 &#123;a : 200&#125;</span><br><span class="line"></span><br><span class="line">exports = &apos;指向其他内存区&apos;; //这里把exports的指向指走</span><br><span class="line"></span><br><span class="line">//test.js</span><br><span class="line"></span><br><span class="line">var a = require(&apos;/utils&apos;);</span><br><span class="line">console.log(a) // 打印为 &#123;a : 200&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从上面可以看出，其实<code>require</code>导出的内容是<code>module.exports</code>的指向的内存块内容，并不是<code>exports</code>的。<br>简而言之，区分他们之间的区别就是 <code>exports</code> 只是 <code>module.exports</code>的引用，辅助后者添加内容用的。</p>
+</blockquote>
+<p>用白话讲就是，<code>exports</code>只辅助<code>module.exports</code>操作内存中的数据，辛辛苦苦各种操作数据完，累得要死，结果到最后真正被<code>require</code>出去的内容还是<code>module.exports</code>的，真是好苦逼啊。</p>
+<p>其实大家用内存块的概念去理解，就会很清楚了。</p>
+<p>然后呢，为了避免糊涂，尽量都用 <code>module.exports</code> 导出，然后用<code>require</code>导入。</p>
+<h2 id="ES中的模块导出导入"><a href="#ES中的模块导出导入" class="headerlink" title="ES中的模块导出导入"></a>ES中的模块导出导入</h2><p>说实话，在es中的模块，就非常清晰了。不过也有一些细节的东西需要搞清楚。<br>比如 <code>export</code> 和 <code>export default</code>，还有 导入的时候，<code>import a from ..</code>,<code>import {a} from ..</code>，总之也有点乱，那么下面我们就开始把它们捋清楚吧。</p>
+<h3 id="export-和-export-default"><a href="#export-和-export-default" class="headerlink" title="export 和 export default"></a>export 和 export default</h3><p>首先我们讲这两个导出，下面我们讲讲它们的区别</p>
+<ol>
+<li>export与export default均可用于导出常量、函数、文件、模块等</li>
+<li>在一个文件或模块中，export、import可以有多个，export default仅有一个</li>
+<li>通过export方式导出，在导入时要加{ }，export default则不需要</li>
+<li>export能直接导出变量表达式，export default不行。</li>
+</ol>
+<p>下面咱们看看代码去验证一下</p>
+<h4 id="testEs6Export-js"><a href="#testEs6Export-js" class="headerlink" title="testEs6Export.js"></a>testEs6Export.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">//导出变量</span><br><span class="line">export const a = &apos;100&apos;;  </span><br><span class="line"></span><br><span class="line"> //导出方法</span><br><span class="line">export const dogSay = function()&#123; </span><br><span class="line">    console.log(&apos;wang wang&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> //导出方法第二种</span><br><span class="line">function catSay()&#123;</span><br><span class="line">   console.log(&apos;miao miao&apos;); </span><br><span class="line">&#125;</span><br><span class="line">export &#123; catSay &#125;;</span><br><span class="line"></span><br><span class="line">//export default导出</span><br><span class="line">const m = 100;</span><br><span class="line">export default m; </span><br><span class="line">//export defult const m = 100;// 这里不能写这种格式。</span><br></pre></td></tr></table></figure>
+<h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//index.js</span><br><span class="line">&apos;use strict&apos;</span><br><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var router = express.Router();</span><br><span class="line"></span><br><span class="line">import &#123; dogSay, catSay &#125; from &apos;./testEs6Export&apos;; //导出了 export 方法 </span><br><span class="line">import m from &apos;./testEs6Export&apos;;  //导出了 export default </span><br><span class="line"></span><br><span class="line">import * as testModule from &apos;./testEs6Export&apos;; //as 集合成对象导出</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* GET home page. */</span><br><span class="line">router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">  dogSay();</span><br><span class="line">  catSay();</span><br><span class="line">  console.log(m);</span><br><span class="line">  testModule.dogSay();</span><br><span class="line">  console.log(testModule.m); // undefined , 因为  as 导出是 把 零散的 export 聚集在一起作为一个对象，而export default 是导出为 default属性。</span><br><span class="line">  console.log(testModule.default); // 100</span><br><span class="line">  res.send(&apos;恭喜你，成功验证&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，确实感觉 <code>ES6</code>的模块系统非常灵活的。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月28日 18:13</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/19/exports、module.exports和export、export default/" title="exports、module.exports和export、export default">https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/</a></p>
+        <footer>
+            <a href="https://WLL-1017065322.github.io">
+                <img src="/images/logo.png" alt="wang lv long">
+                wang lv long
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多谢打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/&title=《exports、module.exports和export、export default》 — 阿龙的小型博客&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/&title=《exports、module.exports和export、export default》 — 阿龙的小型博客&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《exports、module.exports和export、export default》 — 阿龙的小型博客&url=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/&via=https://WLL-1017065322.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://WLL-1017065322.github.io/2019/10/19/exports、module.exports和export、export default/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/node/" class="color5">node</a>
+      
+    <a href="/tags/export/" class="color2">export</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node模块"><span class="post-toc-text">node模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES中的模块导出导入"><span class="post-toc-text">ES中的模块导出导入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#export-和-export-default"><span class="post-toc-text">export 和 export default</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#testEs6Export-js"><span class="post-toc-text">testEs6Export.js</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#index-js"><span class="post-toc-text">index.js</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/21/loading/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          loading
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/10/17/eslint常用规则/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">eslint常用规则</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 wang lv long<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://WLL-1017065322.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/canvas/">canvas</a><a class="category-link" href="/categories/css/">css</a><a class="category-link" href="/categories/hexo/">hexo</a><a class="category-link" href="/categories/java/">java</a><a class="category-link" href="/categories/javascript/">javascript</a><a class="category-link" href="/categories/js/">js</a><a class="category-link" href="/categories/node/">node</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/vue/">vue</a><a class="category-link" href="/categories/上线/">上线</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>档案</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>个人信息</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/WebDriverWait/" style="font-size: 10px;">WebDriverWait</a> <a href="/tags/axios/" style="font-size: 16.67px;">axios</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/chrome/" style="font-size: 11.67px;">chrome</a> <a href="/tags/clientHeight/" style="font-size: 10px;">clientHeight</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/css/" style="font-size: 11.67px;">css</a> <a href="/tags/eslint/" style="font-size: 11.67px;">eslint</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascrpit/" style="font-size: 10px;">javascrpit</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongod/" style="font-size: 11.67px;">mongod</a> <a href="/tags/nginx/" style="font-size: 11.67px;">nginx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/session/" style="font-size: 10px;">session</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/vue/" style="font-size: 18.33px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/定时器/" style="font-size: 10px;">定时器</a> <a href="/tags/数据库/" style="font-size: 11.67px;">数据库</a> <a href="/tags/数组/" style="font-size: 11.67px;">数组</a> <a href="/tags/瀑布流/" style="font-size: 10px;">瀑布流</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a> <a href="/tags/跨域/" style="font-size: 11.67px;">跨域</a> <a href="/tags/部署上线/" style="font-size: 16.67px;">部署上线</a> <a href="/tags/问题/" style="font-size: 16.67px;">问题</a> <a href="/tags/项目/" style="font-size: 11.67px;">项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
